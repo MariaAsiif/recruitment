@@ -104,19 +104,25 @@ function App() {
               <div className='col-lg-3 col-md-10'>
 
                 <div className='border-gray-400 border-2 text-gray-500 text-base font-medium bg-light-gray'>
-                  <select name='surname' value={recruitModel.surname} onChange={handleChange} className='w-1/5 h-full py-2  focus-visible:outline-none bg-white'>
+                  <select name='surname' value={recruitModel.surname} onChange={handleChange} className='w-1/5 h-full py-2  focus-visible:outline-blue-900 bg-white'>
                     {surnames.map((sur, i) => <option key={i}>{sur}</option>)}
                   </select>
-                  <input name='fullname' value={recruitModel.fullname} onChange={handleChange} type="text" placeholder='Name *' className="w-4/5 h-full p-2  focus-visible:outline-none bg-light-gray " />
-                  {validationModel.fullnameError}
+                  <input name='fullname' value={recruitModel.fullname} onChange={handleChange} type="text" placeholder='Name *' className={`w-4/5 h-full p-2  focus-visible:outline-blue-900 bg-light-gray ${validationModel.fullnameError ? "border-2 border-red-900" : ""} `} />
+
                 </div>
+                {validationModel.fullnameError}
 
               </div>
-              <div className='col-lg-3 col-md-10 '>
+              {/* <div className='col-lg-3 col-md-10 '>
                 <div className=' border-gray-400 border-2   text-gray-500 text-base font-medium bg-light-gray '>
                   <input name='firstFname' value={recruitModel.firstFname} onChange={handleChange} type="text" placeholder='1st Family Name *' className="w-full h-full p-2  focus-visible:outline-none bg-light-gray " />
                   {validationModel.firstFnameError}
                 </div>
+              </div> */}
+              <div className='col-lg-3 col-md-10 relative '>
+                <input type="text" placeholder='1st Family Name' className={`w-full outline-blue-700 border-2 px-2 py-2 ${validationModel.fullnameError ? "border-red-400" : "border-gray-400"}`} />
+                <span className='absolute text-red-700 font-medium text-lg top-1/4 left-36'>*</span>
+                {validationModel.fullnameError}
               </div>
             </div>
 
@@ -151,11 +157,11 @@ function App() {
               <div className='col-lg-3 col-md-10 text-gray-500 text-base font-medium   '>
                 <div className='row g-1'>
                   <div className='col-6 '>
-                    <div className='border-gray-400 border-2'>
+                    <div className=' border-gray-400 border-2'>
                       <select name='city' value={recruitModel.city} onChange={handleChange} className='w-full h-full p-2  focus-visible:outline-none bg-light-gray'>
                         <option value="">City</option>
                         <option>Islamabad</option>
-                        <option>Karachi</option>
+                        <option  >Karachi</option>
                       </select>
                       {validationModel.cityError}
                     </div>
