@@ -1455,3 +1455,17 @@
     --bs-gutter-y: 3rem;
   }
 }
+
+/* package react-phone-number-input css */
+.PhoneInput {
+  height: 100%
+}
+
+.PhoneInput input {
+  height: 100%;
+  padding: 7px 0px;
+}
+
+.PhoneInput input:focus-visible {
+  outline-color: blue;
+}
