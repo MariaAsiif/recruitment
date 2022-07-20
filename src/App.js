@@ -29,7 +29,6 @@ import { surnames } from './utils/enum';
 import Validator, { ValidationTypes as V_Type, } from './components/shared/formValidator';
 import 'react-phone-number-input/style.css'
 import PhoneInput from 'react-phone-number-input'
-// import en from "react-phone-number-input/locale/en.json";
 import { Country, State, City } from 'country-state-city';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -40,6 +39,8 @@ function App() {
     surname: localStorage.getItem('surname') ? localStorage.getItem('surname') : "Mr.",
     fullname: localStorage.getItem('fullname') ? localStorage.getItem('fullname') : "",
     firstFname: localStorage.getItem('firstFname') ? localStorage.getItem('firstFname') : "",
+    secondFname: localStorage.getItem('secondFname') ? localStorage.getItem('secondFname') : "",
+    thirdFname: localStorage.getItem('thirdFname') ? localStorage.getItem('thirdFname') : "",
     email: localStorage.getItem('email') ? localStorage.getItem('email') : "",
     reEmail: localStorage.getItem('reEmail') ? localStorage.getItem('reEmail') : "",
     city: localStorage.getItem('city') ? localStorage.getItem('city') : "Ashkāsham",
@@ -89,11 +90,11 @@ function App() {
   const setValidation = () => {
     let myvalidation_Obj = {
       ...validationModel,
-      fullnameError: Validator(recruitModel.fullname, [V_Type.required], ['Full name is required']),
-      firstFnameError: Validator(recruitModel.firstFname, [V_Type.required], ['Family name is required']),
-      emailError: Validator(recruitModel.email, [V_Type.required], ['Email is required']),
-      reEmailError: Validator(recruitModel.reEmail, [V_Type.required], ['Re Email is required']),
-      mobileError: Validator(mobile, [V_Type.required], ['Mobile number is required']),
+      fullnameError: Validator(recruitModel.fullname, [V_Type.required], ['Please fill out this required field']),
+      firstFnameError: Validator(recruitModel.firstFname, [V_Type.required], ['Please fill out this required field']),
+      emailError: Validator(recruitModel.email, [V_Type.required], ['Please fill out this required field']),
+      reEmailError: Validator(recruitModel.reEmail, [V_Type.required], ['Please fill out this required field']),
+      mobileError: Validator(mobile, [V_Type.required], ['Please fill out this required field']),
       ageError: Validator(recruitModel.age, [V_Type.required], ['Must add your age']),
 
     };
@@ -165,11 +166,25 @@ function App() {
                 {validationModel.firstFnameError}
               </div>
             </div>
+            <div className='row justify-center gap-2 mb-4 g-0 '>
+              <div className='col-lg-3 col-md-10'>
+                <div className='relative'>
+                  <input name='secondFname' value={recruitModel.secondFname} onChange={handleChange} type="email" placeholder='2nd Family Name' className={`w-full outline-blue-400 border-2 p-2 border-gray-400`} />
+                  <span hidden={recruitModel.secondFname.length} className='absolute text-gray-400 font-medium text-sm top-1/4 left-40'>(optional)</span>
+                </div>
+              </div>
+              <div className='col-lg-3 col-md-10 relative '>
+                <div className='relative'>
+                  <input name='thirdFname' value={recruitModel.thirdFname} onChange={handleChange} type="email" placeholder='3rd Family Name' className={`w-full outline-blue-400 border-2 p-2 border-gray-400`} />
+                  <span hidden={recruitModel.thirdFname.length} className='absolute text-gray-400 font-medium text-sm top-1/4 left-36'>(optional)</span>
+                </div>
+              </div>
+            </div>
 
             <div className='row justify-center gap-2 mb-4 g-0 '>
               <div className='col-lg-3 col-md-10'>
                 <div className='relative'>
-                  <input name='email' value={recruitModel.email} onChange={handleChange} type="email" placeholder='Email Addres' className={`w-full outline-blue-400 border-2 p-2 ${validationModel.emailError ? "border-red-400" : "border-gray-400"}`} />
+                  <input name='email' value={recruitModel.email} onChange={handleChange} type="email" placeholder='Email Address' className={`w-full outline-blue-400 border-2 p-2 ${validationModel.emailError ? "border-red-400" : "border-gray-400"}`} />
                   <span hidden={recruitModel.email.length} className='absolute text-red-400 font-medium text-lg top-1/4 left-32'>*</span>
                 </div>
                 {validationModel.emailError}
@@ -177,7 +192,7 @@ function App() {
               <div className='col-lg-3 col-md-10 relative '>
                 <div className='relative'>
                   <input name='reEmail' value={recruitModel.reEmail} onChange={handleChange} type="email" placeholder='Re Enter Email Address' className={`w-full outline-blue-400 border-2 p-2 ${validationModel.reEmailError ? "border-red-400" : "border-gray-400"}`} />
-                  <span hidden={recruitModel.reEmail.length} className='absolute text-red-400 font-medium text-lg top-1/4 left-52'>*</span>
+                  <span hidden={recruitModel.reEmail.length} className='absolute text-red-400 font-medium text-lg top-1/4 left-48'>*</span>
                 </div>
                 {validationModel.reEmailError}
               </div>
@@ -247,25 +262,47 @@ function App() {
         </section>
 
 
-        <section className='row mb-14'>
+        <section className='row mb-8'>
           <div className='col-12 bg-light-red'  >
             <div className='row justify-center text-white lg:text-lg text-xs font-semibold gap-0'>
-              <div className='col-lg-2 col-4  py-1 text-center'>
+              <div className='col-lg-2 col-4 cursor-pointer py-1 text-center' data-bs-toggle="collapse" data-bs-target="#aboutRecruit" aria-expanded="false" aria-controls="aboutRecruit">
                 ABOUT RECRUIT <IoChevronDownOutline className='inline lg:text-4xl text-sm' />
               </div>
-              <div className='col-lg-2 col-4 border-r border-l  py-1 text-center'>
+              <div className='col-lg-2 col-4 cursor-pointer border-r border-l  py-1 text-center' data-bs-toggle="collapse" data-bs-target="#HowToApply" aria-expanded="false" aria-controls="HowToApply">
                 HOW TO APPLY <IoChevronDownOutline className='inline  lg:text-4xl text-sm' />
               </div>
-              <div className='col-lg-2 col-4  py-1 text-center'>
+              <div className='col-lg-2 col-4 cursor-pointer py-1 text-center' data-bs-toggle="collapse" data-bs-target="#whatsNext" aria-expanded="false" aria-controls="whatsNext">
                 WHAT'S NEXT <IoChevronDownOutline className='inline  lg:text-4xl text-sm' />
               </div>
             </div>
           </div>
         </section>
+
+
+
+
+
+
+
       </section>
       <div className='bscontainer'>
         <section>
           <div>
+            <div className="collapse mb-8" id="whatsNext">
+              <div className="block p-6 rounded-lg shadow-lg bg-white">
+                Whats Next content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
+              </div>
+            </div>
+            <div className="collapse mb-8" id="aboutRecruit">
+              <div className="block p-6 rounded-lg shadow-lg bg-white">
+                About Recurit content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
+              </div>
+            </div>
+            <div className="collapse mb-8" id="HowToApply">
+              <div className="block p-6 rounded-lg shadow-lg bg-white">
+                How To Apply content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
+              </div>
+            </div>
             <div className="mt-1 flex justify-center px-6 pt-5 pb-6 border-4 border-gray-300 border-dashed border-b-red-500  bg-gray-100">
               <div className="space-y-1 text-center">
                 <MdCloudUpload size={99} className='inline  text-gray-500' />
@@ -605,6 +642,7 @@ function App() {
       <footer className='bscontainer-fluid bg-light-red text-white text-xs text-center font-normal py-3'>
         COPYRIGHTS© 2022 HPORX LTD, IRELAND. ALL RIGHTS RESERVED. | PRIVACY POLICY | +44 1223 298541 | TERMS OF USE | DIGITAL AGENCY SERVICES | SITE DIRECTORY
       </footer>
+
 
     </>
 
