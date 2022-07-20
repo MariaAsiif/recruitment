@@ -1467,5 +1467,5 @@
 }
 
 .PhoneInput input:focus-visible {
-  outline-color: blue;
+  outline-color: #60a5fa;
 }

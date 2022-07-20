@@ -19,8 +19,9 @@ import Sales2_pic from "./assets/images/sales (2).jpg"
 import Perscriptive_pic from "./assets/images/SALES -Prescriptive Care.jpg"
 import Vendor_pic from "./assets/images/vendor 1.jpg"
 import Whole_pic from "./assets/images/whole seller.jpg"
-import leafLogo from "./assets/images/leaaf_logo_edit.png"
-import usFlaglogo from "./assets/images/usflag_logo.png"
+import leafLogo from "./assets/images/leaf_logo_v2.png"
+import usFlaglogo from "./assets/images/usflag_logo_v2.png"
+import bigPic from "./assets/images/creche.jpg"
 
 import { MdCloudUpload } from "react-icons/md";
 import { surnames } from './utils/enum';
@@ -28,6 +29,7 @@ import { surnames } from './utils/enum';
 import Validator, { ValidationTypes as V_Type, } from './components/shared/formValidator';
 import 'react-phone-number-input/style.css'
 import PhoneInput from 'react-phone-number-input'
+// import en from "react-phone-number-input/locale/en.json";
 import { Country, State, City } from 'country-state-city';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -59,7 +61,7 @@ function App() {
     ageError: null,
   });
 
-  const [mobile, setmobile] = useState(localStorage.getItem('mobile') ? localStorage.getItem('mobile') : "",)
+  const [mobile, setmobile] = useState("")
   const [dob, setdob] = useState(new Date())
   const [all_Countries] = useState(() => Country.getAllCountries())
   const [all_States, setall_States] = useState(() => State.getStatesOfCountry("AF"))
@@ -92,7 +94,7 @@ function App() {
       emailError: Validator(recruitModel.email, [V_Type.required], ['Email is required']),
       reEmailError: Validator(recruitModel.reEmail, [V_Type.required], ['Re Email is required']),
       mobileError: Validator(mobile, [V_Type.required], ['Mobile number is required']),
-      ageError: Validator(recruitModel.age, [V_Type.required], ['Age is required']),
+      ageError: Validator(recruitModel.age, [V_Type.required], ['Must add your age']),
 
     };
     setvalidationModel(myvalidation_Obj);
@@ -108,30 +110,32 @@ function App() {
   }
   // ========================= Use Effect ==========================
   useEffect(() => {
+    console.log("useEffect 1 run");
     const updatedCountryCode = recruitModel.country
     const updatedStates = State.getStatesOfCountry(updatedCountryCode)
     setall_States(updatedStates)
   }, [recruitModel.country,])
   useEffect(() => {
+    console.log("useEffect 2 run");
     const updatedstateCode = recruitModel.state
     const updatedCities = City.getCitiesOfState(recruitModel.country, updatedstateCode)
     setall_Cities(updatedCities)
-  }, [recruitModel.state])
+  }, [recruitModel.state, recruitModel.country])
   return (
     <>
       <section ref={myRef} className='bscontainer-fluid'>
         <section className='row'>
           <div className='col-12 bg-hero-pattern bg-center bg-no-repeat    bg-cover bg-blend-lighten ' style={{ backgroundColor: "#ffffffad" }}>
-            <div className='lg:my-10 my-5'>
+            <div className='lg:my-10 my-5 lg:px-28 md:px-5'>
               <div className='row  justify-center items-center'>
                 <div className='col-4'>
-                  <img src={leafLogo} width="45px" alt="leafLogo" />
+                  <img src={leafLogo} width="55px" alt="leafLogo" />
                 </div>
-                <div className='col-4 text-center lg:text-6xl text-6xl font-medium flex items-center justify-center'>
+                <div className='col-4 text-center lg:text-6xl md:text-6xl text-5xl font-medium flex items-center justify-center'>
                   <p>RECRUIT</p>
                 </div>
                 <div className='col-4 '>
-                  <img src={usFlaglogo} width="45px" className=' ml-auto' alt="leafLogo" />
+                  <img src={usFlaglogo} width="55px" className=' ml-auto' alt="leafLogo" />
                 </div>
               </div>
             </div>
@@ -140,41 +144,52 @@ function App() {
               <div className='col-lg-3 col-md-10'>
 
                 <div className=' text-gray-500 text-base font-medium bg-light-gray'>
-                  <select name='surname' value={recruitModel.surname} onChange={handleChange} className='w-1/5 h-full py-2 border-gray-400 border-2 border-r-0 outline-blue-700 bg-white'>
+                  <select name='surname' value={recruitModel.surname} onChange={handleChange} className='w-1/5 h-full py-2 border-gray-400 border-2 border-r-0 outline-blue-400 bg-white'>
                     {surnames.map((sur, i) => <option key={i}>{sur}</option>)}
                   </select>
-                  <input name='fullname' value={recruitModel.fullname} onChange={handleChange} type="text" placeholder='Name *' className={`w-4/5 h-full p-2 bg-white  outline-blue-700 border-2 ${validationModel.fullnameError ? "border-red-400" : "border-gray-400"} `} />
+                  <div className='relative inline-block w-4/5 '>
+                    <input name='fullname' value={recruitModel.fullname} onChange={handleChange} type="text" placeholder='Name ' className={`w-full h-full p-2 bg-white  outline-blue-400 border-2 ${validationModel.fullnameError ? "border-red-400" : "border-gray-400"} `} />
+                    <span hidden={recruitModel.fullname.length} className='absolute  text-red-400 font-medium text-lg top-1/4 left-16'>*</span>
+                  </div>
+
                 </div>
                 {validationModel.fullnameError}
 
               </div>
-              <div className='col-lg-3 col-md-10 relative '>
-                <input name='firstFname' value={recruitModel.firstFname} onChange={handleChange} type="text" placeholder='1st Family Name' className={`w-full outline-blue-700 border-2 p-2 ${validationModel.firstFnameError ? "border-red-400" : "border-gray-400"}`} />
-                <span hidden={recruitModel.firstFname.length} className='absolute text-red-700 font-medium text-lg top-1/4 left-36'>*</span>
+              <div className='col-lg-3 col-md-10'>
+                <div className='relative'>
+                  <input name='firstFname' value={recruitModel.firstFname} onChange={handleChange} type="text" placeholder='1st Family Name' className={`w-full outline-blue-400 border-2 p-2 ${validationModel.firstFnameError ? "border-red-400" : "border-gray-400"}`} />
+                  <span hidden={recruitModel.firstFname.length} className='absolute text-red-400 font-medium text-lg top-1/4 left-36'>*</span>
+                </div>
+
                 {validationModel.firstFnameError}
               </div>
             </div>
 
             <div className='row justify-center gap-2 mb-4 g-0 '>
-              <div className='col-lg-3 col-md-10 relative '>
-                <input name='email' value={recruitModel.email} onChange={handleChange} type="email" placeholder='Email Addres' className={`w-full outline-blue-700 border-2 p-2 ${validationModel.emailError ? "border-red-400" : "border-gray-400"}`} />
-                <span hidden={recruitModel.email.length} className='absolute text-red-700 font-medium text-lg top-1/4 left-32'>*</span>
+              <div className='col-lg-3 col-md-10'>
+                <div className='relative'>
+                  <input name='email' value={recruitModel.email} onChange={handleChange} type="email" placeholder='Email Addres' className={`w-full outline-blue-400 border-2 p-2 ${validationModel.emailError ? "border-red-400" : "border-gray-400"}`} />
+                  <span hidden={recruitModel.email.length} className='absolute text-red-400 font-medium text-lg top-1/4 left-32'>*</span>
+                </div>
                 {validationModel.emailError}
               </div>
               <div className='col-lg-3 col-md-10 relative '>
-                <input name='reEmail' value={recruitModel.reEmail} onChange={handleChange} type="email" placeholder='Re Enter Email Address' className={`w-full outline-blue-700 border-2 p-2 ${validationModel.reEmailError ? "border-red-400" : "border-gray-400"}`} />
-                <span hidden={recruitModel.reEmail.length} className='absolute text-red-700 font-medium text-lg top-1/4 left-52'>*</span>
+                <div className='relative'>
+                  <input name='reEmail' value={recruitModel.reEmail} onChange={handleChange} type="email" placeholder='Re Enter Email Address' className={`w-full outline-blue-400 border-2 p-2 ${validationModel.reEmailError ? "border-red-400" : "border-gray-400"}`} />
+                  <span hidden={recruitModel.reEmail.length} className='absolute text-red-400 font-medium text-lg top-1/4 left-52'>*</span>
+                </div>
                 {validationModel.reEmailError}
               </div>
             </div>
             <div className='row justify-center gap-2 mb-4 g-0  '>
               <div className='col-lg-3 col-md-10 border-gray-400   bg-white border-2   text-gray-500 text-base font-medium bg-light-gray '>
                 <div className='h-full pl-2'>
-                  <PhoneInput international countryCallingCodeEditable={false} defaultCountry="PK" value={mobile} onChange={handleMobileChange} />
+                  <PhoneInput international countryCallingCodeEditable={false} defaultCountry="ES" value={mobile} onChange={handleMobileChange} />
                 </div>
               </div>
               <div className='col-lg-3 col-md-10'>
-                <input name='industry' value={recruitModel.industry} onChange={handleChange} type="text" placeholder='Current Industry' className="w-full outline-blue-700 border-2 px-2 py-2 border-gray-400" />
+                <input name='industry' value={recruitModel.industry} onChange={handleChange} type="text" placeholder='Current Industry' className="w-full outline-blue-400 border-2 px-2 py-2 border-gray-400" />
               </div>
             </div>
 
@@ -187,12 +202,12 @@ function App() {
               <div className='col-lg-3 col-md-10  '>
                 <div className='row g-1'>
                   <div className='col-6'>
-                    <select name="state" value={recruitModel.state} onChange={handleChange} className='w-full outline-blue-700 border-2 px-2 py-2 border-gray-400'>
+                    <select name="state" value={recruitModel.state} onChange={handleChange} className='w-full outline-blue-400 border-2 px-2 py-2 border-gray-400'>
                       {all_States.map((state) => <option value={state.isoCode} key={state.name}>{state.name}</option>)}
                     </select>
                   </div>
                   <div className='col-6'>
-                    <select name="city" value={recruitModel.city} onChange={handleChange} className='w-full outline-blue-700 border-2 px-2 py-2 border-gray-400'>
+                    <select name="city" value={recruitModel.city} onChange={handleChange} className='w-full outline-blue-400 border-2 px-2 py-2 border-gray-400'>
                       {all_Cities.map((city) => <option value={city.name} key={city.name}>{city.name}</option>)}
                     </select>
                   </div>
@@ -203,17 +218,19 @@ function App() {
 
             <div className='row justify-center gap-2 mb-4 g-0  '>
               <div className='col-lg-3 col-md-10 '>
-                <input name='position' value={recruitModel.position} onChange={handleChange} type="text" placeholder='Position or field interest?' className="w-full outline-blue-700 border-2 px-2 py-2 border-gray-400 " />
+                <input name='position' value={recruitModel.position} onChange={handleChange} type="text" placeholder='Position or field interest?' className="w-full outline-blue-400 border-2 px-2 py-2 border-gray-400 " />
               </div>
               <div className='col-lg-3 col-md-10  '>
                 <div className='row g-1'>
-                  <div className='col-6 relative'>
-                    <input name='age' value={recruitModel.age} onChange={handleChange} type="text" placeholder='Age ' className={`w-full outline-blue-700 border-2 px-2 py-2 ${validationModel.ageError ? "border-red-400" : "border-gray-400"}`} />
-                    <span hidden={recruitModel.age.length} className='absolute text-red-700 font-medium text-lg top-2 left-11'>*</span>
+                  <div className='col-6'>
+                    <div className='relative'>
+                      <input name='age' value={recruitModel.age} onChange={handleChange} type="text" placeholder='Age ' className={`w-full outline-blue-400 border-2 px-2 py-2 ${validationModel.ageError ? "border-red-400" : "border-gray-400"}`} />
+                      <span hidden={recruitModel.age.length} className='absolute text-red-400 font-medium text-lg top-2 left-11'>*</span>
+                    </div>
                     {validationModel.ageError}
                   </div>
                   <div className='col-6'>
-                    <DatePicker selected={dob} onChange={handleDobChange} className="w-full outline-blue-700 border-2 px-2 py-2 border-gray-400" />
+                    <DatePicker selected={dob} onChange={handleDobChange} className="w-full outline-blue-400 border-2 px-2 py-2 border-gray-400" />
                   </div>
                 </div>
               </div>
@@ -221,7 +238,7 @@ function App() {
 
             <div className='row justify-center gap-2 mb-8 g-0 '>
               <div className='col-lg-6 col-md-10'>
-                <p className='text-lg text-gray-500 '><sup className='text-red-600 font-bold'>*</sup>Mandatory</p>
+                <p className='text-lg text-gray-500 mb-4 '><sup className='text-red-600 font-bold'>*</sup>Mandatory</p>
                 <button onClick={handleSubmit} className='text-white bg-gray-900 w-full px-2 py-1 text-3xl font-medium tracking-wide'>SUBMIT</button>
               </div>
             </div>
@@ -580,6 +597,9 @@ function App() {
               </div>
             </div>
           </div>
+        </section>
+        <section className='mb-16'>
+          <img src={bigPic} className="w-full" alt='bigPic' />
         </section>
       </div>
       <footer className='bscontainer-fluid bg-light-red text-white text-xs text-center font-normal py-3'>
