@@ -27,11 +27,20 @@ import { MdCloudUpload } from "react-icons/md";
 import { surnames } from './utils/enum';
 
 import Validator, { ValidationTypes as V_Type, } from './components/shared/formValidator';
-import 'react-phone-number-input/style.css'
-import PhoneInput from 'react-phone-number-input'
+// import 'react-phone-number-input/style.css'
+// import PhoneInput from 'react-phone-number-input'
+
+import PhoneInput from 'react-phone-input-2'
+import 'react-phone-input-2/lib/style.css'
+
 import { Country, State, City } from 'country-state-city';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+
+import { MobileDatePicker } from '@mui/x-date-pickers/MobileDatePicker';
+import TextField from '@mui/material/TextField';
+import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 
 function App() {
   const myRef = useRef(null)
@@ -67,6 +76,7 @@ function App() {
   const [all_Countries] = useState(() => Country.getAllCountries())
   const [all_States, setall_States] = useState(() => State.getStatesOfCountry("AF"))
   const [all_Cities, setall_Cities] = useState(() => City.getCitiesOfState("AF", "BDS"))
+  const [dateob, setdateob] = useState(new Date('2014-08-18T21:11:54'))
 
   const executeScroll = () => myRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' })
   const handleChange = (e) => {
@@ -199,8 +209,8 @@ function App() {
             </div>
             <div className='row justify-center gap-2 mb-4 g-0  '>
               <div className='col-lg-3 col-md-10 border-gray-400   bg-white border-2   text-gray-500 text-base font-medium bg-light-gray '>
-                <div className='h-full pl-2'>
-                  <PhoneInput international countryCallingCodeEditable={false} defaultCountry="ES" value={mobile} onChange={handleMobileChange} />
+                <div className='h-full'>
+                  <PhoneInput country={'es'} countryCodeEditable={false} enableSearch value={mobile} onChange={handleMobileChange} />
                 </div>
               </div>
               <div className='col-lg-3 col-md-10'>
@@ -245,7 +255,19 @@ function App() {
                     {validationModel.ageError}
                   </div>
                   <div className='col-6'>
+
                     <DatePicker selected={dob} onChange={handleDobChange} className="w-full outline-blue-400 border-2 px-2 py-2 border-gray-400" />
+                    {/* <LocalizationProvider dateAdapter={AdapterMoment}>
+                      <MobileDatePicker
+                        label="Date mobile"
+                        inputFormat="MM/dd/yyyy"
+                        value={dateob}
+                        onChange={(dd) => setdateob(dd)}
+                        className="bg-white"
+                        renderInput={(params) => <TextField {...params} />}
+                      />
+                    </LocalizationProvider> */}
+
                   </div>
                 </div>
               </div>
@@ -256,6 +278,7 @@ function App() {
                 <p className='text-lg text-gray-500 mb-4 '><sup className='text-red-600 font-bold'>*</sup>Mandatory</p>
                 <button onClick={handleSubmit} className='text-white bg-gray-900 w-full px-2 py-1 text-3xl font-medium tracking-wide'>SUBMIT</button>
               </div>
+
             </div>
           </div>
 
