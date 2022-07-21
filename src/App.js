@@ -1,8 +1,8 @@
-import React, { useState, useRef, useEffect } from 'react'
+import React, { useState, useRef, useEffect, forwardRef } from 'react'
 
 
 import './App.css';
-import { IoChevronDownOutline } from "react-icons/io5";
+import { IoChevronDownOutline, IoCalendarSharp } from "react-icons/io5";
 import Business_pic from "./assets/images/sales (2).jpg"
 import Sales_pic from "./assets/images/sales representatives.jpg"
 import Administrator_pic from "./assets/images/adminstrator.jpg"
@@ -119,6 +119,16 @@ function App() {
       console.log('Api will run', my_validation);
     }
   }
+
+  // ************************* Date Picker function *********************
+  const ExampleCustomInput = forwardRef(({ value, onClick }, ref) => (
+    <button className="bg-white w-full h-11 border-2 border-gray-400" onClick={onClick} ref={ref}>
+      {value}<IoCalendarSharp className='inline ml-6' />
+    </button>
+  ));
+
+
+
   // ========================= Use Effect ==========================
   useEffect(() => {
     console.log("useEffect 1 run");
@@ -211,7 +221,7 @@ function App() {
             </div>
             <div className='row justify-center gap-2 mb-4 g-0  '>
               <div className='col-lg-3 col-md-10    bg-white    text-gray-500 text-base font-medium bg-light-gray '>
-                <div className='h-full'>
+                <div className='h-full relative'>
                   <PhoneInput country={'es'} dropdownClass={"custom-dropdown"} enableSearch disableSearchIcon countryCodeEditable={false} value={mobile} onChange={handleMobileChange} />
                 </div>
               </div>
@@ -222,15 +232,22 @@ function App() {
 
             <div className='row justify-center gap-2 mb-4 g-0  '>
               <div className='col-lg-3 col-md-10  '>
-                <select name="country" className='w-full outline-blue-400 border-2 px-2 py-2 border-gray-400' value={recruitModel.country} onChange={handleChange}>
-                  {all_Countries.map((all_country) => <option value={all_country.isoCode} key={all_country.isoCode}>{all_country.name}</option>)}
+                <select name="country" value={recruitModel.country} onChange={handleChange} className='w-full outline-blue-400 border-2 px-2 py-2 border-gray-400' >
+                  {all_Countries.map((all_country) => <option value={all_country.isoCode} key={all_country.isoCode}>{all_country.name.substring(0, 33)}</option>)}
                 </select>
+                {/* <select name="country"  className="form-select appearance-none block w-full px-3  py-1.5 text-base  font-normaltext-gray-700   bg-white bg-clip-padding bg-no-repeat  border-2 border-gray-400   transition ease-in-out m-0 focus:text-gray-700  outline-blue-400  " aria-label="Default select example">
+                  <option  >Open this select menu</option>
+                  <option >One dsf sdg sdgf sdfg sdfg sdfg dsg sdfg </option>
+                  <option  >Two</option>
+                  <option  >Three</option>
+                </select> */}
+
               </div>
               <div className='col-lg-3 col-md-10  '>
                 <div className='row g-1'>
                   <div className='col-6'>
                     <select name="state" value={recruitModel.state} onChange={handleChange} className='w-full outline-blue-400 border-2 px-2 py-2 border-gray-400'>
-                      {all_States.map((state) => <option value={state.isoCode} key={state.name}>{state.name}</option>)}
+                      {all_States.map((state) => <option value={state.isoCode} key={state.name}>{state.name.substring(0, 15)}</option>)}
                     </select>
                   </div>
                   <div className='col-6'>
@@ -258,7 +275,13 @@ function App() {
                   </div>
                   <div className='col-6'>
 
-                    <DatePicker selected={dob} onChange={handleDobChange} className="w-full outline-blue-400 border-2 px-2 py-2 border-gray-400" />
+                    {/* <DatePicker selected={dob} onChange={handleDobChange} className="w-full outline-blue-400 border-2 px-2 py-2 border-gray-400" /> */}
+                    <DatePicker
+                      selected={dob}
+                      onChange={handleDobChange}
+                      customInput={<ExampleCustomInput />}
+                    />
+
                     {/* <LocalizationProvider dateAdapter={AdapterMoment}>
                       <MobileDatePicker
                         label="Date mobile"
