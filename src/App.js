@@ -179,9 +179,28 @@ function App() {
             <div className='row justify-center gap-2 mb-4 g-0 '>
               <div className='col-lg-3 col-md-10'>
                 <div className='relative'>
+                  <input name='email' value={recruitModel.email} onChange={handleChange} type="email" placeholder='Email Address' className={`w-full outline-blue-400 border-2 p-2 ${validationModel.emailError ? "border-red-400" : "border-gray-400"}`} />
+                  <span hidden={recruitModel.email.length} className='absolute text-red-400 font-medium text-lg top-1/4 left-32'>*</span>
+                </div>
+                {validationModel.emailError}
+              </div>
+              <div className='col-lg-3 col-md-10'>
+                <div className='relative'>
                   <input name='secondFname' value={recruitModel.secondFname} onChange={handleChange} type="email" placeholder='2nd Family Name' className={`w-full outline-blue-400 border-2 p-2 border-gray-400`} />
                   <span hidden={recruitModel.secondFname.length} className='absolute text-gray-400 font-medium text-sm top-1/4 left-40'>(optional)</span>
                 </div>
+              </div>
+
+            </div>
+
+            <div className='row justify-center gap-2 mb-4 g-0 '>
+
+              <div className='col-lg-3 col-md-10 relative '>
+                <div className='relative'>
+                  <input name='reEmail' value={recruitModel.reEmail} onChange={handleChange} type="email" placeholder='Re Enter Email Address' className={`w-full outline-blue-400 border-2 p-2 ${validationModel.reEmailError ? "border-red-400" : "border-gray-400"}`} />
+                  <span hidden={recruitModel.reEmail.length} className='absolute text-red-400 font-medium text-lg top-1/4 left-48'>*</span>
+                </div>
+                {validationModel.reEmailError}
               </div>
               <div className='col-lg-3 col-md-10 relative '>
                 <div className='relative'>
@@ -190,27 +209,10 @@ function App() {
                 </div>
               </div>
             </div>
-
-            <div className='row justify-center gap-2 mb-4 g-0 '>
-              <div className='col-lg-3 col-md-10'>
-                <div className='relative'>
-                  <input name='email' value={recruitModel.email} onChange={handleChange} type="email" placeholder='Email Address' className={`w-full outline-blue-400 border-2 p-2 ${validationModel.emailError ? "border-red-400" : "border-gray-400"}`} />
-                  <span hidden={recruitModel.email.length} className='absolute text-red-400 font-medium text-lg top-1/4 left-32'>*</span>
-                </div>
-                {validationModel.emailError}
-              </div>
-              <div className='col-lg-3 col-md-10 relative '>
-                <div className='relative'>
-                  <input name='reEmail' value={recruitModel.reEmail} onChange={handleChange} type="email" placeholder='Re Enter Email Address' className={`w-full outline-blue-400 border-2 p-2 ${validationModel.reEmailError ? "border-red-400" : "border-gray-400"}`} />
-                  <span hidden={recruitModel.reEmail.length} className='absolute text-red-400 font-medium text-lg top-1/4 left-48'>*</span>
-                </div>
-                {validationModel.reEmailError}
-              </div>
-            </div>
             <div className='row justify-center gap-2 mb-4 g-0  '>
-              <div className='col-lg-3 col-md-10 border-gray-400   bg-white border-2   text-gray-500 text-base font-medium bg-light-gray '>
+              <div className='col-lg-3 col-md-10    bg-white    text-gray-500 text-base font-medium bg-light-gray '>
                 <div className='h-full'>
-                  <PhoneInput country={'es'} countryCodeEditable={false} enableSearch value={mobile} onChange={handleMobileChange} />
+                  <PhoneInput country={'es'} dropdownClass={"custom-dropdown"} enableSearch disableSearchIcon countryCodeEditable={false} value={mobile} onChange={handleMobileChange} />
                 </div>
               </div>
               <div className='col-lg-3 col-md-10'>
@@ -220,7 +222,7 @@ function App() {
 
             <div className='row justify-center gap-2 mb-4 g-0  '>
               <div className='col-lg-3 col-md-10  '>
-                <select name="country" className='w-full outline-blue-700 border-2 px-2 py-2 border-gray-400' value={recruitModel.country} onChange={handleChange}>
+                <select name="country" className='w-full outline-blue-400 border-2 px-2 py-2 border-gray-400' value={recruitModel.country} onChange={handleChange}>
                   {all_Countries.map((all_country) => <option value={all_country.isoCode} key={all_country.isoCode}>{all_country.name}</option>)}
                 </select>
               </div>
@@ -288,13 +290,13 @@ function App() {
         <section className='row mb-8'>
           <div className='col-12 bg-light-red'  >
             <div className='row justify-center text-white lg:text-lg text-xs font-semibold gap-0'>
-              <div className='col-lg-2 col-4 cursor-pointer py-1 text-center' data-bs-toggle="collapse" data-bs-target="#aboutRecruit" aria-expanded="false" aria-controls="aboutRecruit">
+              <div className='col-lg-2 col-4 cursor-pointer py-1 text-center hover:bg-red-600 transition-all' data-bs-toggle="collapse" data-bs-target="#aboutRecruit" aria-expanded="false" aria-controls="aboutRecruit">
                 ABOUT RECRUIT <IoChevronDownOutline className='inline lg:text-4xl text-sm' />
               </div>
-              <div className='col-lg-2 col-4 cursor-pointer border-r border-l  py-1 text-center' data-bs-toggle="collapse" data-bs-target="#HowToApply" aria-expanded="false" aria-controls="HowToApply">
+              <div className='col-lg-2 col-4 cursor-pointer border-r border-l  py-1 text-center hover:bg-red-600 transition-all' data-bs-toggle="collapse" data-bs-target="#HowToApply" aria-expanded="false" aria-controls="HowToApply">
                 HOW TO APPLY <IoChevronDownOutline className='inline  lg:text-4xl text-sm' />
               </div>
-              <div className='col-lg-2 col-4 cursor-pointer py-1 text-center' data-bs-toggle="collapse" data-bs-target="#whatsNext" aria-expanded="false" aria-controls="whatsNext">
+              <div className='col-lg-2 col-4 cursor-pointer py-1 text-center hover:bg-red-600 transition-all' data-bs-toggle="collapse" data-bs-target="#whatsNext" aria-expanded="false" aria-controls="whatsNext">
                 WHAT'S NEXT <IoChevronDownOutline className='inline  lg:text-4xl text-sm' />
               </div>
             </div>
