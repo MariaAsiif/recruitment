@@ -20,7 +20,8 @@ import Sales2_pic from "./assets/images/sales (2).jpg"
 import Perscriptive_pic from "./assets/images/SALES -Prescriptive Care.jpg"
 import Vendor_pic from "./assets/images/vendor 1.jpg"
 import Whole_pic from "./assets/images/whole seller.jpg"
-import leafLogo from "./assets/images/leaf_logo_v2.png"
+// import leafLogo from "./assets/images/leaf_logo_v2.png"
+import leafLogo2 from "./assets/images/Logo-leaf-Top-red-V1.2 (1).png"
 import usFlaglogo from "./assets/images/usflag_logo_v2.png"
 import bigPic from "./assets/images/creche.jpg"
 
@@ -151,13 +152,14 @@ function App() {
             <div className='lg:my-10 my-5 lg:px-28 md:px-5'>
               <div className='row  justify-center items-center'>
                 <div className='col-4'>
-                  <img src={leafLogo} width="55px" alt="leafLogo" />
+                  <img src={leafLogo2} className="bg-transparent" width="75px" alt="leafLogo" />
                 </div>
                 <div className='col-4 text-center lg:text-6xl md:text-6xl text-5xl font-medium flex items-center justify-center'>
                   <p>RECRUIT</p>
                 </div>
                 <div className='col-4 '>
                   <img src={usFlaglogo} width="55px" className=' ml-auto' alt="leafLogo" />
+                  <p className='text-right text-sm text-red-600 font-semibold'>English</p>
                 </div>
               </div>
             </div>
@@ -278,6 +280,7 @@ function App() {
 
                     {/* <DatePicker selected={dob} onChange={handleDobChange} className="w-full outline-blue-400 border-2 px-2 py-2 border-gray-400" /> */}
                     <DatePicker
+                      className={`w-full outline-blue-400 border-2 px-2 py-2 ${validationModel.dateob ? "border-red-400" : "border-gray-400"}`}
                       selected={dob}
                       onChange={handleDobChange}
                       customInput={<ExampleCustomInput />}
@@ -453,7 +456,7 @@ function App() {
                     BROWSE MY FILES
                     <input type="file" hidden />
                   </label>
-                  <p className='text-xs text-gray-300 font-medium mb-8'>Maximum Upload File Size 35MB</p>
+                  <p className='text-xs text-gray-500 font-medium mb-8'>Maximum Upload File Size 35MB</p>
                   <p className='font-normal text-sm'>ALL Filles uploaded here will be scanned to ensure content is benign, contaminated files and threats will be rejected</p>
                 </div>
               </div>
@@ -539,7 +542,7 @@ function App() {
         <section className='my-14' >
           <div className='row'>
             <div className='col-lg-6 col-md-12 lg:order-first order-last'>
-              <h1 className='text-4xl font-medium mb-4'>Lawyers</h1>
+              <h1 className='text-4xl font-bild mb-4 '>LAWYERS</h1>
               <p className='font-semibold text-xs leading-6 text-justify mb-4'>The significant global impact of the Coronavirus Disease SARS-CoV-2 which impact off the world in 2019. We understand
                 that you would prefer to work at a distance, from home preferably all the protective bubble that home represents for the
                 safety of your family, colleagues, neighbors, and friends. Our company offers you a rare example to work in the open at
@@ -750,7 +753,7 @@ function App() {
             <div className=" bg-white   border rounded-none border-gray-900 mb-3  ">
               <h2 className="accordion-header mb-0" id="headingTwo">
                 <button className=" text-black font-medium px-2 py-1  text-sm   accordion-button collapsed relative flex items-center w-full    text-left bg-white     transition focus:outline-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                  HOW WE SUPPORT WORKING MOTHERS AND THEIR FAMILIES
+                  HOW WE SUPPORT WORKING <span className='font-bold px-1'>MOTHERS</span> AND THEIR FAMILIES
                 </button>
               </h2>
               <div id="collapseTwo" className="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
@@ -763,7 +766,7 @@ function App() {
             <div className=" bg-white   border rounded-none border-gray-900  ">
               <h2 className="accordion-header mb-0" id="headthree">
                 <button className=" text-black font-medium px-2 py-1  text-sm   accordion-button collapsed relative flex items-center w-full    text-left bg-white     transition focus:outline-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                  HOW WE SUPPORT WORKING MOTHERS AND THEIR FAMILIES
+                  HOW WE SUPPORT WORKING <span className='font-bold px-1'>FATHERS</span> AND THEIR FAMILIES
                 </button>
               </h2>
               <div id="collapseThree" className="accordion-collapse collapse" aria-labelledby="headthree" data-bs-parent="#accordionExample">
