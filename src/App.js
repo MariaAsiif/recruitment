@@ -21,7 +21,7 @@ import Perscriptive_pic from "./assets/images/SALES -Prescriptive Care.jpg"
 import Vendor_pic from "./assets/images/vendor 1.jpg"
 import Whole_pic from "./assets/images/whole seller.jpg"
 // import leafLogo from "./assets/images/leaf_logo_v2.png"
-import leafLogo2 from "./assets/images/Logo-leaf-Top-red-V1.png"
+import leafLogo2 from "./assets/images/Logo-leaf-Top-red-V2.png"
 import usFlaglogo from "./assets/images/usflag_logo_v2.png"
 import bigPic from "./assets/images/creche.jpg"
 
@@ -102,6 +102,8 @@ function App() {
     setdob(value)
   }
 
+
+
   const handleDropdown = (index) => {
     if (index === activeIndex) {
       setActiveIndex(null)
@@ -160,19 +162,27 @@ function App() {
       <section ref={myRef} className='bscontainer-fluid'>
         <section className='row'>
           <div className='col-12 bg-hero-pattern bg-center bg-no-repeat    bg-cover bg-blend-lighten ' style={{ backgroundColor: "#ffffffad" }}>
-            <div className='lg:my-10 my-5 lg:px-28 md:px-5'>
+            <div className='lg:my-10 my-5 lg:px-28 md:px-5 px-6'>
               <div className='row  justify-center items-center'>
                 <div className='col-4'>
-                  <img src={leafLogo2} className="mx-8" width="75px" alt="leafLogo" />
-                  <p className='text-sm text-left sm:text-left sm:text-md text-red-600 font-semibold'>CULTIVATED WELLNESS</p>
+                  <figure>
+                    <img src={leafLogo2} className="md:w-16 w-11 " alt="leafLogo" />
+                    <figcaption className='text-left md:-ml-6 -ml-3 mt-1 text-xs text-red-600 font-semibold'>CULTIVATED WELLNESS</figcaption>
+                  </figure>
 
+                  {/* <img src={leafLogo2} className="md:w-16 w-11 " alt="leafLogo" />
+                  <p className=' text-left text-red-600 font-semibold'>CULTIVATED WELLNESS</p> */}
                 </div>
-                <div className='col-4 text-center lg:text-6xl md:text-6xl text-5xl font-medium flex items-center justify-center'>
+                <div className='col-4 text-center lg:text-6xl md:text-6xl text-3xl font-medium flex items-center justify-center'>
                   <p>RECRUIT</p>
                 </div>
                 <div className='col-4 '>
-                  <img src={usFlaglogo} width="55px" className=' ml-auto' alt="leafLogo" />
-                  <p className='text-right text-sm text-red-600 font-semibold'>English</p>
+                  <figure>
+                    <img src={usFlaglogo} className=" ml-auto  md:w-16 w-11 " alt="leafLogo" />
+                    <figcaption className='text-right md:mr-3 mr-1  mt-1 text-xs text-red-600 font-semibold'>English</figcaption>
+                  </figure>
+                  {/* <img src={usFlaglogo} className=' ml-auto md:w-16 w-11' alt="leafLogo" /> */}
+                  {/* <p className='text-right text-sm text-red-600 font-semibold'>English</p> */}
                 </div>
               </div>
             </div>
@@ -320,97 +330,6 @@ function App() {
                 <p className='text-lg text-gray-500 mb-4 '><sup className='text-red-600 font-bold'>*</sup>Mandatory</p>
                 <button onClick={handleSubmit} className='text-white bg-gray-900 w-full px-2 py-1 text-3xl font-medium tracking-wide'>SUBMIT</button>
               </div>
-
-              {/* <div className='col-6'>
-                <div class="flex justify-center">
-                  <div>
-                    <div class="dropdown relative">
-                      <button
-                        class="  dropdown-toggle  px-6   py-2.5  bg-blue-600  text-white  font-medium   text-xs  leading-tight  uppercase  rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg active:text-white transition duration-150 ease-in-outflexitems-center whitespace-nowrap " type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"aria-expanded="false" >
-                        Dropdown button
-                        <svg  aria-hidden="true"    focusable="false"   data-prefix="fas" data-icon="caret-down"  class="w-2 ml-2" role="img"  xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 320 512"  >
-                          <path fill="currentColor"   d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z"  ></path>
-                        </svg>
-                      </button>
-                      <ul class="dropdown-menu   min-w-max  absolute   hidden bg-white  text-base
-          z-50
-          float-left
-          py-2
-          list-none
-          text-left
-          rounded-lg
-          shadow-lg
-          mt-1
-          hidden
-          m-0
-          bg-clip-padding
-          border-none
-        "
-                        aria-labelledby="dropdownMenuButton1"
-                      >
-                        <li>
-                          <a
-                            class="
-              dropdown-item
-              text-sm
-              py-2
-              px-4
-              font-normal
-              block
-              w-full
-              whitespace-nowrap
-              bg-transparent
-              text-gray-700
-              hover:bg-gray-100
-            "
-                            href="#"
-                          >Action</a
-                          >
-                        </li>
-                        <li>
-                          <a
-                            class="
-              dropdown-item
-              text-sm
-              py-2
-              px-4
-              font-normal
-              block
-              w-full
-              whitespace-nowrap
-              bg-transparent
-              text-gray-700
-              hover:bg-gray-100
-            "
-                            href="#"
-                          >Another action</a
-                          >
-                        </li>
-                        <li>
-                          <a
-                            class="
-              dropdown-item
-              text-sm
-              py-2
-              px-4
-              font-normal
-              block
-              w-full
-              whitespace-nowrap
-              bg-transparent
-              text-gray-700
-              hover:bg-gray-100
-            "
-                            href="#"
-                          >Something else here</a
-                          >
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div> */}
-
             </div>
           </div>
 
@@ -562,7 +481,7 @@ function App() {
         <section className='my-14' >
           <div className='row'>
             <div className='col-lg-6 col-md-12 lg:order-first order-last'>
-              <h1 className='text-4xl font-bild mb-4 '>LAWYERS</h1>
+              <h1 className='text-4xl font-bold mb-4 '>LAWYERS</h1>
               <p className='font-semibold text-xs leading-6 text-justify mb-4'>The significant global impact of the Coronavirus Disease SARS-CoV-2 which impact off the world in 2019. We understand
                 that you would prefer to work at a distance, from home preferably all the protective bubble that home represents for the
                 safety of your family, colleagues, neighbors, and friends. Our company offers you a rare example to work in the open at
@@ -773,7 +692,7 @@ function App() {
             <div className=" bg-white   border rounded-none border-gray-900 mb-3  ">
               <h2 className="accordion-header mb-0" id="headingTwo">
                 <button className=" text-black font-medium px-2 py-1  text-sm   accordion-button collapsed relative flex items-center w-full    text-left bg-white     transition focus:outline-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                  HOW WE SUPPORT WORKING <span className='font-bold px-1 text-red-600'>MOTHERS</span> AND THEIR FAMILIES
+                  <span> HOW WE SUPPORT WORKING  <span className='font-bold   text-red-600'>MOTHERS</span> AND THEIR FAMILIES</span>
                 </button>
               </h2>
               <div id="collapseTwo" className="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
@@ -786,7 +705,7 @@ function App() {
             <div className=" bg-white   border rounded-none border-gray-900  ">
               <h2 className="accordion-header mb-0" id="headthree">
                 <button className=" text-black font-medium px-2 py-1  text-sm   accordion-button collapsed relative flex items-center w-full    text-left bg-white     transition focus:outline-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                  HOW WE SUPPORT WORKING <span className='font-bold px-1 text-red-600'>FATHERS</span> AND THEIR FAMILIES
+                  <span> HOW WE SUPPORT WORKING  <span className='font-bold   text-red-600'>FATHERS</span> AND THEIR FAMILIES</span>
                 </button>
               </h2>
               <div id="collapseThree" className="accordion-collapse collapse" aria-labelledby="headthree" data-bs-parent="#accordionExample">
