@@ -444,19 +444,19 @@ function App() {
       <div className='bscontainer'>
         <section>
           <div>
-            {activeIndex === 0 ?
+            {activeIndex === 2 ?
               <div className=" mb-8" >
                 <div className="block p-6 rounded-lg shadow-lg bg-white">
                   Whats Next content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
                 </div>
               </div>
-              : activeIndex === 1 ?
+              : activeIndex === 0 ?
                 <div className=" mb-8" >
                   <div className="block p-6 rounded-lg shadow-lg bg-white">
                     About Recurit content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
                   </div>
                 </div>
-                : activeIndex === 2 ?
+                : activeIndex === 1 ?
                   <div className=" mb-8" id="HowToApply">
                     <div className="block p-6 rounded-lg shadow-lg bg-white">
                       How To Apply content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
