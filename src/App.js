@@ -4,6 +4,7 @@ import React, { useState, useRef, useEffect, forwardRef } from 'react'
 import './App.css';
 import { IoChevronDownOutline, IoChevronUpOutline } from "react-icons/io5";
 import { BsCalendarEvent } from "react-icons/bs";
+import { GoFileMedia } from "react-icons/go";
 import Business_pic from "./assets/images/sales (2).jpg"
 import Sales_pic from "./assets/images/sales representatives.jpg"
 import Administrator_pic from "./assets/images/adminstrator.jpg"
@@ -20,7 +21,6 @@ import Sales2_pic from "./assets/images/sales (2).jpg"
 import Perscriptive_pic from "./assets/images/SALES -Prescriptive Care.jpg"
 import Vendor_pic from "./assets/images/vendor 1.jpg"
 import Whole_pic from "./assets/images/whole seller.jpg"
-// import leafLogo from "./assets/images/leaf_logo_v2.png"
 import leafLogo2 from "./assets/images/Logo-leaf-Top-red-V2.png"
 import usFlaglogo from "./assets/images/usflag_logo_v2.png"
 import bigPic from "./assets/images/creche.jpg"
@@ -44,6 +44,7 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 
 function App() {
   const myRef = useRef(null)
+  const dropzoneRef = useRef(null)
   const [recruitModel, setrecruitModel] = useState({
     surname: localStorage.getItem('surname') ? localStorage.getItem('surname') : "Mr.",
     fullname: localStorage.getItem('fullname') ? localStorage.getItem('fullname') : "",
@@ -77,10 +78,11 @@ function App() {
   const [all_States, setall_States] = useState(() => State.getStatesOfCountry("AF"))
   const [all_Cities, setall_Cities] = useState(() => City.getCitiesOfState("AF", "BDS"))
   const [dateob, setdateob] = useState(new Date('2014-08-18T21:11:54'))
+  const [activeIndex, setActiveIndex] = useState(null)
+  const [uploadFiles, setuploadFiles] = useState([])
+
 
   const dropItem = ["ABOUT RECRUIT", "HOW TO APPLY", " WHAT'S NEXT"]
-  const [activeIndex, setActiveIndex] = useState(null)
-
   const executeScroll = () => myRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' })
   const handleChange = (e) => {
     localStorage.setItem(e.target.name, e.target.value);
@@ -135,14 +137,6 @@ function App() {
     }))
   }
 
-  // const handleSurname = (sur_name)=>{
-  //   localStorage.setItem(name, isoCode);
-  //   setrecruitModel((prevmodel) => ({
-  //     ...prevmodel,
-  //     [name]: sur_name
-  //   }))
-  // }
-
 
   const handleSubmit = () => {
     let my_validation = setValidation();
@@ -153,6 +147,9 @@ function App() {
     }
   }
 
+
+
+
   // ************************* Date Picker function *********************
   const ExampleCustomInput = forwardRef(({ value, onClick }, ref) => (
     <button className="bg-white w-full h-11 border-2 border-gray-400" onClick={onClick} ref={ref}>
@@ -161,6 +158,27 @@ function App() {
   ));
 
   // ========================= Use Effect ==========================
+
+  useEffect(() => {
+    const dropZone = document.querySelector('#dropzone')
+    dropzoneRef.current.addEventListener('dragover', (e) => {
+      e.preventDefault()
+      dropzoneRef.current.classList.add("border-l-red-500", "border-r-red-500", "border-t-red-500")
+    })
+    dropzoneRef.current.addEventListener('drop', (e) => {
+      e.preventDefault()
+      console.log(e.dataTransfer.files);
+      setuploadFiles((prevfiles) => ([
+        ...prevfiles,
+        ...e.dataTransfer.files
+      ]))
+      dropzoneRef.current.classList.remove("border-l-red-500", "border-r-red-500", "border-t-red-500")
+    })
+    return () => {
+      dropzoneRef.current.removeEventListener('dragover', () => { })
+      dropzoneRef.current.removeEventListener('drop', () => { })
+    }
+  }, [])
   useEffect(() => {
     console.log("useEffect 1 run");
     const updatedCountryCode = recruitModel.country
@@ -215,8 +233,8 @@ function App() {
                     <ul className=" dropdown-menu   absolute w-full  max-h-52 overflow-y-scroll bg-white text-base z-50 float-left py-2 list-none text-left shadow-lg mt-1 hidden m-0 bg-clip-padding border-none " aria-labelledby="surdropdown">
                       {surnames.map((sur, i) => {
                         return (
-                          <li>
-                            <span onClick={() => handlePlaces(sur, "surname")} key={i} className=" cursor-pointer dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100 "  >{sur}</span>
+                          <li key={i} >
+                            <span onClick={() => handlePlaces(sur, "surname")} className=" cursor-pointer dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100 "  >{sur}</span>
                           </li>
                         )
                       })}
@@ -300,8 +318,8 @@ function App() {
                   <ul className=" dropdown-menu   absolute w-full  max-h-52 overflow-y-scroll bg-white text-base z-50 float-left py-2 list-none text-left shadow-lg mt-1 hidden m-0 bg-clip-padding border-none " aria-labelledby="countrydropdown">
                     {all_Countries.map((all_country) => {
                       return (
-                        <li>
-                          <span onClick={() => handlePlaces(all_country.isoCode, "country")} key={all_country.isoCode} className=" cursor-pointer dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100 "  >{all_country.name}</span>
+                        <li key={all_country.isoCode}>
+                          <span onClick={() => handlePlaces(all_country.isoCode, "country")} className=" cursor-pointer dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100 "  >{all_country.name}</span>
                         </li>
                       )
                     })}
@@ -322,8 +340,8 @@ function App() {
                       <ul className=" dropdown-menu   absolute w-full  max-h-52 overflow-y-scroll bg-white text-base z-50 float-left py-2 list-none text-left shadow-lg mt-1 hidden m-0 bg-clip-padding border-none " aria-labelledby="statedropdown">
                         {all_States.map((state) => {
                           return (
-                            <li>
-                              <span onClick={() => handlePlaces(state.isoCode, "state")} key={state.isoCode} className=" cursor-pointer dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100 "  >{state.name}</span>
+                            <li key={state.isoCode}>
+                              <span onClick={() => handlePlaces(state.isoCode, "state")} className=" cursor-pointer dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100 "  >{state.name}</span>
                             </li>
                           )
                         })}
@@ -341,16 +359,13 @@ function App() {
                       <ul className=" dropdown-menu   absolute w-full  max-h-52 overflow-y-scroll bg-white text-base z-50 float-left py-2 list-none text-left shadow-lg mt-1 hidden m-0 bg-clip-padding border-none " aria-labelledby="citydropdown">
                         {all_Cities.map((city) => {
                           return (
-                            <li>
-                              <span onClick={() => handlePlaces(city.name, "city")} key={city.name} className=" cursor-pointer dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100 "  >{city.name}</span>
+                            <li key={city.name}>
+                              <span onClick={() => handlePlaces(city.name, "city")} className=" cursor-pointer dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100 "  >{city.name}</span>
                             </li>
                           )
                         })}
                       </ul>
                     </div>
-
-
-
                   </div>
                 </div>
               </div>
@@ -377,6 +392,9 @@ function App() {
                       className={`w-full outline-blue-400 border-2 px-2 py-2 ${validationModel.dateob ? "border-red-400" : "border-gray-400"}`}
                       selected={dob}
                       onChange={handleDobChange}
+                      withPortal
+                      showYearDropdown
+                      fixedHeight
                       customInput={<ExampleCustomInput />}
                     />
 
@@ -411,7 +429,7 @@ function App() {
           <div className='col-12 bg-light-red'  >
             <div className='row justify-center text-white lg:text-lg text-xs font-semibold gap-0'>
               {dropItem.map((item, index) => (
-                <div className='col-lg-2 col-4 cursor-pointer py-1 text-center hover:bg-red-600 transition-all' onClick={() => handleDropdown(index)} >
+                <div key={index} className='col-lg-2 col-4 cursor-pointer py-1 text-center hover:bg-red-600 transition-all' onClick={() => handleDropdown(index)} >
                   {item}  {index === activeIndex ?
                     <IoChevronUpOutline className='inline lg:text-4xl text-sm' />
                     :
@@ -455,12 +473,22 @@ function App() {
                   : null
 
             }
-            <div className="mt-1 flex justify-center px-6 pt-5 pb-6 border-4 border-gray-300 border-dashed border-b-red-500  bg-gray-100">
+            <div id="dropzone" ref={dropzoneRef} className="mt-1 flex justify-center px-6 pt-5 pb-6 border-4 border-gray-300 border-dashed border-b-red-500  bg-gray-100">
               <div className="space-y-1 text-center">
                 <MdCloudUpload size={99} className='inline  text-gray-500' />
                 <div>
                   <h1 className='text-5xl font-bold mb-2'>Drag & Drop</h1>
                   <h4 className='text-gray-700 text-2xl font-medium mb-2'>Your file type</h4>
+                  <div className='row justify-center'>
+                    {uploadFiles.map((file, i) => {
+                      return (
+                        <div key={i} className='col-1   '>
+                          <GoFileMedia className='inline text-red-500' size={44} />
+                        </div>
+                      )
+                    })}
+                  </div>
+
                   <h5 className='text-gray-500 text-xl font-normal mb-2'>or select an option below</h5>
                   <label className='rounded-sm bg-light-red inline-block text-white mb-1 cursor-pointer text-xl tracking-wide font-medium px-8 py-1'>
                     BROWSE MY FILES
