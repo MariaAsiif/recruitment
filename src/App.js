@@ -29,8 +29,6 @@ import { MdCloudUpload } from "react-icons/md";
 import { surnames } from './utils/enum';
 
 import Validator, { ValidationTypes as V_Type, } from './components/shared/formValidator';
-// import 'react-phone-number-input/style.css'
-// import PhoneInput from 'react-phone-number-input'
 
 import PhoneInput from 'react-phone-input-2'
 import 'react-phone-input-2/lib/style.css'
@@ -169,9 +167,6 @@ function App() {
                     <img src={leafLogo2} className="md:w-16 w-11 " alt="leafLogo" />
                     <figcaption className='text-left md:-ml-6 -ml-3 mt-1 text-xs text-red-600 font-semibold'>CULTIVATED WELLNESS</figcaption>
                   </figure>
-
-                  {/* <img src={leafLogo2} className="md:w-16 w-11 " alt="leafLogo" />
-                  <p className=' text-left text-red-600 font-semibold'>CULTIVATED WELLNESS</p> */}
                 </div>
                 <div className='col-4 text-center lg:text-6xl md:text-6xl text-3xl font-medium flex items-center justify-center'>
                   <p>RECRUIT</p>
@@ -181,8 +176,6 @@ function App() {
                     <img src={usFlaglogo} className=" ml-auto  md:w-16 w-11 " alt="leafLogo" />
                     <figcaption className='text-right md:mr-3 mr-1  mt-1 text-xs text-red-600 font-semibold'>English</figcaption>
                   </figure>
-                  {/* <img src={usFlaglogo} className=' ml-auto md:w-16 w-11' alt="leafLogo" /> */}
-                  {/* <p className='text-right text-sm text-red-600 font-semibold'>English</p> */}
                 </div>
               </div>
             </div>
