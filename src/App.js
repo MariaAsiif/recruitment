@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect, forwardRef } from 'react'
 
 
 import './App.css';
-import { IoChevronDownOutline } from "react-icons/io5";
+import { IoChevronDownOutline, IoChevronUpOutline } from "react-icons/io5";
 import { BsCalendarEvent } from "react-icons/bs";
 import Business_pic from "./assets/images/sales (2).jpg"
 import Sales_pic from "./assets/images/sales representatives.jpg"
@@ -21,7 +21,7 @@ import Perscriptive_pic from "./assets/images/SALES -Prescriptive Care.jpg"
 import Vendor_pic from "./assets/images/vendor 1.jpg"
 import Whole_pic from "./assets/images/whole seller.jpg"
 // import leafLogo from "./assets/images/leaf_logo_v2.png"
-import leafLogo2 from "./assets/images/Logo-leaf-Top-red-V1.2 (1).png"
+import leafLogo2 from "./assets/images/Logo-leaf-Top-red-V1.png"
 import usFlaglogo from "./assets/images/usflag_logo_v2.png"
 import bigPic from "./assets/images/creche.jpg"
 
@@ -80,6 +80,9 @@ function App() {
   const [all_Cities, setall_Cities] = useState(() => City.getCitiesOfState("AF", "BDS"))
   const [dateob, setdateob] = useState(new Date('2014-08-18T21:11:54'))
 
+  const dropItem = ["ABOUT RECRUIT", "HOW TO APPLY", " WHAT'S NEXT"]
+  const [activeIndex, setActiveIndex] = useState(null)
+
   const executeScroll = () => myRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' })
   const handleChange = (e) => {
     localStorage.setItem(e.target.name, e.target.value);
@@ -97,6 +100,16 @@ function App() {
     console.log("runnn", value);
     localStorage.setItem("dob", value);
     setdob(value)
+  }
+
+  const handleDropdown = (index) => {
+    if (index === activeIndex) {
+      setActiveIndex(null)
+    }
+    else {
+      setActiveIndex(index)
+
+    }
   }
 
   const setValidation = () => {
@@ -129,8 +142,6 @@ function App() {
     </button>
   ));
 
-
-
   // ========================= Use Effect ==========================
   useEffect(() => {
     console.log("useEffect 1 run");
@@ -152,7 +163,9 @@ function App() {
             <div className='lg:my-10 my-5 lg:px-28 md:px-5'>
               <div className='row  justify-center items-center'>
                 <div className='col-4'>
-                  <img src={leafLogo2} className="bg-transparent" width="75px" alt="leafLogo" />
+                  <img src={leafLogo2} className="mx-8" width="75px" alt="leafLogo" />
+                  <p className='text-sm text-left sm:text-left sm:text-md text-red-600 font-semibold'>CULTIVATED WELLNESS</p>
+
                 </div>
                 <div className='col-4 text-center lg:text-6xl md:text-6xl text-5xl font-medium flex items-center justify-center'>
                   <p>RECRUIT</p>
@@ -407,15 +420,16 @@ function App() {
         <section className='row mb-8'>
           <div className='col-12 bg-light-red'  >
             <div className='row justify-center text-white lg:text-lg text-xs font-semibold gap-0'>
-              <div className='col-lg-2 col-4 cursor-pointer py-1 text-center hover:bg-red-600 transition-all' data-bs-toggle="collapse" data-bs-target="#aboutRecruit" aria-expanded="false" aria-controls="aboutRecruit">
-                ABOUT RECRUIT <IoChevronDownOutline className='inline lg:text-4xl text-sm' />
-              </div>
-              <div className='col-lg-2 col-4 cursor-pointer border-r border-l  py-1 text-center hover:bg-red-600 transition-all' data-bs-toggle="collapse" data-bs-target="#HowToApply" aria-expanded="false" aria-controls="HowToApply">
-                HOW TO APPLY <IoChevronDownOutline className='inline  lg:text-4xl text-sm' />
-              </div>
-              <div className='col-lg-2 col-4 cursor-pointer py-1 text-center hover:bg-red-600 transition-all' data-bs-toggle="collapse" data-bs-target="#whatsNext" aria-expanded="false" aria-controls="whatsNext">
-                WHAT'S NEXT <IoChevronDownOutline className='inline  lg:text-4xl text-sm' />
-              </div>
+              {dropItem.map((item, index) => (
+                <div className='col-lg-2 col-4 cursor-pointer py-1 text-center hover:bg-red-600 transition-all' onClick={() => handleDropdown(index)} >
+                  {item}  {index === activeIndex ?
+                    <IoChevronUpOutline className='inline lg:text-4xl text-sm' />
+                    :
+                    <IoChevronDownOutline className='inline lg:text-4xl text-sm' />}
+                </div>
+
+              ))}
+
             </div>
           </div>
         </section>
@@ -430,21 +444,27 @@ function App() {
       <div className='bscontainer'>
         <section>
           <div>
-            <div className="collapse mb-8" id="whatsNext">
-              <div className="block p-6 rounded-lg shadow-lg bg-white">
-                Whats Next content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
+            {activeIndex === 0 ?
+              <div className=" mb-8" >
+                <div className="block p-6 rounded-lg shadow-lg bg-white">
+                  Whats Next content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
+                </div>
               </div>
-            </div>
-            <div className="collapse mb-8" id="aboutRecruit">
-              <div className="block p-6 rounded-lg shadow-lg bg-white">
-                About Recurit content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
-              </div>
-            </div>
-            <div className="collapse mb-8" id="HowToApply">
-              <div className="block p-6 rounded-lg shadow-lg bg-white">
-                How To Apply content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
-              </div>
-            </div>
+              : activeIndex === 1 ?
+                <div className=" mb-8" >
+                  <div className="block p-6 rounded-lg shadow-lg bg-white">
+                    About Recurit content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
+                  </div>
+                </div>
+                : activeIndex === 2 ?
+                  <div className=" mb-8" id="HowToApply">
+                    <div className="block p-6 rounded-lg shadow-lg bg-white">
+                      How To Apply content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
+                    </div>
+                  </div>
+                  : null
+
+            }
             <div className="mt-1 flex justify-center px-6 pt-5 pb-6 border-4 border-gray-300 border-dashed border-b-red-500  bg-gray-100">
               <div className="space-y-1 text-center">
                 <MdCloudUpload size={99} className='inline  text-gray-500' />
@@ -753,7 +773,7 @@ function App() {
             <div className=" bg-white   border rounded-none border-gray-900 mb-3  ">
               <h2 className="accordion-header mb-0" id="headingTwo">
                 <button className=" text-black font-medium px-2 py-1  text-sm   accordion-button collapsed relative flex items-center w-full    text-left bg-white     transition focus:outline-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                  HOW WE SUPPORT WORKING <span className='font-bold px-1'>MOTHERS</span> AND THEIR FAMILIES
+                  HOW WE SUPPORT WORKING <span className='font-bold px-1 text-red-600'>MOTHERS</span> AND THEIR FAMILIES
                 </button>
               </h2>
               <div id="collapseTwo" className="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
@@ -766,7 +786,7 @@ function App() {
             <div className=" bg-white   border rounded-none border-gray-900  ">
               <h2 className="accordion-header mb-0" id="headthree">
                 <button className=" text-black font-medium px-2 py-1  text-sm   accordion-button collapsed relative flex items-center w-full    text-left bg-white     transition focus:outline-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                  HOW WE SUPPORT WORKING <span className='font-bold px-1'>FATHERS</span> AND THEIR FAMILIES
+                  HOW WE SUPPORT WORKING <span className='font-bold px-1 text-red-600'>FATHERS</span> AND THEIR FAMILIES
                 </button>
               </h2>
               <div id="collapseThree" className="accordion-collapse collapse" aria-labelledby="headthree" data-bs-parent="#accordionExample">
