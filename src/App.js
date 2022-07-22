@@ -126,6 +126,24 @@ function App() {
     setvalidationModel(myvalidation_Obj);
     return Validator(myvalidation_Obj, V_Type.NullCheck);
   };
+
+  const handlePlaces = (isoCode, name) => {
+    localStorage.setItem(name, isoCode);
+    setrecruitModel((prevmodel) => ({
+      ...prevmodel,
+      [name]: isoCode
+    }))
+  }
+
+  // const handleSurname = (sur_name)=>{
+  //   localStorage.setItem(name, isoCode);
+  //   setrecruitModel((prevmodel) => ({
+  //     ...prevmodel,
+  //     [name]: sur_name
+  //   }))
+  // }
+
+
   const handleSubmit = () => {
     let my_validation = setValidation();
     if (my_validation) {
@@ -183,10 +201,27 @@ function App() {
             <div className='row justify-center gap-2 mb-4 g-0 '>
               <div className='col-lg-3 col-md-10'>
 
-                <div className=' text-gray-500 text-base font-medium bg-light-gray'>
-                  <select name='surname' value={recruitModel.surname} onChange={handleChange} className='w-1/5 h-full py-2 border-gray-400 border-2 border-r-0 outline-blue-400 bg-white'>
+                <div className=' text-gray-500 text-base font-medium bg-light-gray flex'>
+                  {/* <select name='surname' value={recruitModel.surname} onChange={handleChange} className='w-1/5 h-full py-2 border-gray-400 border-2 border-r-0 outline-blue-400 bg-white'>
                     {surnames.map((sur, i) => <option key={i}>{sur}</option>)}
-                  </select>
+                  </select> */}
+                  <div className="dropdown relative w-1/5 ">
+                    <button className=" w-full bg-white border-2 border-r-0 border-gray-400 text-gray-400 dropdown-toggle p-2   focus:outline-blue-400 focus:ring-0 active:border-blue-400   transition duration-150 ease-in-out flex items-center whitespace-nowrap " type="button" id="surdropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                      {surnames.find((s_name) => s_name === recruitModel.surname)}
+                      <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="caret-down" className="w-3 ml-auto" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+                        <path fill="currentColor" d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z" />
+                      </svg>
+                    </button>
+                    <ul className=" dropdown-menu   absolute w-full  max-h-52 overflow-y-scroll bg-white text-base z-50 float-left py-2 list-none text-left shadow-lg mt-1 hidden m-0 bg-clip-padding border-none " aria-labelledby="surdropdown">
+                      {surnames.map((sur, i) => {
+                        return (
+                          <li>
+                            <span onClick={() => handlePlaces(sur, "surname")} key={i} className=" cursor-pointer dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100 "  >{sur}</span>
+                          </li>
+                        )
+                      })}
+                    </ul>
+                  </div>
                   <div className='relative inline-block w-4/5 '>
                     <input name='fullname' value={recruitModel.fullname} onChange={handleChange} type="text" placeholder='Name ' className={`w-full h-full p-2 bg-white  outline-blue-400 border-2 ${validationModel.fullnameError ? "border-red-400" : "border-gray-400"} `} />
                     <span hidden={recruitModel.fullname.length} className='absolute  text-red-400 font-medium text-lg top-1/4 left-16'>*</span>
@@ -251,28 +286,71 @@ function App() {
 
             <div className='row justify-center gap-2 mb-4 g-0  '>
               <div className='col-lg-3 col-md-10  '>
-                <select name="country" value={recruitModel.country} onChange={handleChange} className='w-full outline-blue-400 border-2 px-2 py-2 border-gray-400' >
+                {/* <select name="country" value={recruitModel.country} onChange={handleChange} className='w-full outline-blue-400 border-2 px-2 py-2 border-gray-400' >
                   {all_Countries.map((all_country) => <option value={all_country.isoCode} key={all_country.isoCode}>{all_country.name.substring(0, 33)}</option>)}
-                </select>
-                {/* <select name="country"  className="form-select appearance-none block w-full px-3  py-1.5 text-base  font-normaltext-gray-700   bg-white bg-clip-padding bg-no-repeat  border-2 border-gray-400   transition ease-in-out m-0 focus:text-gray-700  outline-blue-400  " aria-label="Default select example">
-                  <option  >Open this select menu</option>
-                  <option >One dsf sdg sdgf sdfg sdfg sdfg dsg sdfg </option>
-                  <option  >Two</option>
-                  <option  >Three</option>
                 </select> */}
+
+                <div className="dropdown relative">
+                  <button className=" w-full bg-white border-2 border-gray-400 text-gray-400 dropdown-toggle p-2   focus:outline-blue-400 focus:ring-0 active:border-blue-400   transition duration-150 ease-in-out flex items-center whitespace-nowrap " type="button" id="countrydropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                    {all_Countries.find((country) => country.isoCode === recruitModel.country).name}
+                    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="caret-down" className="w-3 ml-auto" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+                      <path fill="currentColor" d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z" />
+                    </svg>
+                  </button>
+                  <ul className=" dropdown-menu   absolute w-full  max-h-52 overflow-y-scroll bg-white text-base z-50 float-left py-2 list-none text-left shadow-lg mt-1 hidden m-0 bg-clip-padding border-none " aria-labelledby="countrydropdown">
+                    {all_Countries.map((all_country) => {
+                      return (
+                        <li>
+                          <span onClick={() => handlePlaces(all_country.isoCode, "country")} key={all_country.isoCode} className=" cursor-pointer dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100 "  >{all_country.name}</span>
+                        </li>
+                      )
+                    })}
+                  </ul>
+                </div>
 
               </div>
               <div className='col-lg-3 col-md-10  '>
                 <div className='row g-1'>
                   <div className='col-6'>
-                    <select name="state" value={recruitModel.state} onChange={handleChange} className='w-full outline-blue-400 border-2 px-2 py-2 border-gray-400'>
-                      {all_States.map((state) => <option value={state.isoCode} key={state.name}>{state.name.substring(0, 15)}</option>)}
-                    </select>
+                    <div className="dropdown relative">
+                      <button className=" w-full bg-white border-2 border-gray-400 text-gray-400 dropdown-toggle p-2   focus:outline-blue-400 focus:ring-0 active:border-blue-400   transition duration-150 ease-in-out flex items-center whitespace-nowrap " type="button" id="statedropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                        {all_States.find((state) => state.isoCode === recruitModel.state)?.name}
+                        <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="caret-down" className="w-3 ml-auto" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+                          <path fill="currentColor" d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z" />
+                        </svg>
+                      </button>
+                      <ul className=" dropdown-menu   absolute w-full  max-h-52 overflow-y-scroll bg-white text-base z-50 float-left py-2 list-none text-left shadow-lg mt-1 hidden m-0 bg-clip-padding border-none " aria-labelledby="statedropdown">
+                        {all_States.map((state) => {
+                          return (
+                            <li>
+                              <span onClick={() => handlePlaces(state.isoCode, "state")} key={state.isoCode} className=" cursor-pointer dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100 "  >{state.name}</span>
+                            </li>
+                          )
+                        })}
+                      </ul>
+                    </div>
                   </div>
                   <div className='col-6'>
-                    <select name="city" value={recruitModel.city} onChange={handleChange} className='w-full outline-blue-400 border-2 px-2 py-2 border-gray-400'>
-                      {all_Cities.map((city) => <option value={city.name} key={city.name}>{city.name}</option>)}
-                    </select>
+                    <div className="dropdown relative">
+                      <button className=" w-full bg-white border-2 border-gray-400 text-gray-400 dropdown-toggle p-2   focus:outline-blue-400 focus:ring-0 active:border-blue-400   transition duration-150 ease-in-out flex items-center whitespace-nowrap " type="button" id="citydropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                        {all_Cities.find((city) => city.name === recruitModel.city)?.name}
+                        <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="caret-down" className="w-3 ml-auto" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+                          <path fill="currentColor" d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z" />
+                        </svg>
+                      </button>
+                      <ul className=" dropdown-menu   absolute w-full  max-h-52 overflow-y-scroll bg-white text-base z-50 float-left py-2 list-none text-left shadow-lg mt-1 hidden m-0 bg-clip-padding border-none " aria-labelledby="citydropdown">
+                        {all_Cities.map((city) => {
+                          return (
+                            <li>
+                              <span onClick={() => handlePlaces(city.name, "city")} key={city.name} className=" cursor-pointer dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100 "  >{city.name}</span>
+                            </li>
+                          )
+                        })}
+                      </ul>
+                    </div>
+
+
+
                   </div>
                 </div>
               </div>
@@ -474,7 +552,7 @@ function App() {
         <section className='my-14' >
           <div className='row'>
             <div className='col-lg-6 col-md-12 lg:order-first order-last'>
-              <h1 className='text-4xl font-bold mb-4 '>LAWYERS</h1>
+              <h1 className='text-4xl font-medium mb-4 '>LAWYERS</h1>
               <p className='font-semibold text-xs leading-6 text-justify mb-4'>The significant global impact of the Coronavirus Disease SARS-CoV-2 which impact off the world in 2019. We understand
                 that you would prefer to work at a distance, from home preferably all the protective bubble that home represents for the
                 safety of your family, colleagues, neighbors, and friends. Our company offers you a rare example to work in the open at
