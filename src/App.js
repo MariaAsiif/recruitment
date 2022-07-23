@@ -1,9 +1,9 @@
 import React, { useState, useRef, useEffect, forwardRef } from 'react'
 
-
 import './App.css';
 import { IoChevronDownOutline, IoChevronUpOutline } from "react-icons/io5";
 import { BsCalendarEvent } from "react-icons/bs";
+import { GoFileMedia } from "react-icons/go";
 import Business_pic from "./assets/images/sales (2).jpg"
 import Sales_pic from "./assets/images/sales representatives.jpg"
 import Administrator_pic from "./assets/images/adminstrator.jpg"
@@ -20,8 +20,7 @@ import Sales2_pic from "./assets/images/sales (2).jpg"
 import Perscriptive_pic from "./assets/images/SALES -Prescriptive Care.jpg"
 import Vendor_pic from "./assets/images/vendor 1.jpg"
 import Whole_pic from "./assets/images/whole seller.jpg"
-// import leafLogo from "./assets/images/leaf_logo_v2.png"
-import leafLogo2 from "./assets/images/Logo-leaf-Top-red-V1.png"
+import leafLogo2 from "./assets/images/Logo-leaf-Top-red-V2.png"
 import usFlaglogo from "./assets/images/usflag_logo_v2.png"
 import bigPic from "./assets/images/creche.jpg"
 
@@ -29,8 +28,6 @@ import { MdCloudUpload } from "react-icons/md";
 import { surnames } from './utils/enum';
 
 import Validator, { ValidationTypes as V_Type, } from './components/shared/formValidator';
-// import 'react-phone-number-input/style.css'
-// import PhoneInput from 'react-phone-number-input'
 
 import PhoneInput from 'react-phone-input-2'
 import 'react-phone-input-2/lib/style.css'
@@ -46,6 +43,7 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 
 function App() {
   const myRef = useRef(null)
+  const dropzoneRef = useRef(null)
   const [recruitModel, setrecruitModel] = useState({
     surname: localStorage.getItem('surname') ? localStorage.getItem('surname') : "Mr.",
     fullname: localStorage.getItem('fullname') ? localStorage.getItem('fullname') : "",
@@ -79,10 +77,11 @@ function App() {
   const [all_States, setall_States] = useState(() => State.getStatesOfCountry("AF"))
   const [all_Cities, setall_Cities] = useState(() => City.getCitiesOfState("AF", "BDS"))
   const [dateob, setdateob] = useState(new Date('2014-08-18T21:11:54'))
+  const [activeIndex, setActiveIndex] = useState(null)
+  const [uploadFiles, setuploadFiles] = useState([])
+
 
   const dropItem = ["ABOUT RECRUIT", "HOW TO APPLY", " WHAT'S NEXT"]
-  const [activeIndex, setActiveIndex] = useState(null)
-
   const executeScroll = () => myRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' })
   const handleChange = (e) => {
     localStorage.setItem(e.target.name, e.target.value);
@@ -101,6 +100,8 @@ function App() {
     localStorage.setItem("dob", value);
     setdob(value)
   }
+
+
 
   const handleDropdown = (index) => {
     if (index === activeIndex) {
@@ -126,6 +127,16 @@ function App() {
     setvalidationModel(myvalidation_Obj);
     return Validator(myvalidation_Obj, V_Type.NullCheck);
   };
+
+  const handlePlaces = (isoCode, name) => {
+    localStorage.setItem(name, isoCode);
+    setrecruitModel((prevmodel) => ({
+      ...prevmodel,
+      [name]: isoCode
+    }))
+  }
+
+
   const handleSubmit = () => {
     let my_validation = setValidation();
     if (my_validation) {
@@ -135,6 +146,9 @@ function App() {
     }
   }
 
+
+
+
   // ************************* Date Picker function *********************
   const ExampleCustomInput = forwardRef(({ value, onClick }, ref) => (
     <button className="bg-white w-full h-11 border-2 border-gray-400" onClick={onClick} ref={ref}>
@@ -143,6 +157,27 @@ function App() {
   ));
 
   // ========================= Use Effect ==========================
+
+  useEffect(() => {
+    const dropZone = document.querySelector('#dropzone')
+    dropzoneRef.current.addEventListener('dragover', (e) => {
+      e.preventDefault()
+      dropzoneRef.current.classList.add("border-l-red-500", "border-r-red-500", "border-t-red-500")
+    })
+    dropzoneRef.current.addEventListener('drop', (e) => {
+      e.preventDefault()
+      console.log(e.dataTransfer.files);
+      setuploadFiles((prevfiles) => ([
+        ...prevfiles,
+        ...e.dataTransfer.files
+      ]))
+      dropzoneRef.current.classList.remove("border-l-red-500", "border-r-red-500", "border-t-red-500")
+    })
+    return () => {
+      dropzoneRef.current.removeEventListener('dragover', () => { })
+      dropzoneRef.current.removeEventListener('drop', () => { })
+    }
+  }, [])
   useEffect(() => {
     console.log("useEffect 1 run");
     const updatedCountryCode = recruitModel.country
@@ -160,22 +195,25 @@ function App() {
       <section ref={myRef} className='bscontainer-fluid'>
         <section className='row'>
           <div className='col-12 bg-hero-pattern bg-center bg-no-repeat    bg-cover bg-blend-lighten ' style={{ backgroundColor: "#ffffffad" }}>
-            <div className='lg:my-10 my-5 lg:px-28 md:px-5'>
+            <div className='lg:my-10 my-5 lg:px-28 md:px-5 px-6'>
               <div className='row  justify-center items-center'>
                 <div className='col-4'>
-                  <img src={leafLogo2} className="mx-8" width="75px" alt="leafLogo" />
-                  <p className='text-sm text-left sm:text-left sm:text-md text-red-600 font-semibold'>
-                    {/* CULTIVATED WELLNESS */}
-                    Cultivate Wellness
-                    </p>
-
+                  <figure>
+                    <img src={leafLogo2} className="md:w-16 w-11 " alt="leafLogo" />
+                    <figcaption className='text-left md:-ml-6 -ml-3 mt-1 text-xs text-red-600 font-semibold'>
+                      {/* CULTIVATED WELLNESS */}
+                      Cultivated Wellness
+                      </figcaption>
+                  </figure>
                 </div>
-                <div className='col-4 text-center lg:text-6xl md:text-6xl text-5xl font-medium flex items-center justify-center'>
+                <div className='col-4 text-center lg:text-6xl md:text-6xl text-3xl font-medium flex items-center justify-center'>
                   <p>RECRUIT</p>
                 </div>
                 <div className='col-4 '>
-                  <img src={usFlaglogo} width="55px" className=' ml-auto' alt="leafLogo" />
-                  <p className='text-right text-sm text-red-600 font-semibold'>English</p>
+                  <figure>
+                    <img src={usFlaglogo} className=" ml-auto  md:w-16 w-11 " alt="leafLogo" />
+                    <figcaption className='text-right md:mr-3 mr-1  mt-1 text-xs text-red-600 font-semibold'>English</figcaption>
+                  </figure>
                 </div>
               </div>
             </div>
@@ -183,10 +221,27 @@ function App() {
             <div className='row justify-center gap-2 mb-4 g-0 '>
               <div className='col-lg-3 col-md-10'>
 
-                <div className=' text-gray-500 text-base font-medium bg-light-gray'>
-                  <select name='surname' value={recruitModel.surname} onChange={handleChange} className='w-1/5 h-full py-2 border-gray-400 border-2 border-r-0 outline-blue-400 bg-white'>
+                <div className=' text-gray-500 text-base font-medium bg-light-gray flex'>
+                  {/* <select name='surname' value={recruitModel.surname} onChange={handleChange} className='w-1/5 h-full py-2 border-gray-400 border-2 border-r-0 outline-blue-400 bg-white'>
                     {surnames.map((sur, i) => <option key={i}>{sur}</option>)}
-                  </select>
+                  </select> */}
+                  <div className="dropdown relative w-1/5 ">
+                    <button className=" w-full bg-white border-2 border-r-0 border-gray-400 text-gray-400 dropdown-toggle p-2   focus:outline-blue-400 focus:ring-0 active:border-blue-400   transition duration-150 ease-in-out flex items-center whitespace-nowrap " type="button" id="surdropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                      {surnames.find((s_name) => s_name === recruitModel.surname)}
+                      <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="caret-down" className="w-3 ml-auto" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+                        <path fill="currentColor" d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z" />
+                      </svg>
+                    </button>
+                    <ul className=" dropdown-menu   absolute w-full  max-h-52 overflow-y-scroll bg-white text-base z-50 float-left py-2 list-none text-left shadow-lg mt-1 hidden m-0 bg-clip-padding border-none " aria-labelledby="surdropdown">
+                      {surnames.map((sur, i) => {
+                        return (
+                          <li key={i} >
+                            <span onClick={() => handlePlaces(sur, "surname")} className=" cursor-pointer dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100 "  >{sur}</span>
+                          </li>
+                        )
+                      })}
+                    </ul>
+                  </div>
                   <div className='relative inline-block w-4/5 '>
                     <input name='fullname' value={recruitModel.fullname} onChange={handleChange} type="text" placeholder='Name ' className={`w-full h-full p-2 bg-white  outline-blue-400 border-2 ${validationModel.fullnameError ? "border-red-400" : "border-gray-400"} `} />
                     <span hidden={recruitModel.fullname.length} className='absolute  text-red-400 font-medium text-lg top-1/4 left-16'>*</span>
@@ -263,18 +318,64 @@ function App() {
                   <option  >Three</option>
                 </select> */}
 
+                {/* <div className="dropdown relative">
+                  <button className=" w-full bg-white border-2 border-gray-400 text-gray-400 dropdown-toggle p-2   focus:outline-blue-400 focus:ring-0 active:border-blue-400   transition duration-150 ease-in-out flex items-center whitespace-nowrap " type="button" id="countrydropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                    {all_Countries.find((country) => country.isoCode === recruitModel.country).name}
+                    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="caret-down" className="w-3 ml-auto" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+                      <path fill="currentColor" d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z" />
+                    </svg>
+                  </button>
+                  <ul className=" dropdown-menu   absolute w-full  max-h-52 overflow-y-scroll bg-white text-base z-50 float-left py-2 list-none text-left shadow-lg mt-1 hidden m-0 bg-clip-padding border-none " aria-labelledby="countrydropdown">
+                    {all_Countries.map((all_country) => {
+                      return (
+                        <li key={all_country.isoCode}>
+                          <span onClick={() => handlePlaces(all_country.isoCode, "country")} className=" cursor-pointer dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100 "  >{all_country.name}</span>
+                        </li>
+                      )
+                    })}
+                  </ul>
+                </div> */}
+
               </div>
               <div className='col-lg-3 col-md-10  '>
                 <div className='row g-1'>
                   <div className='col-6'>
-                    <select name="state" value={recruitModel.state} onChange={handleChange} className='w-full outline-blue-400 border-2 px-2 py-2 border-gray-400'>
-                      {all_States.map((state) => <option value={state.isoCode} key={state.name}>{state.name.substring(0, 15)}</option>)}
-                    </select>
+                    <div className="dropdown relative">
+                      <button className=" w-full bg-white border-2 border-gray-400 text-gray-400 dropdown-toggle p-2   focus:outline-blue-400 focus:ring-0 active:border-blue-400   transition duration-150 ease-in-out flex items-center whitespace-nowrap " type="button" id="statedropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                        {all_States.find((state) => state.isoCode === recruitModel.state)?.name}
+                        <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="caret-down" className="w-3 ml-auto" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+                          <path fill="currentColor" d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z" />
+                        </svg>
+                      </button>
+                      <ul className=" dropdown-menu   absolute w-full  max-h-52 overflow-y-scroll bg-white text-base z-50 float-left py-2 list-none text-left shadow-lg mt-1 hidden m-0 bg-clip-padding border-none " aria-labelledby="statedropdown">
+                        {all_States.map((state) => {
+                          return (
+                            <li key={state.isoCode}>
+                              <span onClick={() => handlePlaces(state.isoCode, "state")} className=" cursor-pointer dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100 "  >{state.name}</span>
+                            </li>
+                          )
+                        })}
+                      </ul>
+                    </div>
                   </div>
                   <div className='col-6'>
-                    <select name="city" value={recruitModel.city} onChange={handleChange} className='w-full outline-blue-400 border-2 px-2 py-2 border-gray-400'>
-                      {all_Cities.map((city) => <option value={city.name} key={city.name}>{city.name}</option>)}
-                    </select>
+                    <div className="dropdown relative">
+                      <button className=" w-full bg-white border-2 border-gray-400 text-gray-400 dropdown-toggle p-2   focus:outline-blue-400 focus:ring-0 active:border-blue-400   transition duration-150 ease-in-out flex items-center whitespace-nowrap " type="button" id="citydropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                        {all_Cities.find((city) => city.name === recruitModel.city)?.name}
+                        <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="caret-down" className="w-3 ml-auto" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+                          <path fill="currentColor" d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z" />
+                        </svg>
+                      </button>
+                      <ul className=" dropdown-menu   absolute w-full  max-h-52 overflow-y-scroll bg-white text-base z-50 float-left py-2 list-none text-left shadow-lg mt-1 hidden m-0 bg-clip-padding border-none " aria-labelledby="citydropdown">
+                        {all_Cities.map((city) => {
+                          return (
+                            <li key={city.name}>
+                              <span onClick={() => handlePlaces(city.name, "city")} className=" cursor-pointer dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100 "  >{city.name}</span>
+                            </li>
+                          )
+                        })}
+                      </ul>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -301,6 +402,9 @@ function App() {
                       className={`w-full outline-blue-400 border-2 px-2 py-2 ${validationModel.dateob ? "border-red-400" : "border-gray-400"}`}
                       selected={dob}
                       onChange={handleDobChange}
+                      withPortal
+                      showYearDropdown
+                      fixedHeight
                       customInput={<ExampleCustomInput />}
                     />
 
@@ -325,97 +429,6 @@ function App() {
                 <p className='text-lg text-red-600 mb-4  '><sup className='text-red-600 font-bold'>*</sup>Mandatory</p>
                 <button onClick={handleSubmit} className='text-white bg-gray-900 w-full px-2 py-1 text-3xl font-medium tracking-wide'>SUBMIT</button>
               </div>
-
-              {/* <div className='col-6'>
-                <div class="flex justify-center">
-                  <div>
-                    <div class="dropdown relative">
-                      <button
-                        class="  dropdown-toggle  px-6   py-2.5  bg-blue-600  text-white  font-medium   text-xs  leading-tight  uppercase  rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg active:text-white transition duration-150 ease-in-outflexitems-center whitespace-nowrap " type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"aria-expanded="false" >
-                        Dropdown button
-                        <svg  aria-hidden="true"    focusable="false"   data-prefix="fas" data-icon="caret-down"  class="w-2 ml-2" role="img"  xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 320 512"  >
-                          <path fill="currentColor"   d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z"  ></path>
-                        </svg>
-                      </button>
-                      <ul class="dropdown-menu   min-w-max  absolute   hidden bg-white  text-base
-          z-50
-          float-left
-          py-2
-          list-none
-          text-left
-          rounded-lg
-          shadow-lg
-          mt-1
-          hidden
-          m-0
-          bg-clip-padding
-          border-none
-        "
-                        aria-labelledby="dropdownMenuButton1"
-                      >
-                        <li>
-                          <a
-                            class="
-              dropdown-item
-              text-sm
-              py-2
-              px-4
-              font-normal
-              block
-              w-full
-              whitespace-nowrap
-              bg-transparent
-              text-gray-700
-              hover:bg-gray-100
-            "
-                            href="#"
-                          >Action</a
-                          >
-                        </li>
-                        <li>
-                          <a
-                            class="
-              dropdown-item
-              text-sm
-              py-2
-              px-4
-              font-normal
-              block
-              w-full
-              whitespace-nowrap
-              bg-transparent
-              text-gray-700
-              hover:bg-gray-100
-            "
-                            href="#"
-                          >Another action</a
-                          >
-                        </li>
-                        <li>
-                          <a
-                            class="
-              dropdown-item
-              text-sm
-              py-2
-              px-4
-              font-normal
-              block
-              w-full
-              whitespace-nowrap
-              bg-transparent
-              text-gray-700
-              hover:bg-gray-100
-            "
-                            href="#"
-                          >Something else here</a
-                          >
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div> */}
-
             </div>
           </div>
 
@@ -426,7 +439,7 @@ function App() {
           <div className='col-12 bg-light-red'  >
             <div className='row justify-center text-white lg:text-lg text-xs font-semibold gap-0'>
               {dropItem.map((item, index) => (
-                <div className='col-lg-2 col-4 cursor-pointer py-1 text-center hover:bg-red-600 transition-all' onClick={() => handleDropdown(index)} >
+                <div key={index} className='col-lg-2 col-4 cursor-pointer py-1 text-center hover:bg-red-600 transition-all' onClick={() => handleDropdown(index)} >
                   {item}  {index === activeIndex ?
                     <IoChevronUpOutline className='inline lg:text-4xl text-sm' />
                     :
@@ -470,12 +483,22 @@ function App() {
                   : null
 
             }
-            <div className="mt-1 flex justify-center px-6 pt-5 pb-6 border-4 border-gray-300 border-dashed border-b-red-500  bg-gray-100">
+            <div id="dropzone" ref={dropzoneRef} className="mt-1 flex justify-center px-6 pt-5 pb-6 border-4 border-gray-300 border-dashed border-b-red-500  bg-gray-100">
               <div className="space-y-1 text-center">
                 <MdCloudUpload size={99} className='inline  text-gray-500' />
                 <div>
                   <h1 className='text-5xl font-bold mb-2'>Drag & Drop</h1>
                   <h4 className='text-gray-700 text-2xl font-medium mb-2'>Your file type</h4>
+                  <div className='row justify-center'>
+                    {uploadFiles.map((file, i) => {
+                      return (
+                        <div key={i} className='col-1   '>
+                          <GoFileMedia className='inline text-red-500' size={44} />
+                        </div>
+                      )
+                    })}
+                  </div>
+
                   <h5 className='text-gray-500 text-xl font-normal mb-2'>or select an option below</h5>
                   <label className='rounded-sm bg-light-red inline-block text-white mb-1 cursor-pointer text-xl tracking-wide font-medium px-8 py-1'>
                     BROWSE MY FILES
@@ -567,7 +590,7 @@ function App() {
         <section className='my-14' >
           <div className='row'>
             <div className='col-lg-6 col-md-12 lg:order-first order-last'>
-              <h1 className='text-4xl font-bild mb-4 '>LAWYERS</h1>
+              <h1 className='text-4xl font-medium mb-4 '>LAWYERS</h1>
               <p className='font-semibold text-xs leading-6 text-justify mb-4'>The significant global impact of the Coronavirus Disease SARS-CoV-2 which impact off the world in 2019. We understand
                 that you would prefer to work at a distance, from home preferably all the protective bubble that home represents for the
                 safety of your family, colleagues, neighbors, and friends. Our company offers you a rare example to work in the open at
@@ -778,7 +801,7 @@ function App() {
             <div className=" bg-white   border rounded-none border-gray-900 mb-3  ">
               <h2 className="accordion-header mb-0" id="headingTwo">
                 <button className=" text-black font-medium px-2 py-1  text-sm   accordion-button collapsed relative flex items-center w-full    text-left bg-white     transition focus:outline-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                  HOW WE SUPPORT WORKING <span className='font-bold px-1 text-red-600'>MOTHERS</span> AND THEIR FAMILIES
+                  <span> HOW WE SUPPORT WORKING  <span className='font-bold   text-red-600'>MOTHERS</span> AND THEIR FAMILIES</span>
                 </button>
               </h2>
               <div id="collapseTwo" className="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
@@ -791,7 +814,7 @@ function App() {
             <div className=" bg-white   border rounded-none border-gray-900  ">
               <h2 className="accordion-header mb-0" id="headthree">
                 <button className=" text-black font-medium px-2 py-1  text-sm   accordion-button collapsed relative flex items-center w-full    text-left bg-white     transition focus:outline-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                  HOW WE SUPPORT WORKING <span className='font-bold px-1 text-red-600'>FATHERS</span> AND THEIR FAMILIES
+                  <span> HOW WE SUPPORT WORKING  <span className='font-bold   text-red-600'>FATHERS</span> AND THEIR FAMILIES</span>
                 </button>
               </h2>
               <div id="collapseThree" className="accordion-collapse collapse" aria-labelledby="headthree" data-bs-parent="#accordionExample">
