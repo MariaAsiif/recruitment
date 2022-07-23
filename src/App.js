@@ -33,13 +33,20 @@ import PhoneInput from 'react-phone-input-2'
 import 'react-phone-input-2/lib/style.css'
 
 import { Country, State, City } from 'country-state-city';
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
+// import DatePicker from "react-datepicker";
+// import "react-datepicker/dist/react-datepicker.css";
 
-import { MobileDatePicker } from '@mui/x-date-pickers/MobileDatePicker';
-import TextField from '@mui/material/TextField';
-import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment';
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+// import "react-modern-calendar-datepicker/lib/DatePicker.css";
+// import DatePicker from "react-modern-calendar-datepicker";
+
+import '@hassanmojab/react-modern-calendar-datepicker/lib/DatePicker.css';
+import DatePicker from '@hassanmojab/react-modern-calendar-datepicker';
+
+// import Calendar from "react-"
+// import { MobileDatePicker } from '@mui/x-date-pickers/MobileDatePicker';
+// import TextField from '@mui/material/TextField';
+// import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment';
+// import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 
 function App() {
   const myRef = useRef(null)
@@ -76,10 +83,10 @@ function App() {
   const [all_Countries] = useState(() => Country.getAllCountries())
   const [all_States, setall_States] = useState(() => State.getStatesOfCountry("AF"))
   const [all_Cities, setall_Cities] = useState(() => City.getCitiesOfState("AF", "BDS"))
-  const [dateob, setdateob] = useState(new Date('2014-08-18T21:11:54'))
+  const [dateob, setdateob] = useState(null)
   const [activeIndex, setActiveIndex] = useState(null)
   const [uploadFiles, setuploadFiles] = useState([])
-
+  const [selectedDay, setSelectedDay] = useState(null);
 
   const dropItem = ["ABOUT RECRUIT", "HOW TO APPLY", " WHAT'S NEXT"]
   const executeScroll = () => myRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' })
@@ -91,6 +98,7 @@ function App() {
     }))
   }
 
+
   const handleMobileChange = (value) => {
     localStorage.setItem("mobile", value);
     setmobile(value)
@@ -98,7 +106,7 @@ function App() {
   const handleDobChange = (value) => {
     console.log("runnn", value);
     localStorage.setItem("dob", value);
-    setdob(value)
+    setdateob(value)
   }
 
 
@@ -150,11 +158,22 @@ function App() {
 
 
   // ************************* Date Picker function *********************
-  const ExampleCustomInput = forwardRef(({ value, onClick }, ref) => (
-    <button className="bg-white w-full h-11 border-2 border-gray-400" onClick={onClick} ref={ref}>
-      {value}<BsCalendarEvent className='inline ml-6' />
-    </button>
-  ));
+  // const ExampleCustomInput = forwardRef(({ value, onClick }, ref) => (
+  //   <button className="bg-white w-full h-11 border-2 border-gray-400" onClick={onClick} ref={ref}>
+  //     {value}<BsCalendarEvent className='inline ml-6' />
+  //   </button>
+  // ));
+
+  const renderCustomInput = ({ ref }) => (
+    <input
+      readOnly
+      ref={ref} // necessary
+      placeholder="yyy-mm-dd"
+      value={dateob  ? `${dateob.year}/${dateob.month}/${dateob.day}` : ''}
+      className={`w-full outline-blue-400 border-2 px-2 py-2 ${validationModel.dateob ? "border-red-400" : "border-gray-400"}`}
+      // a styling class
+    />
+  )
 
   // ========================= Use Effect ==========================
 
@@ -203,7 +222,7 @@ function App() {
                     <figcaption className='text-left md:-ml-6 -ml-3 mt-1 text-xs text-red-600 font-semibold'>
                       {/* CULTIVATED WELLNESS */}
                       Cultivated Wellness
-                      </figcaption>
+                    </figcaption>
                   </figure>
                 </div>
                 <div className='col-4 text-center lg:text-6xl md:text-6xl text-3xl font-medium flex items-center justify-center'>
@@ -225,14 +244,14 @@ function App() {
                   {/* <select name='surname' value={recruitModel.surname} onChange={handleChange} className='w-1/5 h-full py-2 border-gray-400 border-2 border-r-0 outline-blue-400 bg-white'>
                     {surnames.map((sur, i) => <option key={i}>{sur}</option>)}
                   </select> */}
-                  <div className="dropdown relative w-1/5 ">
-                    <button className=" w-full bg-white border-2 border-r-0 border-gray-400 text-gray-400 dropdown-toggle p-2   focus:outline-blue-400 focus:ring-0 active:border-blue-400   transition duration-150 ease-in-out flex items-center whitespace-nowrap " type="button" id="surdropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                  <div className="dropdown relative w-1/5">
+                    <button className=" w-full bg-white border-2 border-r-0 h-full  border-gray-400 text-gray-400 dropdown-toggle p-2   focus:outline-blue-400 focus:ring-0 active:border-blue-400   transition duration-150 ease-in-out flex items-center whitespace-nowrap " type="button" id="surdropdown" data-bs-toggle="dropdown" aria-expanded="false">
                       {surnames.find((s_name) => s_name === recruitModel.surname)}
                       <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="caret-down" className="w-3 ml-auto" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
                         <path fill="currentColor" d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z" />
                       </svg>
                     </button>
-                    <ul className=" dropdown-menu   absolute w-full  max-h-52 overflow-y-scroll bg-white text-base z-50 float-left py-2 list-none text-left shadow-lg mt-1 hidden m-0 bg-clip-padding border-none " aria-labelledby="surdropdown">
+                    <ul className=" dropdown-menu absolute w-full  max-h-52 overflow-y-auto overflow-x-hidden bg-white text-base z-50 float-left py-2 list-none text-left shadow-lg mt-1 hidden m-0 bg-clip-padding border-none " aria-labelledby="surdropdown">
                       {surnames.map((sur, i) => {
                         return (
                           <li key={i} >
@@ -296,7 +315,7 @@ function App() {
             <div className='row justify-center gap-2 mb-4 g-0  '>
               <div className='col-lg-3 col-md-10  bg-white  text-gray-500 text-base font-medium bg-light-gray '>
                 <div className='h-full relative'>
-                  <PhoneInput country={'es'}  dropdownClass={"custom-dropdown"} enableSearch disableSearchIcon countryCodeEditable={false} value={mobile} onChange={handleMobileChange} />
+                  <PhoneInput country={'es'} dropdownClass={"custom-dropdown"} enableSearch disableSearchIcon countryCodeEditable={false} value={mobile} onChange={handleMobileChange} />
                 </div>
               </div>
               <div className='col-lg-3 col-md-10'>
@@ -309,32 +328,6 @@ function App() {
             <div className='row justify-center gap-2 mb-4 g-0  '>
               <div className='col-lg-3 col-md-10  '>
                 <input name='industry' value={recruitModel.industry} onChange={handleChange} type="text" placeholder='Current Industry' className="w-full outline-blue-400 border-2 px-2 py-2 border-gray-400" />
-
-
-                {/* <select name="country"  className="form-select appearance-none block w-full px-3  py-1.5 text-base  font-normaltext-gray-700   bg-white bg-clip-padding bg-no-repeat  border-2 border-gray-400   transition ease-in-out m-0 focus:text-gray-700  outline-blue-400  " aria-label="Default select example">
-                  <option  >Open this select menu</option>
-                  <option >One dsf sdg sdgf sdfg sdfg sdfg dsg sdfg </option>
-                  <option  >Two</option>
-                  <option  >Three</option>
-                </select> */}
-
-                {/* <div className="dropdown relative">
-                  <button className=" w-full bg-white border-2 border-gray-400 text-gray-400 dropdown-toggle p-2   focus:outline-blue-400 focus:ring-0 active:border-blue-400   transition duration-150 ease-in-out flex items-center whitespace-nowrap " type="button" id="countrydropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                    {all_Countries.find((country) => country.isoCode === recruitModel.country).name}
-                    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="caret-down" className="w-3 ml-auto" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
-                      <path fill="currentColor" d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z" />
-                    </svg>
-                  </button>
-                  <ul className=" dropdown-menu   absolute w-full  max-h-52 overflow-y-scroll bg-white text-base z-50 float-left py-2 list-none text-left shadow-lg mt-1 hidden m-0 bg-clip-padding border-none " aria-labelledby="countrydropdown">
-                    {all_Countries.map((all_country) => {
-                      return (
-                        <li key={all_country.isoCode}>
-                          <span onClick={() => handlePlaces(all_country.isoCode, "country")} className=" cursor-pointer dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100 "  >{all_country.name}</span>
-                        </li>
-                      )
-                    })}
-                  </ul>
-                </div> */}
 
               </div>
               <div className='col-lg-3 col-md-10  '>
@@ -384,7 +377,7 @@ function App() {
 
             <div className='row justify-center gap-2 mb-4 g-0  '>
               <div className='col-lg-3 col-md-10 '>
-                <input name='position' value={recruitModel.position} onChange={handleChange} type="text" placeholder='Position or field interest?' className="w-full outline-blue-400 border-2 px-2 py-2 border-gray-400 " />
+                <input name='position' value={recruitModel.position} onChange={handleChange} type="text" placeholder='Position of Interest?' className="w-full outline-blue-400 border-2 px-2 py-2 border-gray-400 " />
               </div>
               <div className='col-lg-3 col-md-10  '>
                 <div className='row g-1'>
@@ -397,8 +390,15 @@ function App() {
                   </div>
                   <div className='col-6'>
 
-                    {/* <DatePicker selected={dob} onChange={handleDobChange} className="w-full outline-blue-400 border-2 px-2 py-2 border-gray-400" /> */}
                     <DatePicker
+                      value={dateob}
+                      onChange={setdateob}
+                      renderInput={renderCustomInput} // render a custom input
+                      shouldHighlightWeekends
+                    />
+                    {/* />
+                    {/* <DatePicker selected={dob} onChange={handleDobChange} className="w-full outline-blue-400 border-2 px-2 py-2 border-gray-400" /> */}
+                    {/* <DatePicker
                       className={`w-full outline-blue-400 border-2 px-2 py-2 ${validationModel.dateob ? "border-red-400" : "border-gray-400"}`}
                       selected={dob}
                       onChange={handleDobChange}
@@ -406,7 +406,7 @@ function App() {
                       showYearDropdown
                       fixedHeight
                       customInput={<ExampleCustomInput />}
-                    />
+                    /> */}
 
                     {/* <LocalizationProvider dateAdapter={AdapterMoment}>
                       <MobileDatePicker
@@ -426,7 +426,7 @@ function App() {
 
             <div className='row justify-center gap-2 mb-8 g-0 '>
               <div className='col-lg-6 col-md-10'>
-                <p className='text-lg text-red-600 mb-4  '><sup className='text-red-600 font-bold'>*</sup>Mandatory</p>
+                <p className='text-lg text-red-400 mb-4  '><sup className='text-red-600 font-bold'>*</sup>Mandatory</p>
                 <button onClick={handleSubmit} className='text-white bg-gray-900 w-full px-2 py-1 text-3xl font-medium tracking-wide'>SUBMIT</button>
               </div>
             </div>
@@ -523,7 +523,7 @@ function App() {
                 contact our human resources department by filling out the form above adding your recent work experience in a resume
                 summary of experience (CV) and we will respond after reviewing your submission. We thank you for considering our
                 company as an opportunity for employment.</p>
-              <button onClick={executeScroll} className='  text-white text-lg font-medium py-1 px-10  bg-light-red hover:bg-green-800 transition-all'>APPLY</button>
+              <button onClick={executeScroll} className='  text-white text-lg font-medium py-1 px-10  bg-light-red hover:bg-green-600 transition-all'>APPLY</button>
             </div>
             <div className='col-lg-6 col-md-12 lg:order-last order-first lg:mb-0 mb-4 '>
               <img src={Business_pic} alt="Business_pic" />
@@ -545,7 +545,7 @@ function App() {
                 contact our human resources department by filling out the form above adding your recent work experience in a resume
                 summary of experience (CV) and we will respond after reviewing your submission. We thank you for considering our
                 company as an opportunity for employment.</p>
-              <button onClick={executeScroll} className='  text-white text-lg font-medium py-1 px-10  bg-light-red hover:bg-green-800 transition-all'>APPLY</button>
+              <button onClick={executeScroll} className='  text-white text-lg font-medium py-1 px-10  bg-light-red hover:bg-green-600 transition-all'>APPLY</button>
             </div>
           </div>
         </section>
@@ -561,7 +561,7 @@ function App() {
                 contact our human resources department by filling out the form above adding your recent work experience in a resume
                 summary of experience (CV) and we will respond after reviewing your submission. We thank you for considering our
                 company as an opportunity for employment.</p>
-              <button onClick={executeScroll} className='  text-white text-lg font-medium py-1 px-10  bg-light-red hover:bg-green-800 transition-all'>APPLY</button>
+              <button onClick={executeScroll} className='  text-white text-lg font-medium py-1 px-10  bg-light-red hover:bg-green-600 transition-all'>APPLY</button>
             </div>
             <div className='col-lg-6 col-md-12 lg:order-last order-first lg:mb-0 mb-4'>
               <img src={Perscriptive_pic} alt="Perscriptive_pic" />
@@ -582,7 +582,7 @@ function App() {
                 contact our human resources department by filling out the form above adding your recent work experience in a resume
                 summary of experience (CV) and we will respond after reviewing your submission. We thank you for considering our
                 company as an opportunity for employment.</p>
-              <button onClick={executeScroll} className='  text-white text-lg font-medium py-1 px-10  bg-light-red hover:bg-green-800 transition-all'>APPLY</button>
+              <button onClick={executeScroll} className='  text-white text-lg font-medium py-1 px-10  bg-light-red hover:bg-green-600 transition-all'>APPLY</button>
             </div>
           </div>
         </section>
@@ -598,7 +598,7 @@ function App() {
                 contact our human resources department by filling out the form above adding your recent work experience in a resume
                 summary of experience (CV) and we will respond after reviewing your submission. We thank you for considering our
                 company as an opportunity for employment.</p>
-              <button onClick={executeScroll} className='  text-white text-lg font-medium py-1 px-10  bg-light-red hover:bg-green-800 transition-all'>APPLY</button>
+              <button onClick={executeScroll} className='  text-white text-lg font-medium py-1 px-10  bg-light-red hover:bg-green-600 transition-all'>APPLY</button>
             </div>
             <div className='col-lg-6 col-md-12 lg:order-last order-first lg:mb-0 mb-4'>
               <img src={lawyer2_pic} alt="lawyer2_pic" />
@@ -620,7 +620,7 @@ function App() {
                 contact our human resources department by filling out the form above adding your recent work experience in a resume
                 summary of experience (CV) and we will respond after reviewing your submission. We thank you for considering our
                 company as an opportunity for employment.</p>
-              <button onClick={executeScroll} className='  text-white text-lg font-medium py-1 px-10  bg-light-red hover:bg-green-800 transition-all'>APPLY</button>
+              <button onClick={executeScroll} className='  text-white text-lg font-medium py-1 px-10  bg-light-red hover:bg-green-600 transition-all'>APPLY</button>
             </div>
           </div>
         </section>
@@ -636,7 +636,7 @@ function App() {
                 contact our human resources department by filling out the form above adding your recent work experience in a resume
                 summary of experience (CV) and we will respond after reviewing your submission. We thank you for considering our
                 company as an opportunity for employment.</p>
-              <button onClick={executeScroll} className='  text-white text-lg font-medium py-1 px-10  bg-light-red hover:bg-green-800 transition-all'>APPLY</button>
+              <button onClick={executeScroll} className='  text-white text-lg font-medium py-1 px-10  bg-light-red hover:bg-green-600 transition-all'>APPLY</button>
             </div>
             <div className='col-lg-6 col-md-12 lg:order-last order-first lg:mb-0 mb-4'>
               <img src={Botanist_pic} alt="Botanist_pic" />
@@ -658,7 +658,7 @@ function App() {
                 contact our human resources department by filling out the form above adding your recent work experience in a resume
                 summary of experience (CV) and we will respond after reviewing your submission. We thank you for considering our
                 company as an opportunity for employment.</p>
-              <button onClick={executeScroll} className='  text-white text-lg font-medium py-1 px-10  bg-light-red hover:bg-green-800 transition-all'>APPLY</button>
+              <button onClick={executeScroll} className='  text-white text-lg font-medium py-1 px-10  bg-light-red hover:bg-green-600 transition-all'>APPLY</button>
             </div>
           </div>
         </section>
@@ -674,7 +674,7 @@ function App() {
                 contact our human resources department by filling out the form above adding your recent work experience in a resume
                 summary of experience (CV) and we will respond after reviewing your submission. We thank you for considering our
                 company as an opportunity for employment.</p>
-              <button onClick={executeScroll} className='  text-white text-lg font-medium py-1 px-10  bg-light-red hover:bg-green-800 transition-all'>APPLY</button>
+              <button onClick={executeScroll} className='  text-white text-lg font-medium py-1 px-10  bg-light-red hover:bg-green-600 transition-all'>APPLY</button>
             </div>
             <div className='col-lg-6 col-md-12 lg:order-last order-first lg:mb-0 mb-4'>
               <img src={Administrator_pic} alt="Administrator_pic" />
@@ -696,7 +696,7 @@ function App() {
                 contact our human resources department by filling out the form above adding your recent work experience in a resume
                 summary of experience (CV) and we will respond after reviewing your submission. We thank you for considering our
                 company as an opportunity for employment.</p>
-              <button onClick={executeScroll} className='  text-white text-lg font-medium py-1 px-10  bg-light-red hover:bg-green-800 transition-all'>APPLY</button>
+              <button onClick={executeScroll} className='  text-white text-lg font-medium py-1 px-10  bg-light-red hover:bg-green-600 transition-all'>APPLY</button>
             </div>
           </div>
         </section>
@@ -712,7 +712,7 @@ function App() {
                 contact our human resources department by filling out the form above adding your recent work experience in a resume
                 summary of experience (CV) and we will respond after reviewing your submission. We thank you for considering our
                 company as an opportunity for employment.</p>
-              <button onClick={executeScroll} className='  text-white text-lg font-medium py-1 px-10  bg-light-red hover:bg-green-800 transition-all'>APPLY</button>
+              <button onClick={executeScroll} className='  text-white text-lg font-medium py-1 px-10  bg-light-red hover:bg-green-600 transition-all'>APPLY</button>
             </div>
             <div className='col-lg-6 col-md-12 lg:order-last order-first lg:mb-0 mb-4'>
               <img src={Manufacture_pic} alt="Manufacture_pic" />
@@ -734,7 +734,7 @@ function App() {
                 contact our human resources department by filling out the form above adding your recent work experience in a resume
                 summary of experience (CV) and we will respond after reviewing your submission. We thank you for considering our
                 company as an opportunity for employment.</p>
-              <button onClick={executeScroll} className='  text-white text-lg font-medium py-1 px-10  bg-light-red hover:bg-green-800 transition-all'>APPLY</button>
+              <button onClick={executeScroll} className='  text-white text-lg font-medium py-1 px-10  bg-light-red hover:bg-green-600 transition-all'>APPLY</button>
             </div>
           </div>
         </section>
@@ -750,7 +750,7 @@ function App() {
                 contact our human resources department by filling out the form above adding your recent work experience in a resume
                 summary of experience (CV) and we will respond after reviewing your submission. We thank you for considering our
                 company as an opportunity for employment.</p>
-              <button onClick={executeScroll} className='  text-white text-lg font-medium py-1 px-10  bg-light-red hover:bg-green-800 transition-all'>APPLY</button>
+              <button onClick={executeScroll} className='  text-white text-lg font-medium py-1 px-10  bg-light-red hover:bg-green-600 transition-all'>APPLY</button>
             </div>
             <div className='col-lg-6 col-md-12 lg:order-last order-first lg:mb-0 mb-4'>
               <img src={Customer_pic} className="h-full  " alt="Customer_pic" />
@@ -772,7 +772,7 @@ function App() {
                 contact our human resources department by filling out the form above adding your recent work experience in a resume
                 summary of experience (CV) and we will respond after reviewing your submission. We thank you for considering our
                 company as an opportunity for employment.</p>
-              <button onClick={executeScroll} className='  text-white text-lg font-medium py-1 px-10  bg-light-red hover:bg-green-800 transition-all'>APPLY</button>
+              <button onClick={executeScroll} className='  text-white text-lg font-medium py-1 px-10  bg-light-red hover:bg-green-600 transition-all'>APPLY</button>
             </div>
           </div>
         </section>
@@ -788,7 +788,7 @@ function App() {
                 contact our human resources department by filling out the form above adding your recent work experience in a resume
                 summary of experience (CV) and we will respond after reviewing your submission. We thank you for considering our
                 company as an opportunity for employment.</p>
-              <button onClick={executeScroll} className='  text-white text-lg font-medium py-1 px-10  bg-light-red hover:bg-green-800 transition-all'>APPLY</button>
+              <button onClick={executeScroll} className='  text-white text-lg font-medium py-1 px-10  bg-light-red hover:bg-green-600 transition-all'>APPLY</button>
             </div>
             <div className='col-lg-6 col-md-12 lg:order-last order-first lg:mb-0 mb-4'>
               <img src={Lawyer1_pic} alt="Lawyer1_pic" />
