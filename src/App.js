@@ -164,7 +164,10 @@ function App() {
               <div className='row  justify-center items-center'>
                 <div className='col-4'>
                   <img src={leafLogo2} className="mx-8" width="75px" alt="leafLogo" />
-                  <p className='text-sm text-left sm:text-left sm:text-md text-red-600 font-semibold'>CULTIVATED WELLNESS</p>
+                  <p className='text-sm text-left sm:text-left sm:text-md text-red-600 font-semibold'>
+                    {/* CULTIVATED WELLNESS */}
+                    Cultivate Wellness
+                    </p>
 
                 </div>
                 <div className='col-4 text-center lg:text-6xl md:text-6xl text-5xl font-medium flex items-center justify-center'>
@@ -212,8 +215,8 @@ function App() {
               </div>
               <div className='col-lg-3 col-md-10'>
                 <div className='relative'>
-                  <input name='secondFname' value={recruitModel.secondFname} onChange={handleChange} type="email" placeholder='2nd Family Name' className={`w-full outline-blue-400 border-2 p-2 border-gray-400`} />
-                  <span hidden={recruitModel.secondFname.length} className='absolute text-gray-400 font-medium text-sm top-1/4 left-40'>(optional)</span>
+                  <input name='secondFname' value={recruitModel.secondFname} onChange={handleChange} type="email" placeholder='2nd Family Name ' className={`w-full outline-blue-400 border-2 p-2 border-gray-400`} />
+                  <span hidden={recruitModel.secondFname.length} className='absolute text-red-400 font-medium text-sm top-1/4 right-24'>(optional)</span>
                 </div>
               </div>
 
@@ -230,27 +233,29 @@ function App() {
               </div>
               <div className='col-lg-3 col-md-10 relative '>
                 <div className='relative'>
-                  <input name='thirdFname' value={recruitModel.thirdFname} onChange={handleChange} type="email" placeholder='3rd Family Name' className={`w-full outline-blue-400 border-2 p-2 border-gray-400`} />
-                  <span hidden={recruitModel.thirdFname.length} className='absolute text-gray-400 font-medium text-sm top-1/4 left-36'>(optional)</span>
+                  <input name='thirdFname' value={recruitModel.thirdFname} onChange={handleChange} type="email" placeholder='3rd Family Name ' className={`w-full outline-blue-400 border-2 p-2 border-gray-400`} />
+                  <span hidden={recruitModel.thirdFname.length} className='absolute text-red-400 font-medium text-sm top-1/4 right-24'>(optional)</span>
                 </div>
               </div>
             </div>
             <div className='row justify-center gap-2 mb-4 g-0  '>
-              <div className='col-lg-3 col-md-10    bg-white    text-gray-500 text-base font-medium bg-light-gray '>
+              <div className='col-lg-3 col-md-10  bg-white  text-gray-500 text-base font-medium bg-light-gray '>
                 <div className='h-full relative'>
-                  <PhoneInput country={'es'} dropdownClass={"custom-dropdown"} enableSearch disableSearchIcon countryCodeEditable={false} value={mobile} onChange={handleMobileChange} />
+                  <PhoneInput country={'es'}  dropdownClass={"custom-dropdown"} enableSearch disableSearchIcon countryCodeEditable={false} value={mobile} onChange={handleMobileChange} />
                 </div>
               </div>
               <div className='col-lg-3 col-md-10'>
-                <input name='industry' value={recruitModel.industry} onChange={handleChange} type="text" placeholder='Current Industry' className="w-full outline-blue-400 border-2 px-2 py-2 border-gray-400" />
+                <select name="country" value={recruitModel.country} onChange={handleChange} className='w-full h-10 outline-blue-400 border-2 px-2 py-2 border-gray-400' >
+                  {all_Countries.map((all_country) => <option value={all_country.isoCode} key={all_country.isoCode}>{all_country.name.substring(0, 33)}</option>)}
+                </select>
               </div>
             </div>
 
             <div className='row justify-center gap-2 mb-4 g-0  '>
               <div className='col-lg-3 col-md-10  '>
-                <select name="country" value={recruitModel.country} onChange={handleChange} className='w-full outline-blue-400 border-2 px-2 py-2 border-gray-400' >
-                  {all_Countries.map((all_country) => <option value={all_country.isoCode} key={all_country.isoCode}>{all_country.name.substring(0, 33)}</option>)}
-                </select>
+                <input name='industry' value={recruitModel.industry} onChange={handleChange} type="text" placeholder='Current Industry' className="w-full outline-blue-400 border-2 px-2 py-2 border-gray-400" />
+
+
                 {/* <select name="country"  className="form-select appearance-none block w-full px-3  py-1.5 text-base  font-normaltext-gray-700   bg-white bg-clip-padding bg-no-repeat  border-2 border-gray-400   transition ease-in-out m-0 focus:text-gray-700  outline-blue-400  " aria-label="Default select example">
                   <option  >Open this select menu</option>
                   <option >One dsf sdg sdgf sdfg sdfg sdfg dsg sdfg </option>
@@ -317,7 +322,7 @@ function App() {
 
             <div className='row justify-center gap-2 mb-8 g-0 '>
               <div className='col-lg-6 col-md-10'>
-                <p className='text-lg text-gray-500 mb-4 '><sup className='text-red-600 font-bold'>*</sup>Mandatory</p>
+                <p className='text-lg text-red-600 mb-4  '><sup className='text-red-600 font-bold'>*</sup>Mandatory</p>
                 <button onClick={handleSubmit} className='text-white bg-gray-900 w-full px-2 py-1 text-3xl font-medium tracking-wide'>SUBMIT</button>
               </div>
 
@@ -477,7 +482,7 @@ function App() {
                     <input type="file" hidden />
                   </label>
                   <p className='text-xs text-gray-500 font-medium mb-8'>Maximum Upload File Size 35MB</p>
-                  <p className='font-normal text-sm'>ALL Filles uploaded here will be scanned to ensure content is benign, contaminated files and threats will be rejected</p>
+                  <p className='font-normal text-sm'>ALL files uploaded here will be scanned to ensure content is benign, contaminated files and threats will be rejected</p>
                 </div>
               </div>
             </div>
