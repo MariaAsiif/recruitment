@@ -31,7 +31,7 @@ import Validator, { ValidationTypes as V_Type, } from './components/shared/formV
 
 import PhoneInput from 'react-phone-input-2'
 import 'react-phone-input-2/lib/style.css'
-
+import { AiFillCalendar } from 'react-icons/ai'
 import { Country, State, City } from 'country-state-city';
 // import DatePicker from "react-datepicker";
 // import "react-datepicker/dist/react-datepicker.css";
@@ -165,14 +165,19 @@ function App() {
   // ));
 
   const renderCustomInput = ({ ref }) => (
-    <input
-      readOnly
-      ref={ref} // necessary
-      placeholder="yyy-mm-dd"
-      value={dateob  ? `${dateob.year}/${dateob.month}/${dateob.day}` : ''}
-      className={`w-full outline-blue-400 border-2 px-2 py-2 ${validationModel.dateob ? "border-red-400" : "border-gray-400"}`}
+    < div className='relative cursor-pointer'>
+      <input
+        readOnly
+        ref={ref} // necessary
+        placeholder="yyy-mm-dd"
+        value={dateob ? `${dateob.year}/${dateob.month}/${dateob.day}` : ''}
+        className={`date_picker w-full outline-blue-400 cursor-pointer z-30  border-2 px-2 py-2 ${validationModel.dateob ? "border-red-400" : "border-gray-400"}`}
       // a styling class
-    />
+      />
+      <div className=" absolute top-3 cursor-pointer right-5">
+        <AiFillCalendar />
+      </div>
+    </div >
   )
 
   // ========================= Use Effect ==========================
@@ -242,8 +247,8 @@ function App() {
 
                 <div className=' text-gray-500 text-base font-medium bg-light-gray flex'>
                   {/* <select name='surname' value={recruitModel.surname} onChange={handleChange} className='w-1/5 h-full py-2 border-gray-400 border-2 border-r-0 outline-blue-400 bg-white'>
-                    {surnames.map((sur, i) => <option key={i}>{sur}</option>)}
-                  </select> */}
+    {surnames.map((sur, i) => <option key={i}>{sur}</option>)}
+  </select> */}
                   <div className="dropdown relative w-1/5">
                     <button className=" w-full bg-white border-2 border-r-0 h-full  border-gray-400 text-gray-400 dropdown-toggle p-2   focus:outline-blue-400 focus:ring-0 active:border-blue-400   transition duration-150 ease-in-out flex items-center whitespace-nowrap " type="button" id="surdropdown" data-bs-toggle="dropdown" aria-expanded="false">
                       {surnames.find((s_name) => s_name === recruitModel.surname)}
@@ -279,7 +284,7 @@ function App() {
                 {validationModel.firstFnameError}
               </div>
             </div>
-            <div className='row justify-center gap-2 mb-4 g-0 '>
+            <div className='row justify-center gap-2 mb-4 g-0  flex-column-reverse flex-lg-row flex-md-row flex-sm-row'>
               <div className='col-lg-3 col-md-10'>
                 <div className='relative'>
                   <input name='email' value={recruitModel.email} onChange={handleChange} type="email" placeholder='Email Address' className={`w-full outline-blue-400 border-2 p-2 ${validationModel.emailError ? "border-red-400" : "border-gray-400"}`} />
@@ -290,7 +295,7 @@ function App() {
               <div className='col-lg-3 col-md-10'>
                 <div className='relative'>
                   <input name='secondFname' value={recruitModel.secondFname} onChange={handleChange} type="email" placeholder='2nd Family Name ' className={`w-full outline-blue-400 border-2 p-2 border-gray-400`} />
-                  <span hidden={recruitModel.secondFname.length} className='absolute text-red-400 font-medium text-sm top-1/4 right-24'>(optional)</span>
+                  <span hidden={recruitModel.secondFname.length} className='absolute text-red-400 font-medium  text-xs top-1/3 left-40'>(optional)</span>
                 </div>
               </div>
 
@@ -308,7 +313,7 @@ function App() {
               <div className='col-lg-3 col-md-10 relative '>
                 <div className='relative'>
                   <input name='thirdFname' value={recruitModel.thirdFname} onChange={handleChange} type="email" placeholder='3rd Family Name ' className={`w-full outline-blue-400 border-2 p-2 border-gray-400`} />
-                  <span hidden={recruitModel.thirdFname.length} className='absolute text-red-400 font-medium text-sm top-1/4 right-24'>(optional)</span>
+                  <span hidden={recruitModel.thirdFname.length} className='absolute text-red-400 font-medium text-xs top-1/3 left-40'>(optional)</span>
                 </div>
               </div>
             </div>
@@ -340,7 +345,7 @@ function App() {
                           <path fill="currentColor" d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z" />
                         </svg>
                       </button>
-                      <ul className=" dropdown-menu   absolute w-full  max-h-52 overflow-y-scroll bg-white text-base z-50 float-left py-2 list-none text-left shadow-lg mt-1 hidden m-0 bg-clip-padding border-none " aria-labelledby="statedropdown">
+                      <ul className=" dropdown-menu   absolute w-full  max-h-52 overflow-y-scroll overflow-x-hidden bg-white text-base z-50 float-left py-2 list-none text-left shadow-lg mt-1 hidden m-0 bg-clip-padding border-none " aria-labelledby="statedropdown">
                         {all_States.map((state) => {
                           return (
                             <li key={state.isoCode}>
@@ -359,7 +364,7 @@ function App() {
                           <path fill="currentColor" d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z" />
                         </svg>
                       </button>
-                      <ul className=" dropdown-menu   absolute w-full  max-h-52 overflow-y-scroll bg-white text-base z-50 float-left py-2 list-none text-left shadow-lg mt-1 hidden m-0 bg-clip-padding border-none " aria-labelledby="citydropdown">
+                      <ul className=" dropdown-menu   absolute w-full  max-h-52 overflow-y-scroll overflow-x-hidden bg-white text-base z-50 float-left py-2 list-none text-left shadow-lg mt-1 hidden m-0 bg-clip-padding border-none " aria-labelledby="citydropdown">
                         {all_Cities.map((city) => {
                           return (
                             <li key={city.name}>
@@ -439,11 +444,12 @@ function App() {
           <div className='col-12 bg-light-red'  >
             <div className='row justify-center text-white lg:text-lg text-xs font-semibold gap-0'>
               {dropItem.map((item, index) => (
-                <div key={index} className='col-lg-2 col-4 cursor-pointer py-1 text-center hover:bg-red-600 transition-all' onClick={() => handleDropdown(index)} >
-                  {item}  {index === activeIndex ?
-                    <IoChevronUpOutline className='inline lg:text-4xl text-sm' />
+                <div key={index} className=' dropdowns col-lg-2 col-4 cursor-pointer flex py-1 text-center   hover:bg-red-600 transition-all' onClick={() => handleDropdown(index)} >
+                  <p className=' links   py-1 '>{item} </p>  {index === activeIndex ?
+                    <IoChevronUpOutline className=' arrow_icon inline lg:text-4xl text-sm' />
                     :
-                    <IoChevronDownOutline className='inline lg:text-4xl text-sm' />}
+                    <IoChevronDownOutline className=' arrow_icon inline lg:text-4xl text-sm' />}
+
                 </div>
 
               ))}
@@ -505,7 +511,7 @@ function App() {
                     <input type="file" hidden />
                   </label>
                   <p className='text-xs text-gray-500 font-medium mb-8'>Maximum Upload File Size 35MB</p>
-                  <p className='font-normal text-sm'>ALL files uploaded here will be scanned to ensure content is benign, contaminated files and threats will be rejected</p>
+                  <p className='font-normal text-sm'>All files uploaded here will be scanned to ensure content is benign, contaminated files and threats will be rejected</p>
                 </div>
               </div>
             </div>
@@ -798,10 +804,10 @@ function App() {
 
         <section className='mb-4'>
           <div className="accordion" id="accordionExample">
-            <div className=" bg-white   border rounded-none border-gray-900 mb-3  ">
+            <div className=" bg-white   border rounded-none border-gray-900 mb-3   ">
               <h2 className="accordion-header mb-0" id="headingTwo">
-                <button className=" text-black font-medium px-2 py-1  text-sm   accordion-button collapsed relative flex items-center w-full    text-left bg-white     transition focus:outline-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                  <span> HOW WE SUPPORT WORKING  <span className='font-bold   text-red-600'>MOTHERS</span> AND THEIR FAMILIES</span>
+                <button className=" text-black font-medium px-2 py-1  text-sm    accordion-button collapsed relative flex items-center w-full    text-left bg-white     transition focus:outline-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                  <p> HOW WE SUPPORT WORKING  <span className='sami_filed'>MOTHERS</span> AND THEIR FAMILIES</p>
                 </button>
               </h2>
               <div id="collapseTwo" className="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
@@ -814,7 +820,7 @@ function App() {
             <div className=" bg-white   border rounded-none border-gray-900  ">
               <h2 className="accordion-header mb-0" id="headthree">
                 <button className=" text-black font-medium px-2 py-1  text-sm   accordion-button collapsed relative flex items-center w-full    text-left bg-white     transition focus:outline-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                  <span> HOW WE SUPPORT WORKING  <span className='font-bold   text-red-600'>FATHERS</span> AND THEIR FAMILIES</span>
+                  <p> HOW WE SUPPORT WORKING  <span className='sami_filed'>FATHERS</span> AND THEIR FAMILIES</p>
                 </button>
               </h2>
               <div id="collapseThree" className="accordion-collapse collapse" aria-labelledby="headthree" data-bs-parent="#accordionExample">
