@@ -284,7 +284,7 @@ function App() {
                 {validationModel.firstFnameError}
               </div>
             </div>
-            <div className='row justify-center gap-2 mb-4 g-0  flex-column-reverse flex-lg-row flex-md-row flex-sm-row'>
+            <div className='row justify-center gap-2 mb-4 g-0 w-full flex-col-reverse lg:flex-row md:flex-row sm:flex-row '>
               <div className='col-lg-3 col-md-10'>
                 <div className='relative'>
                   <input name='email' value={recruitModel.email} onChange={handleChange} type="email" placeholder='Email Address' className={`w-full outline-blue-400 border-2 p-2 ${validationModel.emailError ? "border-red-400" : "border-gray-400"}`} />
@@ -301,7 +301,7 @@ function App() {
 
             </div>
 
-            <div className='row justify-center gap-2 mb-4 g-0 '>
+            <div className='row justify-center gap-2 mb-4 g-0   '>
 
               <div className='col-lg-3 col-md-10 relative '>
                 <div className='relative'>
@@ -431,7 +431,7 @@ function App() {
 
             <div className='row justify-center gap-2 mb-8 g-0 '>
               <div className='col-lg-6 col-md-10'>
-                <p className='text-lg text-red-400 mb-4  '><sup className='text-red-600 font-bold'>*</sup>Mandatory</p>
+                <p className='text-lg text-red-600 mb-4  '><sup className='text-red-600 font-bold'>*</sup>Mandatory</p>
                 <button onClick={handleSubmit} className='text-white bg-gray-900 w-full px-2 py-1 text-3xl font-medium tracking-wide'>SUBMIT</button>
               </div>
             </div>
