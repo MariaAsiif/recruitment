@@ -41,7 +41,11 @@ import { Country, State, City } from 'country-state-city';
 
 import '@hassanmojab/react-modern-calendar-datepicker/lib/DatePicker.css';
 import DatePicker from '@hassanmojab/react-modern-calendar-datepicker';
-
+import { Link } from '@mui/material';
+import { FiFacebook } from 'react-icons/fi'
+import { FaTwitter } from 'react-icons/fa'
+import { BsInstagram } from 'react-icons/bs'
+import { AiFillLinkedin } from 'react-icons/ai'
 // import Calendar from "react-"
 // import { MobileDatePicker } from '@mui/x-date-pickers/MobileDatePicker';
 // import TextField from '@mui/material/TextField';
@@ -504,9 +508,9 @@ function App() {
           <div className='col-12 bg-light-red'  >
             <div className='row justify-center text-white lg:text-lg text-xs font-semibold gap-0'>
               {dropItem.map((item, index) => (
-                <div key={index} className=' dropdowns col-lg-2 col-4 cursor-pointer flex py-1 text-center   hover:bg-red-600 transition-all' onClick={() => handleDropdown(index)} >
-                  <p className=' links   py-1 '>{item} </p>  {index === activeIndex ?
-                    <IoChevronUpOutline className=' arrow_icon inline lg:text-4xl text-sm' />
+                <div key={index} className=' dropdowns col-lg-2 col-4 cursor-pointer flex py-1 text-center md:text-center md:d-flex md-justify-center  hover:bg-red-600 transition-all' onClick={() => handleDropdown(index)} >
+                  <p className=' links   py-1  '>{item} </p>  {index === activeIndex ?
+                    <IoChevronUpOutline className=' arrow_icon inline lg:text-4xl text-sm ' />
                     :
                     <IoChevronDownOutline className=' arrow_icon inline lg:text-4xl text-sm' />}
 
@@ -895,8 +899,22 @@ function App() {
           <img src={bigPic} className="w-full" alt='bigPic' />
         </section>
       </div>
-      <footer className='bscontainer-fluid bg-light-red text-white text-xs text-center font-normal py-3'>
-        COPYRIGHTS© 2022 HPORX LTD, IRELAND. ALL RIGHTS RESERVED. | PRIVACY POLICY | +44 1223 298541 | TERMS OF USE | DIGITAL AGENCY SERVICES | SITE DIRECTORY
+      <footer className='bscontainer-fluid bg-light-red d-flex text-white text-xs text-center font-normal py-3 footer'>
+        COPYRIGHTS © 2022 HPORX LTD, IRELAND. ALL RIGHTS RESERVED.  | PRIVACY POLICY | +44 1223 298541 | TERMS OF USE | DIGITAL AGENCY SERVICES | SITE DIRECTORY
+        <div className='footer_social'>
+          <span>
+            <FiFacebook />
+          </span>
+          <span>
+            <FaTwitter />
+          </span>
+          <span>
+            <BsInstagram />
+          </span>
+          <span>
+            <AiFillLinkedin />
+          </span>
+        </div>
       </footer>
 
 

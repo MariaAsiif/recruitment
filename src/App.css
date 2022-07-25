@@ -60,10 +60,64 @@
   font-weight: 600;
 }
 
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer .footer_social {
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10px;
+}
+
+.footer_social span {
+  margin-left: 10px;
+  border: 1pt solid white;
+  width: 32px;
+  padding: 4px 6px;
+  height: 32px;
+  align-items: center;
+  border-radius: 20px;
+
+
+}
+.footer_social span:hover {
+  background-color: #60a5fa;
+  cursor: pointer;
+  border: 1pt solid #60a5fa;
+}
+
+.footer_social span svg {
+  font-size: 18px;
+}
+
+
 
 
 /* // Small devices (landscape phones, 576px and up) */
 @media (max-width: 576px) {
+
+  .dropdowns {
+    display: flex;
+    justify-content: center;
+  }
+
+  .links {
+    font-size: 13.5px;
+  }
+
+
+  .dropdowns .arrow_icon {
+    /* margin-top: 10px; */
+    font-size: 15px;
+    margin-left: 5px;
+  }
+
+
   .city_group_hide {
     display: none;
   }
@@ -79,16 +133,20 @@
   .city_group_show {
     display: block;
   }
-  .email_hide{
+
+  .email_hide {
     display: none;
   }
-  .thirdname_show{
+
+  .thirdname_show {
     display: block;
   }
-  .email_show{
+
+  .email_show {
     display: block;
   }
-  .thirdname_hide{
+
+  .thirdname_hide {
     display: none;
   }
 
@@ -98,6 +156,19 @@
 }
 
 @media only screen and (width : 540px) {
+  .dropdowns {
+    display: flex;
+    justify-content: center;
+  }
+
+
+  .dropdowns .arrow_icon {
+    /* margin-top: 10px; */
+    font-size: 20px;
+    margin-left: 5px;
+  }
+
+
   .date_picker {
     width: 35vh;
   }
@@ -131,6 +202,20 @@
 }
 
 @media only screen and (width : 820px) {
+
+  .dropdowns {
+    display: flex;
+    justify-content: center;
+  }
+
+
+  .dropdowns .arrow_icon {
+    /* margin-top: 10px; */
+    font-size: 20px;
+    margin-left: 5px;
+  }
+
+
   .date_picker {
     width: 28vh;
   }
@@ -150,22 +235,39 @@
   .city_group_show {
     display: block;
   }
-  .email_hide{
+
+  .email_hide {
     display: none;
   }
-  .thirdname_show{
+
+  .thirdname_show {
     display: block;
   }
-  .email_show{
+
+  .email_show {
     display: block;
   }
-  .thirdname_hide{
+
+  .thirdname_hide {
     display: none;
   }
 
 }
 
 @media only screen and (width : 768px) {
+
+  .dropdowns {
+    display: flex;
+    justify-content: center;
+  }
+
+
+  .dropdowns .arrow_icon {
+    /* margin-top: 10px; */
+    font-size: 20px;
+    margin-left: 5px;
+  }
+
   .date_picker {
     width: 30vh;
   }
@@ -185,22 +287,39 @@
   .city_group_show {
     display: block;
   }
-  .email_hide{
+
+  .email_hide {
     display: none;
   }
-  .thirdname_show{
+
+  .thirdname_show {
     display: block;
   }
-  .email_show{
+
+  .email_show {
     display: block;
   }
-  .thirdname_hide{
+
+  .thirdname_hide {
     display: none;
   }
 
 }
 
 @media only screen and (width : 912px) {
+
+  .dropdowns {
+    display: flex;
+    justify-content: center;
+  }
+
+
+  .dropdowns .arrow_icon {
+    /* margin-top: 10px; */
+    font-size: 20px;
+    margin-left: 5px;
+  }
+
   .date_picker {
     width: 27vh;
   }
@@ -221,16 +340,19 @@
     display: block;
   }
 
-  .email_hide{
+  .email_hide {
     display: none;
   }
-  .thirdname_show{
+
+  .thirdname_show {
     display: block;
   }
-  .email_show{
+
+  .email_show {
     display: block;
   }
-  .thirdname_hide{
+
+  .thirdname_hide {
     display: none;
   }
 
@@ -254,20 +376,23 @@
     display: none;
   }
 
-  .email_hide{
-    display: block;
-  }
-  .thirdname_show{
-    display: none;
-  }
-  .email_show{
-    display: none;
-  }
-  .thirdname_hide{
+  .email_hide {
     display: block;
   }
 
-  
+  .thirdname_show {
+    display: none;
+  }
+
+  .email_show {
+    display: none;
+  }
+
+  .thirdname_hide {
+    display: block;
+  }
+
+
 }
 
 
@@ -290,20 +415,23 @@
     display: none;
   }
 
-  .email_hide{
-    display: block;
-  }
-  .thirdname_show{
-    display: none;
-  }
-  .email_show{
-    display: none;
-  }
-  .thirdname_hide{
+  .email_hide {
     display: block;
   }
 
-  
+  .thirdname_show {
+    display: none;
+  }
+
+  .email_show {
+    display: none;
+  }
+
+  .thirdname_hide {
+    display: block;
+  }
+
+
 }
 
 
