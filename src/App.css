@@ -29,11 +29,23 @@
   width: 300px;
   outline: none;
 }
+.react-tel-input .selected-flag .arrow {
+  position: relative;
+  top: 50%;
+  margin-top: -2px;
+  left: 20px;
+  width: 8px !important;
+  height: 5px !important;
+  border-left: 3px solid transparent;
+  border-right: 3px solid transparent;
+  border-top: 4px solid #555;
+}
+
 
 .react-tel-input .flag {
-  width: 16px;
-  margin-left: 14px;
-  height: 11px;
+  width: 17px !important;
+  margin-left: 5px !important;
+  height: 13px !important;
 }
 
 .links {
@@ -64,6 +76,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.footer .footer_text{
+  margin-left: 20px;
 }
 
 .footer .footer_social {
@@ -148,6 +164,27 @@
   .thirdname_hide {
     display: none;
   }
+  .footer .footer_text{
+     margin: 0px;
+  }
+  .footer_social{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    margin-top: 10px;
+  }
+  .footer_social span{
+     display: flex;
+  }
+
+  .footer {
+    display: block;
+  }
+  
+  .footer .footer_text{
+    margin-left: 5px;
+  }
+ 
 
   /* .date_picker{
     width: 21.1vh;
@@ -195,6 +232,13 @@
 
   .city_group_show {
     display: block;
+  }
+  .footer {
+    display: block;
+  }
+  
+  .footer .footer_text{
+    margin-left: 5px;
   }
 
 
@@ -250,6 +294,13 @@
   .thirdname_hide {
     display: none;
   }
+  .footer {
+    display: block;
+  }
+  
+  .footer .footer_text{
+    margin-left: 5px;
+  }
 
 }
 
@@ -302,6 +353,23 @@
   .thirdname_hide {
     display: none;
   }
+  .footer_social{
+    margin-top: 5px;
+  }
+  .footer_social span{
+    width: 30px;
+    height: 30px;
+  }
+  .footer_social span svg{
+    font-size: 15px;
+  }
+  .footer {
+    display: block;
+  }
+  
+  .footer .footer_text{
+    margin-left: 10px;
+  }
 
 }
 
@@ -353,6 +421,13 @@
 
   .thirdname_hide {
     display: none;
+  }
+  .footer {
+    display: block;
+  }
+  
+  .footer .footer_text{
+    margin-left: 10px;
   }
 
 

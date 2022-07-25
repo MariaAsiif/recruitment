@@ -240,7 +240,7 @@ function App() {
                 <div className='col-4 '>
                   <figure>
                     <img src={usFlaglogo} className=" ml-auto  md:w-16 w-11 " alt="leafLogo" />
-                    <figcaption className='text-right md:mr-1 mr-1  mt-1 text-xs text-red-600 font-semibold'>Language</figcaption>
+                    <figcaption className='text-right md:mr-1  mr-1  mt-1 text-xs text-red-600 font-semibold'>Language</figcaption>
                   </figure>
                 </div>
               </div>
@@ -899,9 +899,9 @@ function App() {
           <img src={bigPic} className="w-full" alt='bigPic' />
         </section>
       </div>
-      <footer className='bscontainer-fluid bg-light-red d-flex text-white text-xs text-center font-normal py-3 footer'>
+      <footer className='bscontainer-fluid bg-light-red d-flex text-white text-xs text-center font-normal py-3 footer '>
         COPYRIGHTS © 2022 HPORX LTD, IRELAND. ALL RIGHTS RESERVED.
-        <span className='mx-4'>
+        <span className='footer_text'>
           |  <span className='hover:underline cursor-pointer'>PRIVACY POLICY </span>
           | <span className='hover:underline cursor-pointer' >+44 1223 298541 </span>
           | <span className='hover:underline cursor-pointer' > TERMS OF USE </span>
