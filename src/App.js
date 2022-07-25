@@ -902,16 +902,16 @@ function App() {
       <footer className='bscontainer-fluid bg-light-red d-flex text-white text-xs text-center font-normal py-3 footer'>
         COPYRIGHTS © 2022 HPORX LTD, IRELAND. ALL RIGHTS RESERVED.  | PRIVACY POLICY | +44 1223 298541 | TERMS OF USE | DIGITAL AGENCY SERVICES | SITE DIRECTORY
         <div className='footer_social'>
-          <span>
+          <span className='mx-2'>
             <FiFacebook />
           </span>
-          <span>
+          <span className='mx-2'>
             <FaTwitter />
           </span>
-          <span>
+          <span className='mx-2'>
             <BsInstagram />
           </span>
-          <span>
+          <span className='mx-2'>
             <AiFillLinkedin />
           </span>
         </div>
