@@ -129,7 +129,7 @@ function App() {
   }
 
   const setValidation = () => {
-  debugger
+    debugger
     let myvalidation_Obj = {
       ...validationModel,
       fullnameError: Validator(recruitModel.fullname, [V_Type.required], ['Please fill out this required field']),
@@ -140,7 +140,7 @@ function App() {
       ageError: Validator(recruitModel.age, [V_Type.required], ['Must add your age']),
 
     };
-    console.log("myvalidation_Obj" , myvalidation_Obj)
+    console.log("myvalidation_Obj", myvalidation_Obj)
     setvalidationModel(myvalidation_Obj);
     return Validator(myvalidation_Obj, V_Type.NullCheck);
   };
@@ -159,12 +159,12 @@ function App() {
     let my_validation = setValidation();
     if (my_validation) {
       console.log('Api will not run', my_validation);
-    } 
-     else if (file === '') {
+    }
+    else if (file === '') {
       setIsShow(true)
     }
     else {
-    alert("Data Send Succesfully ")
+      alert("Data Send Succesfully ")
 
     }
   }
@@ -173,7 +173,7 @@ function App() {
 
 
   // ************************* Date Picker function *********************
-  
+
   const renderCustomInput = ({ ref }) => (
     < div className='relative cursor-pointer'>
       <input
@@ -346,7 +346,7 @@ function App() {
               <div className={`col-lg-3 col-md-10  bg-white  text-gray-500 text-base font-medium bg-light-gray `} >
                 <div className='h-full relative'>
                   <PhoneInput country={'es'} dropdownClass={"custom-dropdown"} enableSearch disableSearchIcon countryCodeEditable={false} value={mobile} onChange={handleMobileChange} />
-                {validationModel.mobileError}
+                  {validationModel.mobileError}
                 </div>
 
               </div>
@@ -909,7 +909,7 @@ function App() {
 
 
       </div>
-     { isShow && <PopUp permition={isShow} Toggle={(value) => setIsShow(value)} /> }
+      {isShow && <PopUp permition={isShow} Toggle={(value) => setIsShow(value)} />}
 
       <footer className='bscontainer-fluid bg-light-red d-flex text-white text-xs text-center font-normal py-3 footer '>
         COPYRIGHTS © 2022 HPORX LTD, IRELAND. ALL RIGHTS RESERVED.
@@ -921,17 +921,29 @@ function App() {
           | <span className='hover:underline cursor-pointer' >SITE DIRECTORY </span>
         </span>
         <div className='footer_social'>
-          <span className='mx-2'>
-            <FiFacebook />
+          <span className='mx-2' >
+            <a href="https://www.facebook.com/laher.asif" target="_blank" rel="noopener noreferrer">
+              <FiFacebook />
+            </a>
           </span>
           <span className='mx-2'>
-            <FaTwitter />
+            <a href=" https://www.twitter.com/" target="_blank" rel="noopener noreferrer">
+
+              <FaTwitter />
+            </a>
           </span>
+
           <span className='mx-2'>
-            <BsInstagram />
+            <a href=" https://www.instagram.com/" target="_blank" rel="noopener noreferrer">
+
+              <BsInstagram />
+            </a>
           </span>
+
           <span className='mx-2'>
-            <AiFillLinkedin />
+            <a href=" https://www.linkedin.com/in/laher-asif-a53455204/" target="_blank" rel="noopener noreferrer">
+              <AiFillLinkedin />
+            </a>
           </span>
         </div>
       </footer>
