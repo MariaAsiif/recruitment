@@ -46,6 +46,7 @@ import { FiFacebook } from 'react-icons/fi'
 import { FaTwitter } from 'react-icons/fa'
 import { BsInstagram } from 'react-icons/bs'
 import { AiFillLinkedin } from 'react-icons/ai'
+import PopUp from './components/popup/popup';
 // import Calendar from "react-"
 // import { MobileDatePicker } from '@mui/x-date-pickers/MobileDatePicker';
 // import TextField from '@mui/material/TextField';
@@ -898,7 +899,11 @@ function App() {
         <section className='mb-16'>
           <img src={bigPic} className="w-full" alt='bigPic' />
         </section>
+
+        
       </div>
+      <PopUp/>
+
       <footer className='bscontainer-fluid bg-light-red d-flex text-white text-xs text-center font-normal py-3 footer '>
         COPYRIGHTS © 2022 HPORX LTD, IRELAND. ALL RIGHTS RESERVED.
         <span className='footer_text'>
