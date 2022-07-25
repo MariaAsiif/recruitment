@@ -33,25 +33,15 @@ import PhoneInput from 'react-phone-input-2'
 import 'react-phone-input-2/lib/style.css'
 import { AiFillCalendar } from 'react-icons/ai'
 import { Country, State, City } from 'country-state-city';
-// import DatePicker from "react-datepicker";
-// import "react-datepicker/dist/react-datepicker.css";
-
-// import "react-modern-calendar-datepicker/lib/DatePicker.css";
-// import DatePicker from "react-modern-calendar-datepicker";
 
 import '@hassanmojab/react-modern-calendar-datepicker/lib/DatePicker.css';
 import DatePicker from '@hassanmojab/react-modern-calendar-datepicker';
-import { Link } from '@mui/material';
 import { FiFacebook } from 'react-icons/fi'
 import { FaTwitter } from 'react-icons/fa'
 import { BsInstagram } from 'react-icons/bs'
 import { AiFillLinkedin } from 'react-icons/ai'
 import PopUp from './components/popup/popup';
-// import Calendar from "react-"
-// import { MobileDatePicker } from '@mui/x-date-pickers/MobileDatePicker';
-// import TextField from '@mui/material/TextField';
-// import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment';
-// import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import ReactCountryFlag from "react-country-flag"
 
 function App() {
   const myRef = useRef(null)
@@ -506,6 +496,7 @@ function App() {
                 <p className='text-lg text-red-600 mb-4  '><sup className='text-red-600 font-bold'>*</sup>Mandatory</p>
                 <button onClick={handleSubmit} className='text-white bg-gray-900 w-full px-2 py-1 text-3xl font-medium tracking-wide'>SUBMIT</button>
               </div>
+
             </div>
           </div>
 
@@ -601,7 +592,19 @@ function App() {
                 contact our human resources department by filling out the form above adding your recent work experience in a resume
                 summary of experience (CV) and we will respond after reviewing your submission. We thank you for considering our
                 company as an opportunity for employment.</p>
-              <button onClick={executeScroll} className='  text-white text-lg font-medium py-1 px-10  bg-light-red hover:bg-green-600 transition-all'>APPLY</button>
+              <div>
+                <button onClick={executeScroll} className='mb-2 mr-2 text-white text-lg font-medium py-1 px-10  bg-light-red hover:bg-green-600 transition-all'>APPLY</button>
+                <span className='block md:inline'>
+                  <ReactCountryFlag className='mr-2' countryCode="ES" svg style={{ width: '2em', height: '2em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="DE" svg style={{ width: '2em', height: '2em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="GB" svg style={{ width: '2em', height: '2em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="US" svg style={{ width: '2em', height: '2em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="IE" svg style={{ width: '2em', height: '2em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="CA" svg style={{ width: '2em', height: '2em', }} />
+                </span>
+              </div>
+
+
             </div>
             <div className='col-lg-6 col-md-12 lg:order-last order-first lg:mb-0 mb-4 '>
               <img src={Business_pic} alt="Business_pic" />
@@ -623,7 +626,17 @@ function App() {
                 contact our human resources department by filling out the form above adding your recent work experience in a resume
                 summary of experience (CV) and we will respond after reviewing your submission. We thank you for considering our
                 company as an opportunity for employment.</p>
-              <button onClick={executeScroll} className='  text-white text-lg font-medium py-1 px-10  bg-light-red hover:bg-green-600 transition-all'>APPLY</button>
+              <div>
+                <button onClick={executeScroll} className='mb-2 mr-2 text-white text-lg font-medium py-1 px-10  bg-light-red hover:bg-green-600 transition-all'>APPLY</button>
+                <span className='block md:inline'>
+                  <ReactCountryFlag className='mr-2' countryCode="ES" svg style={{ width: '2em', height: '2em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="DE" svg style={{ width: '2em', height: '2em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="GB" svg style={{ width: '2em', height: '2em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="US" svg style={{ width: '2em', height: '2em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="IE" svg style={{ width: '2em', height: '2em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="CA" svg style={{ width: '2em', height: '2em', }} />
+                </span>
+              </div>
             </div>
           </div>
         </section>
@@ -639,7 +652,17 @@ function App() {
                 contact our human resources department by filling out the form above adding your recent work experience in a resume
                 summary of experience (CV) and we will respond after reviewing your submission. We thank you for considering our
                 company as an opportunity for employment.</p>
-              <button onClick={executeScroll} className='  text-white text-lg font-medium py-1 px-10  bg-light-red hover:bg-green-600 transition-all'>APPLY</button>
+              <div>
+                <button onClick={executeScroll} className='mb-2 mr-2 text-white text-lg font-medium py-1 px-10  bg-light-red hover:bg-green-600 transition-all'>APPLY</button>
+                <span className='block md:inline'>
+                  <ReactCountryFlag className='mr-2' countryCode="ES" svg style={{ width: '2em', height: '2em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="DE" svg style={{ width: '2em', height: '2em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="GB" svg style={{ width: '2em', height: '2em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="US" svg style={{ width: '2em', height: '2em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="IE" svg style={{ width: '2em', height: '2em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="CA" svg style={{ width: '2em', height: '2em', }} />
+                </span>
+              </div>
             </div>
             <div className='col-lg-6 col-md-12 lg:order-last order-first lg:mb-0 mb-4'>
               <img src={Perscriptive_pic} alt="Perscriptive_pic" />
@@ -660,7 +683,17 @@ function App() {
                 contact our human resources department by filling out the form above adding your recent work experience in a resume
                 summary of experience (CV) and we will respond after reviewing your submission. We thank you for considering our
                 company as an opportunity for employment.</p>
-              <button onClick={executeScroll} className='  text-white text-lg font-medium py-1 px-10  bg-light-red hover:bg-green-600 transition-all'>APPLY</button>
+              <div>
+                <button onClick={executeScroll} className='mb-2 mr-2 text-white text-lg font-medium py-1 px-10  bg-light-red hover:bg-green-600 transition-all'>APPLY</button>
+                <span className='block md:inline'>
+                  <ReactCountryFlag className='mr-2' countryCode="ES" svg style={{ width: '2em', height: '2em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="DE" svg style={{ width: '2em', height: '2em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="GB" svg style={{ width: '2em', height: '2em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="US" svg style={{ width: '2em', height: '2em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="IE" svg style={{ width: '2em', height: '2em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="CA" svg style={{ width: '2em', height: '2em', }} />
+                </span>
+              </div>
             </div>
           </div>
         </section>
@@ -676,7 +709,17 @@ function App() {
                 contact our human resources department by filling out the form above adding your recent work experience in a resume
                 summary of experience (CV) and we will respond after reviewing your submission. We thank you for considering our
                 company as an opportunity for employment.</p>
-              <button onClick={executeScroll} className='  text-white text-lg font-medium py-1 px-10  bg-light-red hover:bg-green-600 transition-all'>APPLY</button>
+              <div>
+                <button onClick={executeScroll} className='mb-2 mr-2 text-white text-lg font-medium py-1 px-10  bg-light-red hover:bg-green-600 transition-all'>APPLY</button>
+                <span className='block md:inline'>
+                  <ReactCountryFlag className='mr-2' countryCode="ES" svg style={{ width: '2em', height: '2em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="DE" svg style={{ width: '2em', height: '2em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="GB" svg style={{ width: '2em', height: '2em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="US" svg style={{ width: '2em', height: '2em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="IE" svg style={{ width: '2em', height: '2em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="CA" svg style={{ width: '2em', height: '2em', }} />
+                </span>
+              </div>
             </div>
             <div className='col-lg-6 col-md-12 lg:order-last order-first lg:mb-0 mb-4'>
               <img src={lawyer2_pic} alt="lawyer2_pic" />
@@ -698,7 +741,17 @@ function App() {
                 contact our human resources department by filling out the form above adding your recent work experience in a resume
                 summary of experience (CV) and we will respond after reviewing your submission. We thank you for considering our
                 company as an opportunity for employment.</p>
-              <button onClick={executeScroll} className='  text-white text-lg font-medium py-1 px-10  bg-light-red hover:bg-green-600 transition-all'>APPLY</button>
+              <div>
+                <button onClick={executeScroll} className='mb-2 mr-2 text-white text-lg font-medium py-1 px-10  bg-light-red hover:bg-green-600 transition-all'>APPLY</button>
+                <span className='block md:inline'>
+                  <ReactCountryFlag className='mr-2' countryCode="ES" svg style={{ width: '2em', height: '2em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="DE" svg style={{ width: '2em', height: '2em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="GB" svg style={{ width: '2em', height: '2em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="US" svg style={{ width: '2em', height: '2em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="IE" svg style={{ width: '2em', height: '2em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="CA" svg style={{ width: '2em', height: '2em', }} />
+                </span>
+              </div>
             </div>
           </div>
         </section>
@@ -714,7 +767,17 @@ function App() {
                 contact our human resources department by filling out the form above adding your recent work experience in a resume
                 summary of experience (CV) and we will respond after reviewing your submission. We thank you for considering our
                 company as an opportunity for employment.</p>
-              <button onClick={executeScroll} className='  text-white text-lg font-medium py-1 px-10  bg-light-red hover:bg-green-600 transition-all'>APPLY</button>
+              <div>
+                <button onClick={executeScroll} className='mb-2 mr-2 text-white text-lg font-medium py-1 px-10  bg-light-red hover:bg-green-600 transition-all'>APPLY</button>
+                <span className='block md:inline'>
+                  <ReactCountryFlag className='mr-2' countryCode="ES" svg style={{ width: '2em', height: '2em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="DE" svg style={{ width: '2em', height: '2em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="GB" svg style={{ width: '2em', height: '2em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="US" svg style={{ width: '2em', height: '2em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="IE" svg style={{ width: '2em', height: '2em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="CA" svg style={{ width: '2em', height: '2em', }} />
+                </span>
+              </div>
             </div>
             <div className='col-lg-6 col-md-12 lg:order-last order-first lg:mb-0 mb-4'>
               <img src={Botanist_pic} alt="Botanist_pic" />
@@ -736,7 +799,17 @@ function App() {
                 contact our human resources department by filling out the form above adding your recent work experience in a resume
                 summary of experience (CV) and we will respond after reviewing your submission. We thank you for considering our
                 company as an opportunity for employment.</p>
-              <button onClick={executeScroll} className='  text-white text-lg font-medium py-1 px-10  bg-light-red hover:bg-green-600 transition-all'>APPLY</button>
+              <div>
+                <button onClick={executeScroll} className='mb-2 mr-2 text-white text-lg font-medium py-1 px-10  bg-light-red hover:bg-green-600 transition-all'>APPLY</button>
+                <span className='block md:inline'>
+                  <ReactCountryFlag className='mr-2' countryCode="ES" svg style={{ width: '2em', height: '2em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="DE" svg style={{ width: '2em', height: '2em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="GB" svg style={{ width: '2em', height: '2em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="US" svg style={{ width: '2em', height: '2em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="IE" svg style={{ width: '2em', height: '2em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="CA" svg style={{ width: '2em', height: '2em', }} />
+                </span>
+              </div>
             </div>
           </div>
         </section>
@@ -752,7 +825,17 @@ function App() {
                 contact our human resources department by filling out the form above adding your recent work experience in a resume
                 summary of experience (CV) and we will respond after reviewing your submission. We thank you for considering our
                 company as an opportunity for employment.</p>
-              <button onClick={executeScroll} className='  text-white text-lg font-medium py-1 px-10  bg-light-red hover:bg-green-600 transition-all'>APPLY</button>
+              <div>
+                <button onClick={executeScroll} className='mb-2 mr-2 text-white text-lg font-medium py-1 px-10  bg-light-red hover:bg-green-600 transition-all'>APPLY</button>
+                <span className='block md:inline'>
+                  <ReactCountryFlag className='mr-2' countryCode="ES" svg style={{ width: '2em', height: '2em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="DE" svg style={{ width: '2em', height: '2em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="GB" svg style={{ width: '2em', height: '2em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="US" svg style={{ width: '2em', height: '2em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="IE" svg style={{ width: '2em', height: '2em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="CA" svg style={{ width: '2em', height: '2em', }} />
+                </span>
+              </div>
             </div>
             <div className='col-lg-6 col-md-12 lg:order-last order-first lg:mb-0 mb-4'>
               <img src={Administrator_pic} alt="Administrator_pic" />
@@ -774,7 +857,17 @@ function App() {
                 contact our human resources department by filling out the form above adding your recent work experience in a resume
                 summary of experience (CV) and we will respond after reviewing your submission. We thank you for considering our
                 company as an opportunity for employment.</p>
-              <button onClick={executeScroll} className='  text-white text-lg font-medium py-1 px-10  bg-light-red hover:bg-green-600 transition-all'>APPLY</button>
+              <div>
+                <button onClick={executeScroll} className='mb-2 mr-2 text-white text-lg font-medium py-1 px-10  bg-light-red hover:bg-green-600 transition-all'>APPLY</button>
+                <span className='block md:inline'>
+                  <ReactCountryFlag className='mr-2' countryCode="ES" svg style={{ width: '2em', height: '2em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="DE" svg style={{ width: '2em', height: '2em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="GB" svg style={{ width: '2em', height: '2em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="US" svg style={{ width: '2em', height: '2em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="IE" svg style={{ width: '2em', height: '2em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="CA" svg style={{ width: '2em', height: '2em', }} />
+                </span>
+              </div>
             </div>
           </div>
         </section>
@@ -790,7 +883,17 @@ function App() {
                 contact our human resources department by filling out the form above adding your recent work experience in a resume
                 summary of experience (CV) and we will respond after reviewing your submission. We thank you for considering our
                 company as an opportunity for employment.</p>
-              <button onClick={executeScroll} className='  text-white text-lg font-medium py-1 px-10  bg-light-red hover:bg-green-600 transition-all'>APPLY</button>
+              <div>
+                <button onClick={executeScroll} className='mb-2 mr-2 text-white text-lg font-medium py-1 px-10  bg-light-red hover:bg-green-600 transition-all'>APPLY</button>
+                <span className='block md:inline'>
+                  <ReactCountryFlag className='mr-2' countryCode="ES" svg style={{ width: '2em', height: '2em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="DE" svg style={{ width: '2em', height: '2em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="GB" svg style={{ width: '2em', height: '2em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="US" svg style={{ width: '2em', height: '2em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="IE" svg style={{ width: '2em', height: '2em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="CA" svg style={{ width: '2em', height: '2em', }} />
+                </span>
+              </div>
             </div>
             <div className='col-lg-6 col-md-12 lg:order-last order-first lg:mb-0 mb-4'>
               <img src={Manufacture_pic} alt="Manufacture_pic" />
@@ -812,7 +915,17 @@ function App() {
                 contact our human resources department by filling out the form above adding your recent work experience in a resume
                 summary of experience (CV) and we will respond after reviewing your submission. We thank you for considering our
                 company as an opportunity for employment.</p>
-              <button onClick={executeScroll} className='  text-white text-lg font-medium py-1 px-10  bg-light-red hover:bg-green-600 transition-all'>APPLY</button>
+              <div>
+                <button onClick={executeScroll} className='mb-2 mr-2 text-white text-lg font-medium py-1 px-10  bg-light-red hover:bg-green-600 transition-all'>APPLY</button>
+                <span className='block md:inline'>
+                  <ReactCountryFlag className='mr-2' countryCode="ES" svg style={{ width: '2em', height: '2em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="DE" svg style={{ width: '2em', height: '2em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="GB" svg style={{ width: '2em', height: '2em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="US" svg style={{ width: '2em', height: '2em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="IE" svg style={{ width: '2em', height: '2em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="CA" svg style={{ width: '2em', height: '2em', }} />
+                </span>
+              </div>
             </div>
           </div>
         </section>
@@ -828,7 +941,17 @@ function App() {
                 contact our human resources department by filling out the form above adding your recent work experience in a resume
                 summary of experience (CV) and we will respond after reviewing your submission. We thank you for considering our
                 company as an opportunity for employment.</p>
-              <button onClick={executeScroll} className='  text-white text-lg font-medium py-1 px-10  bg-light-red hover:bg-green-600 transition-all'>APPLY</button>
+              <div>
+                <button onClick={executeScroll} className='mb-2 mr-2 text-white text-lg font-medium py-1 px-10  bg-light-red hover:bg-green-600 transition-all'>APPLY</button>
+                <span className='block md:inline'>
+                  <ReactCountryFlag className='mr-2' countryCode="ES" svg style={{ width: '2em', height: '2em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="DE" svg style={{ width: '2em', height: '2em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="GB" svg style={{ width: '2em', height: '2em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="US" svg style={{ width: '2em', height: '2em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="IE" svg style={{ width: '2em', height: '2em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="CA" svg style={{ width: '2em', height: '2em', }} />
+                </span>
+              </div>
             </div>
             <div className='col-lg-6 col-md-12 lg:order-last order-first lg:mb-0 mb-4'>
               <img src={Customer_pic} className="h-full  " alt="Customer_pic" />
@@ -850,7 +973,17 @@ function App() {
                 contact our human resources department by filling out the form above adding your recent work experience in a resume
                 summary of experience (CV) and we will respond after reviewing your submission. We thank you for considering our
                 company as an opportunity for employment.</p>
-              <button onClick={executeScroll} className='  text-white text-lg font-medium py-1 px-10  bg-light-red hover:bg-green-600 transition-all'>APPLY</button>
+              <div>
+                <button onClick={executeScroll} className='mb-2 mr-2 text-white text-lg font-medium py-1 px-10  bg-light-red hover:bg-green-600 transition-all'>APPLY</button>
+                <span className='block md:inline'>
+                  <ReactCountryFlag className='mr-2' countryCode="ES" svg style={{ width: '2em', height: '2em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="DE" svg style={{ width: '2em', height: '2em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="GB" svg style={{ width: '2em', height: '2em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="US" svg style={{ width: '2em', height: '2em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="IE" svg style={{ width: '2em', height: '2em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="CA" svg style={{ width: '2em', height: '2em', }} />
+                </span>
+              </div>
             </div>
           </div>
         </section>
@@ -866,7 +999,17 @@ function App() {
                 contact our human resources department by filling out the form above adding your recent work experience in a resume
                 summary of experience (CV) and we will respond after reviewing your submission. We thank you for considering our
                 company as an opportunity for employment.</p>
-              <button onClick={executeScroll} className='  text-white text-lg font-medium py-1 px-10  bg-light-red hover:bg-green-600 transition-all'>APPLY</button>
+              <div>
+                <button onClick={executeScroll} className='mb-2 mr-2 text-white text-lg font-medium py-1 px-10  bg-light-red hover:bg-green-600 transition-all'>APPLY</button>
+                <span className='block md:inline'>
+                  <ReactCountryFlag className='mr-2' countryCode="ES" svg style={{ width: '2em', height: '2em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="DE" svg style={{ width: '2em', height: '2em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="GB" svg style={{ width: '2em', height: '2em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="US" svg style={{ width: '2em', height: '2em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="IE" svg style={{ width: '2em', height: '2em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="CA" svg style={{ width: '2em', height: '2em', }} />
+                </span>
+              </div>
             </div>
             <div className='col-lg-6 col-md-12 lg:order-last order-first lg:mb-0 mb-4'>
               <img src={Lawyer1_pic} alt="Lawyer1_pic" />
