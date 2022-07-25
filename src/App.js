@@ -129,6 +129,7 @@ function App() {
   }
 
   const setValidation = () => {
+  debugger
     let myvalidation_Obj = {
       ...validationModel,
       fullnameError: Validator(recruitModel.fullname, [V_Type.required], ['Please fill out this required field']),
@@ -139,6 +140,7 @@ function App() {
       ageError: Validator(recruitModel.age, [V_Type.required], ['Must add your age']),
 
     };
+    console.log("myvalidation_Obj" , myvalidation_Obj)
     setvalidationModel(myvalidation_Obj);
     return Validator(myvalidation_Obj, V_Type.NullCheck);
   };
@@ -154,29 +156,24 @@ function App() {
 
   const handleSubmit = () => {
     debugger
-    // let my_validation = setValidation();
-    // if (my_validation) {
-    //   console.log('Api will not run', my_validation);
-    // } 
-     if (file === '') {
+    let my_validation = setValidation();
+    if (my_validation) {
+      console.log('Api will not run', my_validation);
+    } 
+     else if (file === '') {
       setIsShow(true)
     }
-    // else {
-    //   console.log('Api will  run', my_validation);
+    else {
+    alert("Data Send Succesfully ")
 
-    // }
+    }
   }
 
 
 
 
   // ************************* Date Picker function *********************
-  // const ExampleCustomInput = forwardRef(({ value, onClick }, ref) => (
-  //   <button className="bg-white w-full h-11 border-2 border-gray-400" onClick={onClick} ref={ref}>
-  //     {value}<BsCalendarEvent className='inline ml-6' />
-  //   </button>
-  // ));
-
+  
   const renderCustomInput = ({ ref }) => (
     < div className='relative cursor-pointer'>
       <input
@@ -346,10 +343,12 @@ function App() {
 
             </div>
             <div className='row justify-center gap-2 mb-4 g-0  '>
-              <div className='col-lg-3 col-md-10  bg-white  text-gray-500 text-base font-medium bg-light-gray '>
+              <div className={`col-lg-3 col-md-10  bg-white  text-gray-500 text-base font-medium bg-light-gray `} >
                 <div className='h-full relative'>
                   <PhoneInput country={'es'} dropdownClass={"custom-dropdown"} enableSearch disableSearchIcon countryCodeEditable={false} value={mobile} onChange={handleMobileChange} />
+                {validationModel.mobileError}
                 </div>
+
               </div>
               <div className='col-lg-3 col-md-10'>
                 <select name="country" value={recruitModel.country} onChange={handleChange} className='w-full h-10 outline-blue-400 border-2 px-2 py-2 border-gray-400' >

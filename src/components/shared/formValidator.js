@@ -6,6 +6,7 @@ export const ValidationTypes = {
     startEndDate: "startEndDate"
 }
 const Validator = (data, type, Error) => {
+    console.log("Data" , data )
     const styling = {
         marginTop: "0.25rem",
         fontSize: ".875em",
