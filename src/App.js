@@ -240,7 +240,7 @@ function App() {
                 <div className='col-4 '>
                   <figure>
                     <img src={usFlaglogo} className=" ml-auto  md:w-16 w-11 " alt="leafLogo" />
-                    <figcaption className='text-right md:mr-3 mr-1  mt-1 text-xs text-red-600 font-semibold'>Language</figcaption>
+                    <figcaption className='text-right md:mr-1 mr-1  mt-1 text-xs text-red-600 font-semibold'>Language</figcaption>
                   </figure>
                 </div>
               </div>
