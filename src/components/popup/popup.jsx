@@ -1,12 +1,13 @@
 import React, { useState } from 'react'
 import 'react-responsive-modal/styles.css';
 import { Modal } from 'react-responsive-modal';
-const PopUp = () => {
+const PopUp = ({ permition ,Toggle}) => {
 
-  const [show, setShow] = useState(true);
+  const [show, setShow] = useState(permition);
 
-  const handleClose = () => setShow(false);
+  const handleClose = () => Toggle(false);
   const handleShow = () => setShow(true);
+  console.log("per" , permition)
 
   return (
     <>

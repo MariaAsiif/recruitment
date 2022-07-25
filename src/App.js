@@ -92,6 +92,8 @@ function App() {
   const [activeIndex, setActiveIndex] = useState(null)
   const [uploadFiles, setuploadFiles] = useState([])
   const [selectedDay, setSelectedDay] = useState(null);
+  const [file, setFile] = useState('');
+  const [isShow, setIsShow] = useState(false);
 
   const dropItem = ["ABOUT RECRUIT", "HOW TO APPLY", " WHAT'S NEXT"]
   const executeScroll = () => myRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' })
@@ -151,12 +153,18 @@ function App() {
 
 
   const handleSubmit = () => {
-    let my_validation = setValidation();
-    if (my_validation) {
-      console.log('Api will not run', my_validation);
-    } else {
-      console.log('Api will run', my_validation);
+    debugger
+    // let my_validation = setValidation();
+    // if (my_validation) {
+    //   console.log('Api will not run', my_validation);
+    // } 
+     if (file === '') {
+      setIsShow(true)
     }
+    // else {
+    //   console.log('Api will  run', my_validation);
+
+    // }
   }
 
 
@@ -573,7 +581,7 @@ function App() {
                   <h5 className='text-gray-500 text-xl font-normal mb-2'>or select an option below</h5>
                   <label className='rounded-sm bg-light-red inline-block text-white mb-1 cursor-pointer text-xl tracking-wide font-medium px-8 py-1'>
                     BROWSE MY FILES
-                    <input type="file" hidden />
+                    <input type="file" onChange={(e) => setFile(e.target.files[0])} hidden />
                   </label>
                   <p className='text-xs text-gray-500 font-medium mb-8'>Maximum Upload File Size 35MB</p>
                   <p className='font-normal text-sm'>All files uploaded here will be scanned to ensure content is benign, contaminated files and threats will be rejected</p>
@@ -900,9 +908,9 @@ function App() {
           <img src={bigPic} className="w-full" alt='bigPic' />
         </section>
 
-        
+
       </div>
-      <PopUp/>
+     { isShow && <PopUp permition={isShow} Toggle={(value) => setIsShow(value)} /> }
 
       <footer className='bscontainer-fluid bg-light-red d-flex text-white text-xs text-center font-normal py-3 footer '>
         COPYRIGHTS © 2022 HPORX LTD, IRELAND. ALL RIGHTS RESERVED.
