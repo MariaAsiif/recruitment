@@ -900,7 +900,14 @@ function App() {
         </section>
       </div>
       <footer className='bscontainer-fluid bg-light-red d-flex text-white text-xs text-center font-normal py-3 footer'>
-        COPYRIGHTS © 2022 HPORX LTD, IRELAND. ALL RIGHTS RESERVED.  | PRIVACY POLICY | +44 1223 298541 | TERMS OF USE | DIGITAL AGENCY SERVICES | SITE DIRECTORY
+        COPYRIGHTS © 2022 HPORX LTD, IRELAND. ALL RIGHTS RESERVED.
+        <span className='mx-4'>
+          |  <span className='hover:underline cursor-pointer'>PRIVACY POLICY </span>
+          | <span className='hover:underline cursor-pointer' >+44 1223 298541 </span>
+          | <span className='hover:underline cursor-pointer' > TERMS OF USE </span>
+          | <span className='hover:underline cursor-pointer' > DIGITAL AGENCY SERVICES </span>
+          | <span className='hover:underline cursor-pointer' >SITE DIRECTORY </span>
+        </span>
         <div className='footer_social'>
           <span className='mx-2'>
             <FiFacebook />
