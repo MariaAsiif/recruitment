@@ -13,7 +13,8 @@ const PopUp = ({ permition ,Toggle}) => {
     <>
       <Modal open={show} onClose={handleClose} center>
         <div className='p-2' >
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto magnam amet maxime voluptas! Ad maiores quasi cupiditate harum sint? Nulla sunt hic similique mollitia? Ab quia doloremque culpa assumenda explicabo!
+         <h1> Please Select File </h1> 
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Impedit ipsa dolores facere perferendis odit? Esse veritatis repellat voluptas facilis tenetur? Harum sint consequuntur quas at, repellendus sit optio aliquid ullam?
         </div>
       </Modal>
     </>
