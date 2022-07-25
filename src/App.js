@@ -922,7 +922,7 @@ function App() {
         </span>
         <div className='footer_social'>
           <span className='mx-2' >
-            <a href="https://www.facebook.com/laher.asif" target="_blank" rel="noopener noreferrer">
+            <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer">
               <FiFacebook />
             </a>
           </span>
@@ -941,7 +941,7 @@ function App() {
           </span>
 
           <span className='mx-2'>
-            <a href=" https://www.linkedin.com/in/laher-asif-a53455204/" target="_blank" rel="noopener noreferrer">
+            <a href=" https://www.linkedin.com/" target="_blank" rel="noopener noreferrer">
               <AiFillLinkedin />
             </a>
           </span>
