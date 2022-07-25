@@ -920,27 +920,27 @@ function App() {
           | <span className='hover:underline cursor-pointer' > DIGITAL AGENCY SERVICES </span>
           | <span className='hover:underline cursor-pointer' >SITE DIRECTORY </span>
         </span>
-        <div className='footer_social'>
-          <span className='mx-2' >
+        <div className='footer_social '>
+          <span className='mx-2 facebok' >
             <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer">
               <FiFacebook />
             </a>
           </span>
-          <span className='mx-2'>
+          <span className='mx-2 twitter'>
             <a href=" https://www.twitter.com/" target="_blank" rel="noopener noreferrer">
 
               <FaTwitter />
             </a>
           </span>
 
-          <span className='mx-2'>
+          <span className='mx-2 insta'>
             <a href=" https://www.instagram.com/" target="_blank" rel="noopener noreferrer">
 
               <BsInstagram />
             </a>
           </span>
 
-          <span className='mx-2'>
+          <span className='mx-2 linkd_in'>
             <a href=" https://www.linkedin.com/" target="_blank" rel="noopener noreferrer">
               <AiFillLinkedin />
             </a>

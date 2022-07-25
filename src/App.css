@@ -29,6 +29,7 @@
   width: 300px;
   outline: none;
 }
+
 .react-tel-input .selected-flag .arrow {
   position: relative;
   top: 50%;
@@ -78,7 +79,7 @@
   justify-content: center;
 }
 
-.footer .footer_text{
+.footer .footer_text {
   margin-left: 20px;
 }
 
@@ -100,10 +101,34 @@
 
 
 }
+
 .footer_social span:hover {
   background-color: #60a5fa;
   cursor: pointer;
   border: 1pt solid #60a5fa;
+}
+
+.footer_social .linkd_in:hover {
+  background-color: #0E76A8;
+  border-color: #0E76A8;
+}
+
+.footer_social .facebok:hover {
+  background-color: #4267B2;
+  border-color: #0E76A8;
+
+}
+
+.footer_social .insta:hover {
+  background-color: #E1306C;
+  border-color: #E1306C;
+
+}
+
+.footer_social .twitter:hover {
+  background-color: #0E76A8;
+  border-color: #0E76A8;
+
 }
 
 .footer_social span svg {
@@ -164,27 +189,30 @@
   .thirdname_hide {
     display: none;
   }
-  .footer .footer_text{
-     margin: 0px;
+
+  .footer .footer_text {
+    margin: 0px;
   }
-  .footer_social{
+
+  .footer_social {
     display: flex;
     text-align: center;
     justify-content: center;
     margin-top: 10px;
   }
-  .footer_social span{
-     display: flex;
+
+  .footer_social span {
+    display: flex;
   }
 
   .footer {
     display: block;
   }
-  
-  .footer .footer_text{
+
+  .footer .footer_text {
     margin-left: 5px;
   }
- 
+
 
   /* .date_picker{
     width: 21.1vh;
@@ -233,11 +261,12 @@
   .city_group_show {
     display: block;
   }
+
   .footer {
     display: block;
   }
-  
-  .footer .footer_text{
+
+  .footer .footer_text {
     margin-left: 5px;
   }
 
@@ -294,11 +323,12 @@
   .thirdname_hide {
     display: none;
   }
+
   .footer {
     display: block;
   }
-  
-  .footer .footer_text{
+
+  .footer .footer_text {
     margin-left: 5px;
   }
 
@@ -353,21 +383,25 @@
   .thirdname_hide {
     display: none;
   }
-  .footer_social{
+
+  .footer_social {
     margin-top: 5px;
   }
-  .footer_social span{
+
+  .footer_social span {
     width: 30px;
     height: 30px;
   }
-  .footer_social span svg{
+
+  .footer_social span svg {
     font-size: 15px;
   }
+
   .footer {
     display: block;
   }
-  
-  .footer .footer_text{
+
+  .footer .footer_text {
     margin-left: 10px;
   }
 
@@ -422,11 +456,12 @@
   .thirdname_hide {
     display: none;
   }
+
   .footer {
     display: block;
   }
-  
-  .footer .footer_text{
+
+  .footer .footer_text {
     margin-left: 10px;
   }
 
