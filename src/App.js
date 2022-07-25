@@ -593,14 +593,14 @@ function App() {
                 summary of experience (CV) and we will respond after reviewing your submission. We thank you for considering our
                 company as an opportunity for employment.</p>
               <div>
-                <button onClick={executeScroll} className='mb-2 mr-2 text-white text-lg font-medium py-1 px-10  bg-light-red hover:bg-green-600 transition-all'>APPLY</button>
+                <button onClick={executeScroll} className='mb-2 mr-4 text-white text-lg font-medium py-1 px-10  bg-light-red hover:bg-green-600 transition-all'>APPLY</button>
                 <span className='block md:inline'>
-                  <ReactCountryFlag className='mr-2' countryCode="ES" svg style={{ width: '2em', height: '2em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="DE" svg style={{ width: '2em', height: '2em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="GB" svg style={{ width: '2em', height: '2em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="US" svg style={{ width: '2em', height: '2em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="IE" svg style={{ width: '2em', height: '2em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="CA" svg style={{ width: '2em', height: '2em', }} />
+                  <ReactCountryFlag className='mr-2' countryCode="ES" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="DE" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="GB" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="US" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="IE" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="CA" svg style={{ width: '1.5em', height: '1.5em', }} />
                 </span>
               </div>
 
@@ -627,14 +627,14 @@ function App() {
                 summary of experience (CV) and we will respond after reviewing your submission. We thank you for considering our
                 company as an opportunity for employment.</p>
               <div>
-                <button onClick={executeScroll} className='mb-2 mr-2 text-white text-lg font-medium py-1 px-10  bg-light-red hover:bg-green-600 transition-all'>APPLY</button>
+                <button onClick={executeScroll} className='mb-2 mr-4 text-white text-lg font-medium py-1 px-10  bg-light-red hover:bg-green-600 transition-all'>APPLY</button>
                 <span className='block md:inline'>
-                  <ReactCountryFlag className='mr-2' countryCode="ES" svg style={{ width: '2em', height: '2em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="DE" svg style={{ width: '2em', height: '2em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="GB" svg style={{ width: '2em', height: '2em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="US" svg style={{ width: '2em', height: '2em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="IE" svg style={{ width: '2em', height: '2em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="CA" svg style={{ width: '2em', height: '2em', }} />
+                  <ReactCountryFlag className='mr-2' countryCode="ES" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="DE" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="GB" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="US" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="IE" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="CA" svg style={{ width: '1.5em', height: '1.5em', }} />
                 </span>
               </div>
             </div>
@@ -653,14 +653,14 @@ function App() {
                 summary of experience (CV) and we will respond after reviewing your submission. We thank you for considering our
                 company as an opportunity for employment.</p>
               <div>
-                <button onClick={executeScroll} className='mb-2 mr-2 text-white text-lg font-medium py-1 px-10  bg-light-red hover:bg-green-600 transition-all'>APPLY</button>
+                <button onClick={executeScroll} className='mb-2 mr-4 text-white text-lg font-medium py-1 px-10  bg-light-red hover:bg-green-600 transition-all'>APPLY</button>
                 <span className='block md:inline'>
-                  <ReactCountryFlag className='mr-2' countryCode="ES" svg style={{ width: '2em', height: '2em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="DE" svg style={{ width: '2em', height: '2em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="GB" svg style={{ width: '2em', height: '2em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="US" svg style={{ width: '2em', height: '2em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="IE" svg style={{ width: '2em', height: '2em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="CA" svg style={{ width: '2em', height: '2em', }} />
+                  <ReactCountryFlag className='mr-2' countryCode="ES" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="DE" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="GB" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="US" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="IE" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="CA" svg style={{ width: '1.5em', height: '1.5em', }} />
                 </span>
               </div>
             </div>
@@ -684,14 +684,14 @@ function App() {
                 summary of experience (CV) and we will respond after reviewing your submission. We thank you for considering our
                 company as an opportunity for employment.</p>
               <div>
-                <button onClick={executeScroll} className='mb-2 mr-2 text-white text-lg font-medium py-1 px-10  bg-light-red hover:bg-green-600 transition-all'>APPLY</button>
+                <button onClick={executeScroll} className='mb-2 mr-4 text-white text-lg font-medium py-1 px-10  bg-light-red hover:bg-green-600 transition-all'>APPLY</button>
                 <span className='block md:inline'>
-                  <ReactCountryFlag className='mr-2' countryCode="ES" svg style={{ width: '2em', height: '2em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="DE" svg style={{ width: '2em', height: '2em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="GB" svg style={{ width: '2em', height: '2em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="US" svg style={{ width: '2em', height: '2em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="IE" svg style={{ width: '2em', height: '2em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="CA" svg style={{ width: '2em', height: '2em', }} />
+                  <ReactCountryFlag className='mr-2' countryCode="ES" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="DE" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="GB" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="US" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="IE" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="CA" svg style={{ width: '1.5em', height: '1.5em', }} />
                 </span>
               </div>
             </div>
@@ -710,14 +710,14 @@ function App() {
                 summary of experience (CV) and we will respond after reviewing your submission. We thank you for considering our
                 company as an opportunity for employment.</p>
               <div>
-                <button onClick={executeScroll} className='mb-2 mr-2 text-white text-lg font-medium py-1 px-10  bg-light-red hover:bg-green-600 transition-all'>APPLY</button>
+                <button onClick={executeScroll} className='mb-2 mr-4 text-white text-lg font-medium py-1 px-10  bg-light-red hover:bg-green-600 transition-all'>APPLY</button>
                 <span className='block md:inline'>
-                  <ReactCountryFlag className='mr-2' countryCode="ES" svg style={{ width: '2em', height: '2em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="DE" svg style={{ width: '2em', height: '2em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="GB" svg style={{ width: '2em', height: '2em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="US" svg style={{ width: '2em', height: '2em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="IE" svg style={{ width: '2em', height: '2em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="CA" svg style={{ width: '2em', height: '2em', }} />
+                  <ReactCountryFlag className='mr-2' countryCode="ES" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="DE" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="GB" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="US" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="IE" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="CA" svg style={{ width: '1.5em', height: '1.5em', }} />
                 </span>
               </div>
             </div>
@@ -742,14 +742,14 @@ function App() {
                 summary of experience (CV) and we will respond after reviewing your submission. We thank you for considering our
                 company as an opportunity for employment.</p>
               <div>
-                <button onClick={executeScroll} className='mb-2 mr-2 text-white text-lg font-medium py-1 px-10  bg-light-red hover:bg-green-600 transition-all'>APPLY</button>
+                <button onClick={executeScroll} className='mb-2 mr-4 text-white text-lg font-medium py-1 px-10  bg-light-red hover:bg-green-600 transition-all'>APPLY</button>
                 <span className='block md:inline'>
-                  <ReactCountryFlag className='mr-2' countryCode="ES" svg style={{ width: '2em', height: '2em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="DE" svg style={{ width: '2em', height: '2em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="GB" svg style={{ width: '2em', height: '2em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="US" svg style={{ width: '2em', height: '2em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="IE" svg style={{ width: '2em', height: '2em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="CA" svg style={{ width: '2em', height: '2em', }} />
+                  <ReactCountryFlag className='mr-2' countryCode="ES" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="DE" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="GB" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="US" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="IE" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="CA" svg style={{ width: '1.5em', height: '1.5em', }} />
                 </span>
               </div>
             </div>
@@ -768,14 +768,14 @@ function App() {
                 summary of experience (CV) and we will respond after reviewing your submission. We thank you for considering our
                 company as an opportunity for employment.</p>
               <div>
-                <button onClick={executeScroll} className='mb-2 mr-2 text-white text-lg font-medium py-1 px-10  bg-light-red hover:bg-green-600 transition-all'>APPLY</button>
+                <button onClick={executeScroll} className='mb-2 mr-4 text-white text-lg font-medium py-1 px-10  bg-light-red hover:bg-green-600 transition-all'>APPLY</button>
                 <span className='block md:inline'>
-                  <ReactCountryFlag className='mr-2' countryCode="ES" svg style={{ width: '2em', height: '2em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="DE" svg style={{ width: '2em', height: '2em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="GB" svg style={{ width: '2em', height: '2em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="US" svg style={{ width: '2em', height: '2em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="IE" svg style={{ width: '2em', height: '2em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="CA" svg style={{ width: '2em', height: '2em', }} />
+                  <ReactCountryFlag className='mr-2' countryCode="ES" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="DE" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="GB" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="US" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="IE" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="CA" svg style={{ width: '1.5em', height: '1.5em', }} />
                 </span>
               </div>
             </div>
@@ -800,14 +800,14 @@ function App() {
                 summary of experience (CV) and we will respond after reviewing your submission. We thank you for considering our
                 company as an opportunity for employment.</p>
               <div>
-                <button onClick={executeScroll} className='mb-2 mr-2 text-white text-lg font-medium py-1 px-10  bg-light-red hover:bg-green-600 transition-all'>APPLY</button>
+                <button onClick={executeScroll} className='mb-2 mr-4 text-white text-lg font-medium py-1 px-10  bg-light-red hover:bg-green-600 transition-all'>APPLY</button>
                 <span className='block md:inline'>
-                  <ReactCountryFlag className='mr-2' countryCode="ES" svg style={{ width: '2em', height: '2em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="DE" svg style={{ width: '2em', height: '2em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="GB" svg style={{ width: '2em', height: '2em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="US" svg style={{ width: '2em', height: '2em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="IE" svg style={{ width: '2em', height: '2em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="CA" svg style={{ width: '2em', height: '2em', }} />
+                  <ReactCountryFlag className='mr-2' countryCode="ES" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="DE" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="GB" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="US" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="IE" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="CA" svg style={{ width: '1.5em', height: '1.5em', }} />
                 </span>
               </div>
             </div>
@@ -826,14 +826,14 @@ function App() {
                 summary of experience (CV) and we will respond after reviewing your submission. We thank you for considering our
                 company as an opportunity for employment.</p>
               <div>
-                <button onClick={executeScroll} className='mb-2 mr-2 text-white text-lg font-medium py-1 px-10  bg-light-red hover:bg-green-600 transition-all'>APPLY</button>
+                <button onClick={executeScroll} className='mb-2 mr-4 text-white text-lg font-medium py-1 px-10  bg-light-red hover:bg-green-600 transition-all'>APPLY</button>
                 <span className='block md:inline'>
-                  <ReactCountryFlag className='mr-2' countryCode="ES" svg style={{ width: '2em', height: '2em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="DE" svg style={{ width: '2em', height: '2em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="GB" svg style={{ width: '2em', height: '2em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="US" svg style={{ width: '2em', height: '2em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="IE" svg style={{ width: '2em', height: '2em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="CA" svg style={{ width: '2em', height: '2em', }} />
+                  <ReactCountryFlag className='mr-2' countryCode="ES" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="DE" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="GB" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="US" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="IE" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="CA" svg style={{ width: '1.5em', height: '1.5em', }} />
                 </span>
               </div>
             </div>
@@ -858,14 +858,14 @@ function App() {
                 summary of experience (CV) and we will respond after reviewing your submission. We thank you for considering our
                 company as an opportunity for employment.</p>
               <div>
-                <button onClick={executeScroll} className='mb-2 mr-2 text-white text-lg font-medium py-1 px-10  bg-light-red hover:bg-green-600 transition-all'>APPLY</button>
+                <button onClick={executeScroll} className='mb-2 mr-4 text-white text-lg font-medium py-1 px-10  bg-light-red hover:bg-green-600 transition-all'>APPLY</button>
                 <span className='block md:inline'>
-                  <ReactCountryFlag className='mr-2' countryCode="ES" svg style={{ width: '2em', height: '2em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="DE" svg style={{ width: '2em', height: '2em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="GB" svg style={{ width: '2em', height: '2em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="US" svg style={{ width: '2em', height: '2em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="IE" svg style={{ width: '2em', height: '2em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="CA" svg style={{ width: '2em', height: '2em', }} />
+                  <ReactCountryFlag className='mr-2' countryCode="ES" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="DE" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="GB" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="US" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="IE" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="CA" svg style={{ width: '1.5em', height: '1.5em', }} />
                 </span>
               </div>
             </div>
@@ -884,14 +884,14 @@ function App() {
                 summary of experience (CV) and we will respond after reviewing your submission. We thank you for considering our
                 company as an opportunity for employment.</p>
               <div>
-                <button onClick={executeScroll} className='mb-2 mr-2 text-white text-lg font-medium py-1 px-10  bg-light-red hover:bg-green-600 transition-all'>APPLY</button>
+                <button onClick={executeScroll} className='mb-2 mr-4 text-white text-lg font-medium py-1 px-10  bg-light-red hover:bg-green-600 transition-all'>APPLY</button>
                 <span className='block md:inline'>
-                  <ReactCountryFlag className='mr-2' countryCode="ES" svg style={{ width: '2em', height: '2em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="DE" svg style={{ width: '2em', height: '2em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="GB" svg style={{ width: '2em', height: '2em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="US" svg style={{ width: '2em', height: '2em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="IE" svg style={{ width: '2em', height: '2em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="CA" svg style={{ width: '2em', height: '2em', }} />
+                  <ReactCountryFlag className='mr-2' countryCode="ES" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="DE" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="GB" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="US" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="IE" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="CA" svg style={{ width: '1.5em', height: '1.5em', }} />
                 </span>
               </div>
             </div>
@@ -916,14 +916,14 @@ function App() {
                 summary of experience (CV) and we will respond after reviewing your submission. We thank you for considering our
                 company as an opportunity for employment.</p>
               <div>
-                <button onClick={executeScroll} className='mb-2 mr-2 text-white text-lg font-medium py-1 px-10  bg-light-red hover:bg-green-600 transition-all'>APPLY</button>
+                <button onClick={executeScroll} className='mb-2 mr-4 text-white text-lg font-medium py-1 px-10  bg-light-red hover:bg-green-600 transition-all'>APPLY</button>
                 <span className='block md:inline'>
-                  <ReactCountryFlag className='mr-2' countryCode="ES" svg style={{ width: '2em', height: '2em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="DE" svg style={{ width: '2em', height: '2em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="GB" svg style={{ width: '2em', height: '2em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="US" svg style={{ width: '2em', height: '2em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="IE" svg style={{ width: '2em', height: '2em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="CA" svg style={{ width: '2em', height: '2em', }} />
+                  <ReactCountryFlag className='mr-2' countryCode="ES" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="DE" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="GB" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="US" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="IE" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="CA" svg style={{ width: '1.5em', height: '1.5em', }} />
                 </span>
               </div>
             </div>
@@ -942,14 +942,14 @@ function App() {
                 summary of experience (CV) and we will respond after reviewing your submission. We thank you for considering our
                 company as an opportunity for employment.</p>
               <div>
-                <button onClick={executeScroll} className='mb-2 mr-2 text-white text-lg font-medium py-1 px-10  bg-light-red hover:bg-green-600 transition-all'>APPLY</button>
+                <button onClick={executeScroll} className='mb-2 mr-4 text-white text-lg font-medium py-1 px-10  bg-light-red hover:bg-green-600 transition-all'>APPLY</button>
                 <span className='block md:inline'>
-                  <ReactCountryFlag className='mr-2' countryCode="ES" svg style={{ width: '2em', height: '2em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="DE" svg style={{ width: '2em', height: '2em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="GB" svg style={{ width: '2em', height: '2em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="US" svg style={{ width: '2em', height: '2em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="IE" svg style={{ width: '2em', height: '2em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="CA" svg style={{ width: '2em', height: '2em', }} />
+                  <ReactCountryFlag className='mr-2' countryCode="ES" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="DE" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="GB" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="US" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="IE" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="CA" svg style={{ width: '1.5em', height: '1.5em', }} />
                 </span>
               </div>
             </div>
@@ -974,14 +974,14 @@ function App() {
                 summary of experience (CV) and we will respond after reviewing your submission. We thank you for considering our
                 company as an opportunity for employment.</p>
               <div>
-                <button onClick={executeScroll} className='mb-2 mr-2 text-white text-lg font-medium py-1 px-10  bg-light-red hover:bg-green-600 transition-all'>APPLY</button>
+                <button onClick={executeScroll} className='mb-2 mr-4 text-white text-lg font-medium py-1 px-10  bg-light-red hover:bg-green-600 transition-all'>APPLY</button>
                 <span className='block md:inline'>
-                  <ReactCountryFlag className='mr-2' countryCode="ES" svg style={{ width: '2em', height: '2em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="DE" svg style={{ width: '2em', height: '2em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="GB" svg style={{ width: '2em', height: '2em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="US" svg style={{ width: '2em', height: '2em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="IE" svg style={{ width: '2em', height: '2em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="CA" svg style={{ width: '2em', height: '2em', }} />
+                  <ReactCountryFlag className='mr-2' countryCode="ES" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="DE" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="GB" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="US" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="IE" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="CA" svg style={{ width: '1.5em', height: '1.5em', }} />
                 </span>
               </div>
             </div>
@@ -1000,14 +1000,14 @@ function App() {
                 summary of experience (CV) and we will respond after reviewing your submission. We thank you for considering our
                 company as an opportunity for employment.</p>
               <div>
-                <button onClick={executeScroll} className='mb-2 mr-2 text-white text-lg font-medium py-1 px-10  bg-light-red hover:bg-green-600 transition-all'>APPLY</button>
+                <button onClick={executeScroll} className='mb-2 mr-4 text-white text-lg font-medium py-1 px-10  bg-light-red hover:bg-green-600 transition-all'>APPLY</button>
                 <span className='block md:inline'>
-                  <ReactCountryFlag className='mr-2' countryCode="ES" svg style={{ width: '2em', height: '2em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="DE" svg style={{ width: '2em', height: '2em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="GB" svg style={{ width: '2em', height: '2em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="US" svg style={{ width: '2em', height: '2em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="IE" svg style={{ width: '2em', height: '2em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="CA" svg style={{ width: '2em', height: '2em', }} />
+                  <ReactCountryFlag className='mr-2' countryCode="ES" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="DE" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="GB" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="US" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="IE" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-2' countryCode="CA" svg style={{ width: '1.5em', height: '1.5em', }} />
                 </span>
               </div>
             </div>
