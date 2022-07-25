@@ -595,12 +595,12 @@ function App() {
               <div>
                 <button onClick={executeScroll} className='mb-2 mr-4 text-white text-lg font-medium py-1 px-10  bg-light-red hover:bg-green-600 transition-all'>APPLY</button>
                 <span className='block md:inline'>
-                  <ReactCountryFlag className='mr-2' countryCode="ES" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="DE" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="GB" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="US" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="IE" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="CA" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mr-1' countryCode="ES" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-1' countryCode="DE" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-1' countryCode="GB" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-1' countryCode="US" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-1' countryCode="IE" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-1' countryCode="CA" svg style={{ width: '1.5em', height: '1.5em', }} />
                 </span>
               </div>
 
@@ -629,12 +629,12 @@ function App() {
               <div>
                 <button onClick={executeScroll} className='mb-2 mr-4 text-white text-lg font-medium py-1 px-10  bg-light-red hover:bg-green-600 transition-all'>APPLY</button>
                 <span className='block md:inline'>
-                  <ReactCountryFlag className='mr-2' countryCode="ES" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="DE" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="GB" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="US" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="IE" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="CA" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mr-1' countryCode="ES" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-1' countryCode="DE" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-1' countryCode="GB" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-1' countryCode="US" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-1' countryCode="IE" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-1' countryCode="CA" svg style={{ width: '1.5em', height: '1.5em', }} />
                 </span>
               </div>
             </div>
@@ -655,12 +655,12 @@ function App() {
               <div>
                 <button onClick={executeScroll} className='mb-2 mr-4 text-white text-lg font-medium py-1 px-10  bg-light-red hover:bg-green-600 transition-all'>APPLY</button>
                 <span className='block md:inline'>
-                  <ReactCountryFlag className='mr-2' countryCode="ES" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="DE" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="GB" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="US" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="IE" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="CA" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mr-1' countryCode="ES" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-1' countryCode="DE" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-1' countryCode="GB" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-1' countryCode="US" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-1' countryCode="IE" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-1' countryCode="CA" svg style={{ width: '1.5em', height: '1.5em', }} />
                 </span>
               </div>
             </div>
@@ -686,12 +686,12 @@ function App() {
               <div>
                 <button onClick={executeScroll} className='mb-2 mr-4 text-white text-lg font-medium py-1 px-10  bg-light-red hover:bg-green-600 transition-all'>APPLY</button>
                 <span className='block md:inline'>
-                  <ReactCountryFlag className='mr-2' countryCode="ES" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="DE" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="GB" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="US" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="IE" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="CA" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mr-1' countryCode="ES" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-1' countryCode="DE" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-1' countryCode="GB" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-1' countryCode="US" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-1' countryCode="IE" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-1' countryCode="CA" svg style={{ width: '1.5em', height: '1.5em', }} />
                 </span>
               </div>
             </div>
@@ -712,12 +712,12 @@ function App() {
               <div>
                 <button onClick={executeScroll} className='mb-2 mr-4 text-white text-lg font-medium py-1 px-10  bg-light-red hover:bg-green-600 transition-all'>APPLY</button>
                 <span className='block md:inline'>
-                  <ReactCountryFlag className='mr-2' countryCode="ES" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="DE" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="GB" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="US" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="IE" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="CA" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mr-1' countryCode="ES" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-1' countryCode="DE" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-1' countryCode="GB" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-1' countryCode="US" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-1' countryCode="IE" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-1' countryCode="CA" svg style={{ width: '1.5em', height: '1.5em', }} />
                 </span>
               </div>
             </div>
@@ -744,12 +744,12 @@ function App() {
               <div>
                 <button onClick={executeScroll} className='mb-2 mr-4 text-white text-lg font-medium py-1 px-10  bg-light-red hover:bg-green-600 transition-all'>APPLY</button>
                 <span className='block md:inline'>
-                  <ReactCountryFlag className='mr-2' countryCode="ES" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="DE" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="GB" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="US" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="IE" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="CA" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mr-1' countryCode="ES" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-1' countryCode="DE" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-1' countryCode="GB" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-1' countryCode="US" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-1' countryCode="IE" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-1' countryCode="CA" svg style={{ width: '1.5em', height: '1.5em', }} />
                 </span>
               </div>
             </div>
@@ -770,12 +770,12 @@ function App() {
               <div>
                 <button onClick={executeScroll} className='mb-2 mr-4 text-white text-lg font-medium py-1 px-10  bg-light-red hover:bg-green-600 transition-all'>APPLY</button>
                 <span className='block md:inline'>
-                  <ReactCountryFlag className='mr-2' countryCode="ES" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="DE" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="GB" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="US" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="IE" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="CA" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mr-1' countryCode="ES" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-1' countryCode="DE" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-1' countryCode="GB" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-1' countryCode="US" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-1' countryCode="IE" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-1' countryCode="CA" svg style={{ width: '1.5em', height: '1.5em', }} />
                 </span>
               </div>
             </div>
@@ -802,12 +802,12 @@ function App() {
               <div>
                 <button onClick={executeScroll} className='mb-2 mr-4 text-white text-lg font-medium py-1 px-10  bg-light-red hover:bg-green-600 transition-all'>APPLY</button>
                 <span className='block md:inline'>
-                  <ReactCountryFlag className='mr-2' countryCode="ES" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="DE" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="GB" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="US" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="IE" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="CA" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mr-1' countryCode="ES" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-1' countryCode="DE" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-1' countryCode="GB" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-1' countryCode="US" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-1' countryCode="IE" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-1' countryCode="CA" svg style={{ width: '1.5em', height: '1.5em', }} />
                 </span>
               </div>
             </div>
@@ -828,12 +828,12 @@ function App() {
               <div>
                 <button onClick={executeScroll} className='mb-2 mr-4 text-white text-lg font-medium py-1 px-10  bg-light-red hover:bg-green-600 transition-all'>APPLY</button>
                 <span className='block md:inline'>
-                  <ReactCountryFlag className='mr-2' countryCode="ES" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="DE" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="GB" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="US" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="IE" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="CA" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mr-1' countryCode="ES" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-1' countryCode="DE" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-1' countryCode="GB" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-1' countryCode="US" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-1' countryCode="IE" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-1' countryCode="CA" svg style={{ width: '1.5em', height: '1.5em', }} />
                 </span>
               </div>
             </div>
@@ -860,12 +860,12 @@ function App() {
               <div>
                 <button onClick={executeScroll} className='mb-2 mr-4 text-white text-lg font-medium py-1 px-10  bg-light-red hover:bg-green-600 transition-all'>APPLY</button>
                 <span className='block md:inline'>
-                  <ReactCountryFlag className='mr-2' countryCode="ES" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="DE" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="GB" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="US" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="IE" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="CA" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mr-1' countryCode="ES" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-1' countryCode="DE" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-1' countryCode="GB" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-1' countryCode="US" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-1' countryCode="IE" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-1' countryCode="CA" svg style={{ width: '1.5em', height: '1.5em', }} />
                 </span>
               </div>
             </div>
@@ -886,12 +886,12 @@ function App() {
               <div>
                 <button onClick={executeScroll} className='mb-2 mr-4 text-white text-lg font-medium py-1 px-10  bg-light-red hover:bg-green-600 transition-all'>APPLY</button>
                 <span className='block md:inline'>
-                  <ReactCountryFlag className='mr-2' countryCode="ES" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="DE" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="GB" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="US" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="IE" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="CA" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mr-1' countryCode="ES" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-1' countryCode="DE" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-1' countryCode="GB" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-1' countryCode="US" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-1' countryCode="IE" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-1' countryCode="CA" svg style={{ width: '1.5em', height: '1.5em', }} />
                 </span>
               </div>
             </div>
@@ -918,12 +918,12 @@ function App() {
               <div>
                 <button onClick={executeScroll} className='mb-2 mr-4 text-white text-lg font-medium py-1 px-10  bg-light-red hover:bg-green-600 transition-all'>APPLY</button>
                 <span className='block md:inline'>
-                  <ReactCountryFlag className='mr-2' countryCode="ES" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="DE" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="GB" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="US" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="IE" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="CA" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mr-1' countryCode="ES" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-1' countryCode="DE" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-1' countryCode="GB" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-1' countryCode="US" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-1' countryCode="IE" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-1' countryCode="CA" svg style={{ width: '1.5em', height: '1.5em', }} />
                 </span>
               </div>
             </div>
@@ -944,12 +944,12 @@ function App() {
               <div>
                 <button onClick={executeScroll} className='mb-2 mr-4 text-white text-lg font-medium py-1 px-10  bg-light-red hover:bg-green-600 transition-all'>APPLY</button>
                 <span className='block md:inline'>
-                  <ReactCountryFlag className='mr-2' countryCode="ES" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="DE" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="GB" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="US" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="IE" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="CA" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mr-1' countryCode="ES" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-1' countryCode="DE" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-1' countryCode="GB" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-1' countryCode="US" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-1' countryCode="IE" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-1' countryCode="CA" svg style={{ width: '1.5em', height: '1.5em', }} />
                 </span>
               </div>
             </div>
@@ -976,12 +976,12 @@ function App() {
               <div>
                 <button onClick={executeScroll} className='mb-2 mr-4 text-white text-lg font-medium py-1 px-10  bg-light-red hover:bg-green-600 transition-all'>APPLY</button>
                 <span className='block md:inline'>
-                  <ReactCountryFlag className='mr-2' countryCode="ES" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="DE" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="GB" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="US" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="IE" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="CA" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mr-1' countryCode="ES" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-1' countryCode="DE" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-1' countryCode="GB" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-1' countryCode="US" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-1' countryCode="IE" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-1' countryCode="CA" svg style={{ width: '1.5em', height: '1.5em', }} />
                 </span>
               </div>
             </div>
@@ -1002,12 +1002,12 @@ function App() {
               <div>
                 <button onClick={executeScroll} className='mb-2 mr-4 text-white text-lg font-medium py-1 px-10  bg-light-red hover:bg-green-600 transition-all'>APPLY</button>
                 <span className='block md:inline'>
-                  <ReactCountryFlag className='mr-2' countryCode="ES" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="DE" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="GB" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="US" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="IE" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-2' countryCode="CA" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mr-1' countryCode="ES" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-1' countryCode="DE" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-1' countryCode="GB" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-1' countryCode="US" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-1' countryCode="IE" svg style={{ width: '1.5em', height: '1.5em', }} />
+                  <ReactCountryFlag className='mx-1' countryCode="CA" svg style={{ width: '1.5em', height: '1.5em', }} />
                 </span>
               </div>
             </div>
