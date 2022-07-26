@@ -254,7 +254,7 @@ function App() {
                     <figcaption className='text-center md:mr-1  mr-1  mt-1 text-xs text-red-600 font-semibold  '>
                       {/* Language */}
                       <div className="dropdown relative w-1/5 float-right">
-                        <button className=" w-full h-full dropdown-toggle p-2 ml-3 transition duration-150 ease-in-out flex items-center whitespace-nowrap " type="button" id="surdropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                        <button className=" w-full h-full dropdown-toggle p-2 ml-4 transition duration-150 ease-in-out flex items-center whitespace-nowrap " type="button" id="surdropdown" data-bs-toggle="dropdown" aria-expanded="false">
                           {language.find((s_name) => s_name === lang)}
                           
                           <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="caret-down" className="w-3  " role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
