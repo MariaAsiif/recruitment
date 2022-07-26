@@ -47,6 +47,7 @@ import { FaTwitter } from 'react-icons/fa'
 import { BsInstagram } from 'react-icons/bs'
 import { AiFillLinkedin } from 'react-icons/ai'
 import PopUp from './components/popup/popup';
+import FollowUs from './components/socialIcons/Icons';
 // import Calendar from "react-"
 // import { MobileDatePicker } from '@mui/x-date-pickers/MobileDatePicker';
 // import TextField from '@mui/material/TextField';
@@ -921,30 +922,7 @@ function App() {
           | <span className='hover:underline cursor-pointer' >SITE DIRECTORY </span>
         </span>
         <div className='footer_social '>
-          <span className='mx-2 facebok' >
-            <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer">
-              <FiFacebook />
-            </a>
-          </span>
-          <span className='mx-2 twitter'>
-            <a href=" https://www.twitter.com/" target="_blank" rel="noopener noreferrer">
-
-              <FaTwitter />
-            </a>
-          </span>
-
-          <span className='mx-2 insta'>
-            <a href=" https://www.instagram.com/" target="_blank" rel="noopener noreferrer">
-
-              <BsInstagram />
-            </a>
-          </span>
-
-          <span className='mx-2 linkd_in'>
-            <a href=" https://www.linkedin.com/" target="_blank" rel="noopener noreferrer">
-              <AiFillLinkedin />
-            </a>
-          </span>
+          <FollowUs/>
         </div>
       </footer>
 

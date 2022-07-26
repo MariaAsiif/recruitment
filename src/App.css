@@ -90,10 +90,10 @@
   justify-content: center;
 }
 
-.footer_social span {
+.icons {
   margin-left: 10px;
   border: 1pt solid white;
-  width: 32px;
+  width: 32px !important;
   padding: 5px 6px;
   height: 32px;
   align-items: center;
@@ -102,37 +102,17 @@
 
 }
 
-.footer_social span:hover {
+.icons:hover {
   background-color: #60a5fa;
   cursor: pointer;
   border: 1pt solid #60a5fa;
 }
 
-.footer_social .linkd_in:hover {
-  background-color: #0E76A8;
-  border-color: #0E76A8;
-}
 
-.footer_social .facebok:hover {
-  background-color: #4267B2;
-  border-color: #0E76A8;
 
-}
-
-.footer_social .insta:hover {
-  background-color: #E1306C;
-  border-color: #E1306C;
-
-}
-
-.footer_social .twitter:hover {
-  background-color: #0E76A8;
-  border-color: #0E76A8;
-
-}
-
-.footer_social span svg {
+.icons svg {
   font-size: 18px;
+
 }
 
 
