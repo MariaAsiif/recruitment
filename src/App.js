@@ -70,6 +70,10 @@ function App() {
     mobile: localStorage.getItem('mobile') ? localStorage.getItem('mobile') : "",
     age: localStorage.getItem('age') ? localStorage.getItem('age') : "",
   })
+
+  const language = ['English' , 'Spanish']
+  const [lang , setLang] = useState("English")
+  
   const [validationModel, setvalidationModel] = useState({
     fullnameError: null,
     firstFnameError: null,
@@ -235,7 +239,7 @@ function App() {
                 <div className='col-4'>
                   <figure>
                     <img src={leafLogo2} className="md:w-16 w-11 " alt="leafLogo" />
-                    <figcaption className='text-left md:-ml-6 -ml-3 mt-1 text-xs text-red-600 font-semibold'>
+                    <figcaption className='text-left md:-ml-6 -ml-3 mt-1 text-xs text-red-600 font-semibold '>
                       {/* CULTIVATED WELLNESS */}
                       Cultivated Wellness
                     </figcaption>
@@ -245,27 +249,29 @@ function App() {
                   <p>RECRUIT</p>
                 </div>
                 <div className='col-4 '>
-                  <figure className='relative'>
+                  <figure className='flex flex-col justify-center '>
                     <img src={usFlaglogo} className=" ml-auto  md:w-16 w-11 " alt="leafLogo" />
-                    <figcaption className='text-right md:mr-1  mr-1  mt-1 text-xs text-red-600 font-semibold '>
+                    <figcaption className='text-center md:mr-1  mr-1  mt-1 text-xs text-red-600 font-semibold  '>
                       {/* Language */}
-                      <div className="dropdown relative w-1/5">
-                        <button className=" w-full  justify-right h-full   dropdown-toggle p-2 transition duration-150 ease-in-out flex items-center whitespace-nowrap " type="button" id="surdropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                          {surnames.find((s_name) => s_name === recruitModel.surname)}
-                          <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="caret-down" className="w-3 ml-auto" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+                      <div className="dropdown relative w-1/5 float-right">
+                        <button className=" w-full h-full dropdown-toggle p-2 ml-3 transition duration-150 ease-in-out flex items-center whitespace-nowrap " type="button" id="surdropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                          {language.find((s_name) => s_name === lang)}
+                          
+                          <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="caret-down" className="w-3  " role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
                             <path fill="currentColor" d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z" />
                           </svg>
                         </button>
-                        <ul className=" dropdown-menu absolute w-full  max-h-52 overflow-y-auto overflow-x-hidden bg-white text-base z-50 float-left py-2 list-none text-left shadow-lg mt-1 hidden m-0 bg-clip-padding border-none " aria-labelledby="surdropdown">
-                          {surnames.map((sur, i) => {
+                        <ul className=" dropdown-menu absolute w-100   overflow-y-auto  bg-white text-base z-50 float-left py-2 list-none text-left shadow-lg mt-1 hidden m-0 bg-clip-padding border-none " aria-labelledby="surdropdown">
+                          {language.map((sur, i) => {
                             return (
                               <li key={i} >
-                                <span onClick={() => handlePlaces(sur, "surname")} className=" cursor-pointer dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100 "  >{sur}</span>
+                                <span onClick={() => setLang(sur)} className=" cursor-pointer dropdown-item text-sm py-2 px-4  font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100 "  >{sur}</span>
                               </li>
                             )
                           })}
                         </ul>
                       </div>
+
                     </figcaption>
                   </figure>
                 </div>
@@ -365,7 +371,7 @@ function App() {
             <div className='row justify-center gap-2 mb-4 g-0  '>
               <div className={`col-lg-3 col-md-10`} >
                 {/* <div className='h-full relative'> */}
-              
+
                 <PhoneInput country={'es'} dropdownClass={"custom-dropdown"} enableSearch disableSearchIcon countryCodeEditable={false} value={mobile} onChange={handleMobileChange} />
                 {validationModel.mobileError}
                 {/* </div> */}
@@ -525,7 +531,7 @@ function App() {
             <div className='row justify-center gap-2 mb-8 g-0 '>
               <div className='col-lg-6 col-md-10'>
                 <p className='text-lg text-red-600 mb-4  '><sup className='text-red-600 font-bold'>*</sup>Mandatory</p>
-                <button onClick={handleSubmit} className='text-white hover:bg-green-700  bg-gray-900 w-full px-2 py-1 text-3xl font-medium tracking-wide'>SUBMIT</button>
+                <button onClick={handleSubmit} className={`text-white ${checkData ? `bg-green-600` : `bg-gray-900`} w-full px-2 py-1 text-3xl font-medium tracking-wide`}>SUBMIT</button>
               </div>
 
             </div>
@@ -586,7 +592,7 @@ function App() {
             <div id="dropzone" ref={dropzoneRef} className="mt-1 flex justify-center px-6 pt-5 pb-6 border-4 border-gray-300 border-dashed border-b-red-500  bg-gray-100">
               <div className="space-y-1 text-center items-center flex justify-center flex-col">
                 {/* <MdCloudUpload size={99} className='inline  text-blue-300' /> */}
-                <img src={cloudImage} className="w-55 h-40  " alt="cloud_image"/>
+                <img src={cloudImage} className="w-55 h-40  " alt="cloud_image" />
                 <div>
                   <h1 className='text-5xl font-bold mb-2'>Drag & Drop</h1>
                   <h4 className='text-gray-700 text-2xl font-medium mb-2'>Your file type</h4>
@@ -601,7 +607,7 @@ function App() {
                   </div>
 
                   <h5 className='text-gray-500 text-xl font-normal mb-2'>or select an option below</h5>
-                  <label className={`rounded-sm  hover:bg-green-700 bg-light-red  inline-block text-white mb-1 cursor-pointer text-xl tracking-wide font-medium px-8 py-1`}>
+                  <label className={`rounded-sm ${file ? ` bg-green-600 ` : `bg-light-red`}  inline-block text-white mb-1 cursor-pointer text-xl tracking-wide font-medium px-8 py-1`}>
                     BROWSE MY FILES
                     <input type="file" onChange={(e) => setFile(e.target.files[0])} hidden />
                   </label>
