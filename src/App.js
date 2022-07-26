@@ -71,8 +71,8 @@ function App() {
     age: localStorage.getItem('age') ? localStorage.getItem('age') : "",
   })
 
-  const language = ['English' , 'Spanish']
-  const [lang , setLang] = useState("English")
+  const language = ['Language' , 'Spanish']
+  const [lang , setLang] = useState("Language")
   
   const [validationModel, setvalidationModel] = useState({
     fullnameError: null,
