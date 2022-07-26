@@ -23,6 +23,7 @@ import Whole_pic from "./assets/images/whole seller.jpg"
 import leafLogo2 from "./assets/images/Logo-leaf-Top-red-V2.png"
 import usFlaglogo from "./assets/images/usflag_logo_v2.png"
 import bigPic from "./assets/images/creche.jpg"
+import cloudImage from "./assets/images/cloud.png"
 
 import { MdCloudUpload } from "react-icons/md";
 import { surnames } from './utils/enum';
@@ -69,8 +70,9 @@ function App() {
     state: localStorage.getItem('state') ? localStorage.getItem('state') : "BDS",
     industry: localStorage.getItem('industry') ? localStorage.getItem('industry') : "",
     country: localStorage.getItem('country') ? localStorage.getItem('country') : "AF",
-    postcode: localStorage.getItem('postcode') ? localStorage.getItem('postcode') : "",
+    // postcode: localStorage.getItem('postcode') ? localStorage.getItem('postcode') : "",
     position: localStorage.getItem('position') ? localStorage.getItem('position') : "",
+    mobile: localStorage.getItem('mobile') ? localStorage.getItem('mobile') : "",
     age: localStorage.getItem('age') ? localStorage.getItem('age') : "",
   })
   const [validationModel, setvalidationModel] = useState({
@@ -105,6 +107,8 @@ function App() {
       [e.target.name]: e.target.value
     }))
   }
+
+  console.log("recruitModel", recruitModel)
 
 
   const handleMobileChange = (value) => {
@@ -141,7 +145,6 @@ function App() {
       ageError: Validator(recruitModel.age, [V_Type.required], ['Must add your age']),
 
     };
-    console.log("myvalidation_Obj", myvalidation_Obj)
     setvalidationModel(myvalidation_Obj);
     return Validator(myvalidation_Obj, V_Type.NullCheck);
   };
@@ -156,7 +159,6 @@ function App() {
 
 
   const handleSubmit = () => {
-    debugger
     let my_validation = setValidation();
     if (my_validation) {
       console.log('Api will not run', my_validation);
@@ -167,10 +169,13 @@ function App() {
     else {
       alert("Data Send Succesfully ")
 
+
     }
   }
 
+  let findEmptyFile = Object.values(recruitModel).filter((f) => f !== '')
 
+  let checkData = findEmptyFile.length === Object.keys(recruitModel).length
 
 
   // ************************* Date Picker function *********************
@@ -245,9 +250,28 @@ function App() {
                   <p>RECRUIT</p>
                 </div>
                 <div className='col-4 '>
-                  <figure>
+                  <figure className='relative'>
                     <img src={usFlaglogo} className=" ml-auto  md:w-16 w-11 " alt="leafLogo" />
-                    <figcaption className='text-right md:mr-1  mr-1  mt-1 text-xs text-red-600 font-semibold'>Language</figcaption>
+                    <figcaption className='text-right md:mr-1  mr-1  mt-1 text-xs text-red-600 font-semibold '>
+                      {/* Language */}
+                      <div className="dropdown relative w-1/5">
+                        <button className=" w-full  justify-right h-full   dropdown-toggle p-2 transition duration-150 ease-in-out flex items-center whitespace-nowrap " type="button" id="surdropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                          {surnames.find((s_name) => s_name === recruitModel.surname)}
+                          <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="caret-down" className="w-3 ml-auto" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+                            <path fill="currentColor" d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z" />
+                          </svg>
+                        </button>
+                        <ul className=" dropdown-menu absolute w-full  max-h-52 overflow-y-auto overflow-x-hidden bg-white text-base z-50 float-left py-2 list-none text-left shadow-lg mt-1 hidden m-0 bg-clip-padding border-none " aria-labelledby="surdropdown">
+                          {surnames.map((sur, i) => {
+                            return (
+                              <li key={i} >
+                                <span onClick={() => handlePlaces(sur, "surname")} className=" cursor-pointer dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100 "  >{sur}</span>
+                              </li>
+                            )
+                          })}
+                        </ul>
+                      </div>
+                    </figcaption>
                   </figure>
                 </div>
               </div>
@@ -344,11 +368,12 @@ function App() {
 
             </div>
             <div className='row justify-center gap-2 mb-4 g-0  '>
-              <div className={`col-lg-3 col-md-10  bg-white  text-gray-500 text-base font-medium bg-light-gray `} >
-                <div className='h-full relative'>
-                  <PhoneInput country={'es'} dropdownClass={"custom-dropdown"} enableSearch disableSearchIcon countryCodeEditable={false} value={mobile} onChange={handleMobileChange} />
-                  {validationModel.mobileError}
-                </div>
+              <div className={`col-lg-3 col-md-10`} >
+                {/* <div className='h-full relative'> */}
+              
+                <PhoneInput country={'es'} dropdownClass={"custom-dropdown"} enableSearch disableSearchIcon countryCodeEditable={false} value={mobile} onChange={handleMobileChange} />
+                {validationModel.mobileError}
+                {/* </div> */}
 
               </div>
               <div className='col-lg-3 col-md-10'>
@@ -440,9 +465,9 @@ function App() {
                     <div className="dropdown relative">
                       <button className=" w-full bg-white border-2 border-gray-400 text-gray-400 dropdown-toggle p-2   focus:outline-blue-400 focus:ring-0 active:border-blue-400   transition duration-150 ease-in-out flex items-center whitespace-nowrap " type="button" id="citydropdown" data-bs-toggle="dropdown" aria-expanded="false">
                         {all_Cities.find((city) => city.name === recruitModel.city)?.name}
-                        <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="caret-down" className="w-3 ml-auto" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+                        {/* <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="caret-down" className="w-3 ml-auto" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
                           <path fill="currentColor" d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z" />
-                        </svg>
+                        </svg> */}
                       </button>
                       <ul className=" dropdown-menu   absolute w-full  max-h-52 overflow-y-scroll overflow-x-hidden bg-white text-base z-50 float-left py-2 list-none text-left shadow-lg mt-1 hidden m-0 bg-clip-padding border-none " aria-labelledby="citydropdown">
                         {all_Cities.map((city) => {
@@ -505,7 +530,7 @@ function App() {
             <div className='row justify-center gap-2 mb-8 g-0 '>
               <div className='col-lg-6 col-md-10'>
                 <p className='text-lg text-red-600 mb-4  '><sup className='text-red-600 font-bold'>*</sup>Mandatory</p>
-                <button onClick={handleSubmit} className='text-white bg-gray-900 w-full px-2 py-1 text-3xl font-medium tracking-wide'>SUBMIT</button>
+                <button onClick={handleSubmit} className='text-white hover:bg-green-700  bg-gray-900 w-full px-2 py-1 text-3xl font-medium tracking-wide'>SUBMIT</button>
               </div>
             </div>
           </div>
@@ -563,8 +588,9 @@ function App() {
 
             }
             <div id="dropzone" ref={dropzoneRef} className="mt-1 flex justify-center px-6 pt-5 pb-6 border-4 border-gray-300 border-dashed border-b-red-500  bg-gray-100">
-              <div className="space-y-1 text-center">
-                <MdCloudUpload size={99} className='inline  text-gray-500' />
+              <div className="space-y-1 text-center items-center flex justify-center flex-col">
+                {/* <MdCloudUpload size={99} className='inline  text-blue-300' /> */}
+                <img src={cloudImage} className="w-55 h-40  " alt="cloud_image"/>
                 <div>
                   <h1 className='text-5xl font-bold mb-2'>Drag & Drop</h1>
                   <h4 className='text-gray-700 text-2xl font-medium mb-2'>Your file type</h4>
@@ -579,7 +605,7 @@ function App() {
                   </div>
 
                   <h5 className='text-gray-500 text-xl font-normal mb-2'>or select an option below</h5>
-                  <label className='rounded-sm bg-light-red inline-block text-white mb-1 cursor-pointer text-xl tracking-wide font-medium px-8 py-1'>
+                  <label className={`rounded-sm  hover:bg-green-700 bg-light-red  inline-block text-white mb-1 cursor-pointer text-xl tracking-wide font-medium px-8 py-1`}>
                     BROWSE MY FILES
                     <input type="file" onChange={(e) => setFile(e.target.files[0])} hidden />
                   </label>
@@ -922,7 +948,7 @@ function App() {
           | <span className='hover:underline cursor-pointer' >SITE DIRECTORY </span>
         </span>
         <div className='footer_social '>
-          <FollowUs/>
+          <FollowUs />
         </div>
       </footer>
 
