@@ -23,8 +23,10 @@
   line-height: 25px;
   outline: none;
 }
-
-.react-tel-input .selected-flag .arrow {
+.select_lang{
+  margin-right: -20px;
+}
+/* .react-tel-input .selected-flag .arrow {
   position: absolute !important;
   top: 50% !important;
   margin-top: -2px;
@@ -41,7 +43,7 @@
   margin-left: 5px !important;
   object-fit: cover !important;
   height: 13px !important;
-}
+} */
 
 
 
