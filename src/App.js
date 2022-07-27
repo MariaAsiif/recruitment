@@ -427,7 +427,7 @@ function App() {
             </div>
             <div className='row justify-center md:gap-2 gap-4 mb-4 g-0  '>
               <div className={`col-lg-3 col-md-10 relative`} >
-                {/* <div className='h-full relative'> */}
+                <div className='absolute top-0  left-[40px]   w-[2px] h-[40px] bg-gray-400 z-[1]'></div>
                 <PhoneInput country={'es'}
                   dropdownClass={"custom-dropdown"}
                   enableSearch disableSearchIcon
@@ -440,7 +440,7 @@ function App() {
                   onChange={handleMobileChange} />
 
                 {validationModel.mobileError}
-                {/* </div> */}
+
 
               </div>
               <div className='col-lg-3 col-md-10'>
@@ -483,7 +483,6 @@ function App() {
                   </p>
                   :
                   null
-
                 }
               </div>
               <div className='col-lg-3 col-md-10 city_group_hide '>
