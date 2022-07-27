@@ -105,6 +105,8 @@ function App() {
     let { name, value } = e.target
     if (name === "firstFname") {
       value = e.target.value.toUpperCase()
+    } else if (name === "fullname" || name === "secondFname" || name === "thirdFname") {
+      value = e.target.value.replace(/[^a-z]/gi, '');
     }
     localStorage.setItem(name, value);
     setrecruitModel((prevmodel) => ({
@@ -145,13 +147,24 @@ function App() {
       return true;
     }
   };
+
+  const customHandler2 = (data) => {
+    if (data[0] !== data[1]) {
+      console.log("TRUE")
+      return true;
+    } else {
+      console.log("FALSE")
+      return false;
+    }
+  };
   const setValidation = () => {
     let myvalidation_Obj = {
       ...validationModel,
       fullnameError: Validator(recruitModel.fullname, [V_Type.required], ['Please fill out this required field',]),
       firstFnameError: Validator(recruitModel.firstFname, [V_Type.required], ['Please fill out this required field']),
       emailError: Validator(recruitModel.email, [V_Type.required, customHandler], ['Please fill out this required field', "Email not correct"]),
-      reEmailError: Validator(recruitModel.reEmail, [V_Type.required], ['Please fill out this required field']),
+      reEmailError: Validator(recruitModel.reEmail, [V_Type.required, customHandler], ['Please fill out this required field', "Email not correct"]),
+      sameEmailError: Validator([recruitModel.email, recruitModel.reEmail], [customHandler2], ['Email not same']),
       mobileError: Validator(mobile, [V_Type.required], ['Please fill out this required field']),
       ageError: Validator(recruitModel.age, [V_Type.required], ['Must add your age']),
 
@@ -362,7 +375,7 @@ function App() {
               <div className='col-lg-3 col-md-10 email_hide'>
                 <div className='relative'>
                   <input name='email' value={recruitModel.email} onChange={handleChange} type="email" placeholder='Email Address' className={`w-full outline-blue-400 border-2 p-2 ${validationModel.emailError ? "border-red-400" : "border-gray-400"}`} />
-                  {recruitModel.email.length ?
+                  {recruitModel.email.length && !validationModel.emailError ?
                     <p className={recruitModel.email.length ? `visible absolute bottom-1/3 right-3` : `invisible`}>
                       <FcCheckmark />
                     </p>
@@ -403,7 +416,7 @@ function App() {
             <div className='row justify-center md:gap-2 gap-4 mb-4 g-0 flex-col-reverse lg:flex-row md:items-center  md:flex-col-reverse sm:flex-col-reverse   '>
               <div className='col-lg-3 col-md-10 relative '>
                 <div className='relative'>
-                  <input name='reEmail' value={recruitModel.reEmail} onChange={handleChange} type="email" placeholder='Re Enter Email Address' className={`w-full outline-blue-400 border-2 p-2 ${validationModel.reEmailError ? "border-red-400" : "border-gray-400"}`} />
+                  <input name='reEmail' value={recruitModel.reEmail} onChange={handleChange} type="email" placeholder='Re Enter Email Address' className={`w-full outline-blue-400 border-2 p-2 ${validationModel.reEmailError || validationModel.sameEmailError ? "border-red-400" : "border-gray-400"}`} />
                   {recruitModel.reEmail.length ?
                     <p className={recruitModel.reEmail.length ? `visible absolute bottom-1/3 right-3` : `invisible`}>
                       <FcCheckmark />
@@ -413,6 +426,7 @@ function App() {
                   }
                 </div>
                 {validationModel.reEmailError}
+                {validationModel.sameEmailError}
               </div>
               <div className='col-lg-3 col-md-10 relative thirdname_hide'>
                 <div className='relative'>
@@ -442,7 +456,7 @@ function App() {
             </div>
             <div className='row justify-center md:gap-2 gap-4 mb-4 g-0  '>
               <div className={`col-lg-3 col-md-10 relative`} >
-                {/* <div className='absolute top-0  left-[88px]   w-[2px] h-[40px] bg-gray-400 z-[1]'></div> */}
+                <div className='absolute top-0  left-[82px]   w-[2px] h-[40px] bg-gray-400 z-[1]'></div>
                 <PhoneInput
                   country={'es'}
                   dropdownClass={"custom-dropdown"}
@@ -450,7 +464,7 @@ function App() {
                   disableSearchIcon
                   countryCodeEditable={false}
                   value={mobile}
-                  // placeholder="*** ** ** **"
+                  placeholder="*** ** ** **"
                   // inputStyle={{ width: "100%", border: "2px solid #9ca3af", borderRadius: 0, height: "100%", fontSize: 18, padding: "0.5rem 0.5rem 0.5rem 48px" }}
                   // containerStyle={{ height: "100%" }}
                   // buttonStyle={{ background: "white", border: "2px solid #9ca3af" }}
@@ -641,7 +655,7 @@ function App() {
                 <div className='row g-1'>
                   <div className='col-6'>
                     <div className='relative'>
-                      <input name='age' value={recruitModel.age} onChange={handleChange} type="text" placeholder='Age ' className={`w-full outline-blue-400 border-2 px-2 py-2 ${validationModel.ageError ? "border-red-400" : "border-gray-400"}`} />
+                      <input name='age' value={recruitModel.age} onChange={handleChange} type="number" placeholder='Age ' className={`w-full outline-blue-400 border-2 px-2 py-2 ${validationModel.ageError ? "border-red-400" : "border-gray-400"}`} />
                       {recruitModel.position.length ?
                         <p className={recruitModel.position.length ? `visible absolute bottom-1/3 right-3` : `invisible`}>
                           <FcCheckmark />
