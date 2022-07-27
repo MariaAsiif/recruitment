@@ -3,10 +3,11 @@ export const ValidationTypes = {
     required: "required",
     capitalize: "capitalize",
     NullCheck: "NullCheck",
-    startEndDate: "startEndDate"
+    startEndDate: "startEndDate",
+    validateEmail: "validateEmail"
 }
 const Validator = (data, type, Error) => {
-    console.log("Data" , data )
+    console.log("Data", data)
     const styling = {
         marginTop: "0.25rem",
         fontSize: ".875em",
@@ -57,6 +58,7 @@ const pushInArray = (data) => {
     }
     return new_arr
 }
+
 const isNull = (value) => {
     if (
         value === '' ||

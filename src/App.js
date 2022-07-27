@@ -102,10 +102,14 @@ function App() {
 
   const executeScroll = () => myRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' })
   const handleChange = (e) => {
-    localStorage.setItem(e.target.name, e.target.value);
+    let { name, value } = e.target
+    if (name === "firstFname") {
+      value = e.target.value.toUpperCase()
+    }
+    localStorage.setItem(name, value);
     setrecruitModel((prevmodel) => ({
       ...prevmodel,
-      [e.target.name]: e.target.value
+      [name]: value
     }))
   }
 
@@ -129,13 +133,24 @@ function App() {
 
     }
   }
-
+  const customHandler = (data) => {
+    console.log(data)
+    if (data[0].match(
+      /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    )) {
+      console.log("TRUE")
+      return false;
+    } else {
+      console.log("FALSE")
+      return true;
+    }
+  };
   const setValidation = () => {
     let myvalidation_Obj = {
       ...validationModel,
-      fullnameError: Validator(recruitModel.fullname, [V_Type.required], ['Please fill out this required field']),
+      fullnameError: Validator(recruitModel.fullname, [V_Type.required], ['Please fill out this required field',]),
       firstFnameError: Validator(recruitModel.firstFname, [V_Type.required], ['Please fill out this required field']),
-      emailError: Validator(recruitModel.email, [V_Type.required], ['Please fill out this required field']),
+      emailError: Validator(recruitModel.email, [V_Type.required, customHandler], ['Please fill out this required field', "Email not correct"]),
       reEmailError: Validator(recruitModel.reEmail, [V_Type.required], ['Please fill out this required field']),
       mobileError: Validator(mobile, [V_Type.required], ['Please fill out this required field']),
       ageError: Validator(recruitModel.age, [V_Type.required], ['Must add your age']),
@@ -427,16 +442,20 @@ function App() {
             </div>
             <div className='row justify-center md:gap-2 gap-4 mb-4 g-0  '>
               <div className={`col-lg-3 col-md-10 relative`} >
-                <div className='absolute top-0  left-[40px]   w-[2px] h-[40px] bg-gray-400 z-[1]'></div>
-                <PhoneInput country={'es'}
+                {/* <div className='absolute top-0  left-[88px]   w-[2px] h-[40px] bg-gray-400 z-[1]'></div> */}
+                <PhoneInput
+                  country={'es'}
                   dropdownClass={"custom-dropdown"}
-                  enableSearch disableSearchIcon
+                  enableSearch
+                  disableSearchIcon
                   countryCodeEditable={false}
                   value={mobile}
-                  containerStyle={{ borderRadius: 20, backgroundColor: '#463859', }}
-                  textInputStyle={{ color: "#00000" }}
-                  codeTextStyle={{ color: "#00000" }}
-                  flagButtonStyle={{ backgroundColor: "red" }}
+                  // placeholder="*** ** ** **"
+                  // inputStyle={{ width: "100%", border: "2px solid #9ca3af", borderRadius: 0, height: "100%", fontSize: 18, padding: "0.5rem 0.5rem 0.5rem 48px" }}
+                  // containerStyle={{ height: "100%" }}
+                  // buttonStyle={{ background: "white", border: "2px solid #9ca3af" }}
+                  // searchStyle={{ width: "100%" }}
+                  // dropdownStyle={{ width: "100%" }}
                   onChange={handleMobileChange} />
 
                 {validationModel.mobileError}

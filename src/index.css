@@ -42,18 +42,7 @@
 }
 
 .flag-dropdown {
-  /* border: 2px solid rgb(156 163 175) !important;
-  border-radius: 0px !important; */
   position: static !important;
-}
-
-.flag-dropdown.open {
-  /* border: 2px solid #60a5fa !important; */
-}
-
-.react-tel-input input:focus-visible {
-  /* border: 2px solid #60a5fa !important; */
-
 }
 
 .custom-dropdown {
