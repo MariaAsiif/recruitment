@@ -99,6 +99,7 @@ function App() {
   const [isShow, setIsShow] = useState(false);
 
   const dropItem = ["ABOUT RECRUIT", "HOW TO APPLY", " WHAT'S NEXT"]
+
   const executeScroll = () => myRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' })
   const handleChange = (e) => {
     localStorage.setItem(e.target.name, e.target.value);
@@ -108,27 +109,14 @@ function App() {
     }))
   }
 
-  console.log("recruitModel", recruitModel)
+
 
 
   const handleMobileChange = (value) => {
     localStorage.setItem("mobile", value);
     setmobile(value)
   }
-  const handleDobChange = ({ name, value }) => {
-    localStorage.setItem(name, value);
-    // setrecruitModel((prevmodel) => ({
-    //   ...prevmodel,
-    //   [name]: value
-    // }))
 
-    setrecruitModel({
-      ...recruitModel,
-      [name]: value
-    })
-
-
-  }
 
 
 
@@ -210,7 +198,26 @@ function App() {
     </div >
   )
 
-  console.log("state", recruitModel)
+  // ================ check Name ========
+
+  let stateName = all_States.find((state) => state.isoCode === recruitModel.state)?.name
+  let cityName = all_Cities.find((state) => state.name === recruitModel.city)?.name
+  // let stateName = all_States.find((state) => state.isoCode === recruitModel.state)?.name
+
+
+  // =============== Three Dots function ============
+
+
+  function add3Dots(string, limit) {
+    var dots = "...";
+    if (string && string.length > limit) {
+      // you can also use substr instead of substring
+      string = string.substring(0, limit) + dots;
+    }
+
+    return string;
+  }
+
 
   // ========================= Use Effect ==========================
 
@@ -248,12 +255,11 @@ function App() {
   }, [recruitModel.state, recruitModel.country])
 
 
-  console.log("recruitModel.state", recruitModel.city)
   return (
     <>
       <section ref={myRef} className='bscontainer-fluid'>
         <section className='row' >
-          <div style={{maxWidth:'400px' , margin:'auto'}} className='col-12 bg-hero-pattern bg-center bg-no-repeat     bg-cover bg-blend-lighten ' style={{ backgroundColor: "#ffffffad" }}>
+          <div style={{ maxWidth: '400px', margin: 'auto' }} className='col-12 bg-hero-pattern bg-center bg-no-repeat     bg-cover bg-blend-lighten ' style={{ backgroundColor: "#ffffffad" }}>
             <div className='lg:my-10 my-5 lg:px-28 md:px-5 px-6'>
               <div className='row  justify-center items-center'>
                 <div className='col-4'>
@@ -443,6 +449,10 @@ function App() {
                   enableSearch disableSearchIcon
                   countryCodeEditable={false}
                   value={mobile}
+                  containerStyle={{borderRadius:20,backgroundColor: '#463859',}}
+                  textInputStyle={{color:"#00000"}}
+                  codeTextStyle={{color:"#00000"}}
+                  flagButtonStyle={{backgroundColor:"red"}}
                   onChange={handleMobileChange} />
 
                 {validationModel.mobileError}
@@ -498,7 +508,7 @@ function App() {
                   <div className='col-6'>
                     <div className="dropdown relative">
                       <button className=" w-full bg-white border-2 border-gray-400 text-gray-400 dropdown-toggle p-2   focus:outline-blue-400 focus:ring-0 active:border-blue-400   transition duration-150 ease-in-out flex items-center whitespace-nowrap " type="button" id="statedropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                        {all_States.find((state) => state.isoCode === recruitModel.state)?.name}
+                        {add3Dots(stateName, 10)}
                         <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="caret-down" className="w-3 ml-auto" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
                           <path fill="currentColor" d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z" />
                         </svg>
@@ -512,7 +522,7 @@ function App() {
                         {all_States.map((state) => {
                           return (
                             <li key={state.isoCode}>
-                              <span onClick={() => handlePlaces(state.isoCode, "state")} className=" cursor-pointer dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100 "  >{state.name.substring(0, 25)}</span>
+                              <span onClick={() => handlePlaces(state.isoCode, "state")} className=" cursor-pointer dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100 "  >{state.name}</span>
                             </li>
                           )
                         })}
@@ -522,7 +532,7 @@ function App() {
                   <div className='col-6'>
                     <div className="dropdown relative">
                       <button className=" w-full bg-white border-2 border-gray-400 text-gray-400 dropdown-toggle p-2   focus:outline-blue-400 focus:ring-0 active:border-blue-400   transition duration-150 ease-in-out flex items-center whitespace-nowrap " type="button" id="citydropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                        {all_Cities.find((city) => city.name === recruitModel.city)?.name}
+                        {add3Dots(cityName, 10)}
                         <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="caret-down" className="w-3 ml-auto" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
                           <path fill="currentColor" d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z" />
                         </svg>
@@ -536,7 +546,7 @@ function App() {
                         {all_Cities.map((city) => {
                           return (
                             <li key={city.name}>
-                              <span onClick={() => handlePlaces(city.name, "city")} className=" cursor-pointer dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100 "  >{city.name.substring(0, 25)}</span>
+                              <span onClick={() => handlePlaces(city.name, "city")} className=" cursor-pointer dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100 "  >{city.name}</span>
                             </li>
                           )
                         })}
@@ -577,8 +587,7 @@ function App() {
                     <div className="dropdown relative">
                       <button className=" w-full bg-white border-2 border-gray-400 text-gray-400 dropdown-toggle p-2   focus:outline-blue-400 focus:ring-0 active:border-blue-400   transition duration-150 ease-in-out flex items-center whitespace-nowrap " type="button" id="statedropdown" data-bs-toggle="dropdown" aria-expanded="false">
 
-
-                        {all_States.find((state) => state.isoCode === recruitModel.state)?.name}
+                        {add3Dots(stateName, 10)}
                         <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="caret-down" className="w-3 ml-auto" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
                           <path fill="currentColor" d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z" />
                         </svg>
@@ -590,7 +599,7 @@ function App() {
                         {all_States.map((state) => {
                           return (
                             <li key={state.isoCode}>
-                              <span onClick={() => handlePlaces(state.isoCode, "state")} className=" cursor-pointer dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100 "  >{state.name.substring(0, 33)}</span>
+                              <span onClick={() => handlePlaces(state.isoCode, "state")} className=" cursor-pointer dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100 "  >{state.name}</span>
                             </li>
                           )
                         })}
@@ -600,7 +609,7 @@ function App() {
                   <div className='col-6'>
                     <div className="dropdown relative ">
                       <button className=" w-full bg-white border-2 border-gray-400 text-gray-400 dropdown-toggle p-2   focus:outline-blue-400 focus:ring-0 active:border-blue-400   transition duration-150 ease-in-out flex items-center whitespace-nowrap " type="button" id="citydropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                        {all_Cities.find((city) => city.name === recruitModel.city)?.name}
+                        {add3Dots(cityName, 10)}
                         {recruitModel.city !== "" ?
                           <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="caret-down" className="w-3 ml-auto" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
                             <path fill="currentColor" d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z" />
@@ -618,7 +627,7 @@ function App() {
                         {all_Cities.map((city) => {
                           return (
                             <li key={city.name}>
-                              <span onClick={() => handlePlaces(city.name, "city")} className=" cursor-pointer dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100 "  >{city.name.substring(0, 10)}</span>
+                              <span onClick={() => handlePlaces(city.name, "city")} className=" cursor-pointer dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100 "  >{city.name}</span>
                             </li>
                           )
                         })}
