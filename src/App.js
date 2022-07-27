@@ -3,6 +3,7 @@ import React, { useState, useRef, useEffect, forwardRef } from 'react'
 import './App.css';
 import { IoChevronDownOutline, IoChevronUpOutline } from "react-icons/io5";
 import { BsCalendarEvent } from "react-icons/bs";
+import { FcCheckmark } from 'react-icons/fc'
 import { GoFileMedia } from "react-icons/go";
 import Business_pic from "./assets/images/sales (2).jpg"
 import Sales_pic from "./assets/images/sales representatives.jpg"
@@ -114,10 +115,19 @@ function App() {
     localStorage.setItem("mobile", value);
     setmobile(value)
   }
-  const handleDobChange = (value) => {
-    console.log("runnn", value);
-    localStorage.setItem("dob", value);
-    setdateob(value)
+  const handleDobChange = ({ name, value }) => {
+    localStorage.setItem(name, value);
+    // setrecruitModel((prevmodel) => ({
+    //   ...prevmodel,
+    //   [name]: value
+    // }))
+
+    setrecruitModel({
+      ...recruitModel,
+      [name]: value
+    })
+
+
   }
 
 
@@ -189,11 +199,18 @@ function App() {
         className={`date_picker w-full outline-blue-400 cursor-pointer z-30  border-2 px-2 py-2 ${validationModel.dateob ? "border-red-400" : "border-gray-400"}`}
       // a styling class
       />
-      <div className=" absolute top-3 cursor-pointer right-5">
-        <AiFillCalendar />
+      <div className={recruitModel.email.length ? `visible absolute top-3 cursor-pointer right-5` : `visible absolute top-3 cursor-pointer right-5`}>
+        {dateob ?
+          <FcCheckmark />
+          :
+          <AiFillCalendar />
+        }
       </div>
+
     </div >
   )
+
+  console.log("state", recruitModel)
 
   // ========================= Use Effect ==========================
 
@@ -257,9 +274,9 @@ function App() {
                         <option className='text-xs text-red-600 font-semibold' disabled>Language</option>
                         <option className='text-xs text-red-600 font-semibold'>English</option>
                         <option className='text-xs text-red-600 font-semibold'>Spanish</option>
-                      
+
                       </select>
-                     
+
 
                     </figcaption>
                   </figure>
@@ -270,10 +287,8 @@ function App() {
             <div className='row justify-center gap-2 mb-4 g-0 '>
               <div className='col-lg-3 col-md-10'>
 
-                <div className=' text-gray-500 text-base font-medium bg-light-gray flex'>
-                  {/* <select name='surname' value={recruitModel.surname} onChange={handleChange} className='w-1/5 h-full py-2 border-gray-400 border-2 border-r-0 outline-blue-400 bg-white'>
-    {surnames.map((sur, i) => <option key={i}>{sur}</option>)}
-  </select> */}
+                <div className=' text-gray-500 text-base font-medium bg-light-gray flex h-11'>
+
                   <div className="dropdown relative w-1/5">
                     <button className=" w-full bg-white border-2 border-r-0 h-full  border-gray-400 text-gray-400 dropdown-toggle p-2   focus:outline-blue-400 focus:ring-0 active:border-blue-400   transition duration-150 ease-in-out flex items-center whitespace-nowrap " type="button" id="surdropdown" data-bs-toggle="dropdown" aria-expanded="false">
                       {surnames.find((s_name) => s_name === recruitModel.surname)}
@@ -294,6 +309,9 @@ function App() {
                   <div className='relative inline-block w-4/5 '>
                     <input name='fullname' value={recruitModel.fullname} onChange={handleChange} type="text" placeholder='Name ' className={`w-full h-full p-2 bg-white  outline-blue-400 border-2 ${validationModel.fullnameError ? "border-red-400" : "border-gray-400"} `} />
                     <span hidden={recruitModel.fullname.length} className='absolute  text-red-400 font-medium text-lg top-1/4 left-16'>*</span>
+                    <span className={recruitModel.fullname.length ? `visible absolute top-1/4 right-3` : `invisible`}>
+                      <FcCheckmark />
+                    </span>
                   </div>
 
                 </div>
@@ -304,6 +322,9 @@ function App() {
                 <div className='relative'>
                   <input name='firstFname' value={recruitModel.firstFname} onChange={handleChange} type="text" placeholder='1st Family Name' className={`w-full outline-blue-400 border-2 p-2 ${validationModel.firstFnameError ? "border-red-400" : "border-gray-400"}`} />
                   <span hidden={recruitModel.firstFname.length} className='absolute text-red-400 font-medium text-lg top-1/4 left-36'>*</span>
+                  <span className={recruitModel.firstFname.length ? `visible absolute top-1/4 right-3 md:right-2` : `invisible`}>
+                    <FcCheckmark />
+                  </span>
                 </div>
 
                 {validationModel.firstFnameError}
@@ -314,19 +335,28 @@ function App() {
                 <div className='relative'>
                   <input name='email' value={recruitModel.email} onChange={handleChange} type="email" placeholder='Email Address' className={`w-full outline-blue-400 border-2 p-2 ${validationModel.emailError ? "border-red-400" : "border-gray-400"}`} />
                   <span hidden={recruitModel.email.length} className='absolute text-red-400 font-medium text-lg top-1/4 left-32'>*</span>
+                  <span className={recruitModel.email.length ? `visible absolute bottom-1/3 right-3` : `invisible`}>
+                    <FcCheckmark />
+                  </span>
                 </div>
                 {validationModel.emailError}
               </div>
               <div className='col-lg-3 col-md-10 relative thirdname_show'>
                 <div className='relative'>
                   <input name='thirdFname' value={recruitModel.thirdFname} onChange={handleChange} type="email" placeholder='3rd Family Name ' className={`w-full outline-blue-400 border-2 p-2 border-gray-400`} />
-                  <span hidden={recruitModel.thirdFname.length} className='absolute text-red-400 font-medium text-xs top-1/3 left-40'>(optional)</span>
+                  <span hidden={recruitModel.thirdFname.length} className='absolute text-red-400 font-medium text-xs top-1/7 left-40'>(optional)</span>
+                  <span className={recruitModel.thirdFname.length ? `visible absolute top-1/4 right-3 md:right-2` : `invisible`}>
+                    <FcCheckmark />
+                  </span>
                 </div>
               </div>
               <div className='col-lg-3 col-md-10 '>
                 <div className='relative'>
                   <input name='secondFname' value={recruitModel.secondFname} onChange={handleChange} type="text" placeholder='2nd Family Name ' className={`w-full outline-blue-400 border-2 p-2 border-gray-400`} />
                   <span hidden={recruitModel.secondFname.length} className='absolute text-red-400 font-medium  text-xs top-1/3 left-40'>(optional)</span>
+                  <span className={recruitModel.secondFname.length ? `visible absolute top-1/4 right-3 md:right-2` : `invisible`}>
+                    <FcCheckmark />
+                  </span>
                 </div>
               </div>
 
@@ -339,6 +369,9 @@ function App() {
                 <div className='relative'>
                   <input name='reEmail' value={recruitModel.reEmail} onChange={handleChange} type="email" placeholder='Re Enter Email Address' className={`w-full outline-blue-400 border-2 p-2 ${validationModel.reEmailError ? "border-red-400" : "border-gray-400"}`} />
                   <span hidden={recruitModel.reEmail.length} className='absolute text-red-400 font-medium text-lg top-1/4 left-48'>*</span>
+                  <span className={recruitModel.reEmail.length ? `visible absolute top-1/4 right-3` : `invisible`}>
+                    <FcCheckmark />
+                  </span>
                 </div>
                 {validationModel.reEmailError}
               </div>
@@ -346,37 +379,76 @@ function App() {
                 <div className='relative'>
                   <input name='thirdFname' value={recruitModel.thirdFname} onChange={handleChange} type="email" placeholder='3rd Family Name ' className={`w-full outline-blue-400 border-2 p-2 border-gray-400`} />
                   <span hidden={recruitModel.thirdFname.length} className='absolute text-red-400 font-medium text-xs top-1/3 left-40'>(optional)</span>
+                  <span className={recruitModel.thirdFname.length ? `visible absolute top-1/4 right-3` : `invisible`}>
+                    <FcCheckmark />
+                  </span>
                 </div>
               </div>
               <div className='col-lg-3 col-md-10 email_show'>
                 <div className='relative'>
                   <input name='email' value={recruitModel.email} onChange={handleChange} type="email" placeholder='Email Address' className={`w-full outline-blue-400 border-2 p-2 ${validationModel.emailError ? "border-red-400" : "border-gray-400"}`} />
                   <span hidden={recruitModel.email.length} className='absolute text-red-400 font-medium text-lg top-1/4 left-32'>*</span>
+                  <span className={recruitModel.email.length ? `visible absolute top-1/4 right-3` : `invisible`}>
+                    <FcCheckmark />
+                  </span>
                 </div>
                 {validationModel.emailError}
               </div>
 
             </div>
             <div className='row justify-center gap-2 mb-4 g-0  '>
-              <div className={`col-lg-3 col-md-10`} >
+              <div className={`col-lg-3 col-md-10 relative`} >
                 {/* <div className='h-full relative'> */}
 
-                <PhoneInput country={'es'} dropdownClass={"custom-dropdown"} enableSearch disableSearchIcon countryCodeEditable={false} value={mobile} onChange={handleMobileChange} />
+                <PhoneInput country={'es'}
+                  dropdownClass={"custom-dropdown"}
+                  enableSearch disableSearchIcon
+                  countryCodeEditable={false}
+                  value={mobile}
+                  onChange={handleMobileChange} />
+
                 {validationModel.mobileError}
                 {/* </div> */}
 
               </div>
               <div className='col-lg-3 col-md-10'>
-                <select name="country" value={recruitModel.country} onChange={handleChange} className='w-full h-10 outline-blue-400 border-2 px-2 py-2 border-gray-400' >
+
+                <div className="dropdown relative">
+                  <button className=" w-full bg-white border-2 border-gray-400 text-gray-400 dropdown-toggle p-2   focus:outline-blue-400 focus:ring-0 active:border-blue-400   transition duration-150 ease-in-out flex items-center whitespace-nowrap " type="button" id="citydropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                    {all_Countries.find((city) => city.isoCode === recruitModel.country)?.name}
+                    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="caret-down" className="w-3 ml-auto" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+                      <path fill="currentColor" d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z" />
+                    </svg>
+                    {recruitModel.country ? <span className={recruitModel.reEmail.length ? `visible absolute top-1/4 border-1 right-` : `visible`}>
+                      <FcCheckmark />
+                    </span>
+                      : null}
+                  </button>
+                  <ul className=" dropdown-menu   absolute w-full  max-h-52 overflow-y-scroll overflow-x-hidden bg-white text-base z-50 float-left py-2 list-none text-left shadow-lg mt-1 hidden m-0 bg-clip-padding border-none " aria-labelledby="citydropdown">
+                    {all_Countries.map((city) => {
+                      return (
+                        <li key={city.name}>
+                          <span onClick={() => handlePlaces(city.isoCode, "country")} className=" cursor-pointer dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100 "  >{city.name}</span>
+                        </li>
+                      )
+                    })}
+                  </ul>
+                </div>
+                {/* <select name="country" value={recruitModel.country} onChange={handleChange} className=' select w-full h-10 relative outline-blue-400 border-2 px-2 py-2 border-gray-400' >
                   {all_Countries.map((all_country) => <option value={all_country.isoCode} key={all_country.isoCode}>{all_country.name.substring(0, 33)}</option>)}
-                </select>
+                  <span className={recruitModel.reEmail.length ? `visible absolute top-1/4 border-1 right-` : `visible`}>
+                    <FcCheckmark />
+                  </span>
+                </select> */}
               </div>
             </div>
 
             <div className='row justify-center gap-2 mb-4 g-0   '>
-              <div className='col-lg-3 col-md-10  '>
+              <div className='col-lg-3 col-md-10 relative  '>
                 <input name='industry' value={recruitModel.industry} onChange={handleChange} type="text" placeholder='Current Industry' className="w-full outline-blue-400 border-2 px-2 py-2 border-gray-400" />
-
+                <span className={recruitModel.industry.length ? `visible absolute top-1/4 right-3` : `invisible`}>
+                  <FcCheckmark />
+                </span>
               </div>
               <div className='col-lg-3 col-md-10 city_group_hide '>
                 <div className='row g-1'>
@@ -387,6 +459,11 @@ function App() {
                         <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="caret-down" className="w-3 ml-auto" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
                           <path fill="currentColor" d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z" />
                         </svg>
+                        {recruitModel.state ? <span className={recruitModel.state.length ? `visible absolute top-1/4 border-1 right-8` : `invisible`}>
+                          <FcCheckmark />
+                        </span>
+                          : null}
+
                       </button>
                       <ul className=" dropdown-menu   absolute w-full  max-h-52 overflow-y-scroll overflow-x-hidden bg-white text-base z-50 float-left py-2 list-none text-left shadow-lg mt-1 hidden m-0 bg-clip-padding border-none " aria-labelledby="statedropdown">
                         {all_States.map((state) => {
@@ -406,6 +483,11 @@ function App() {
                         <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="caret-down" className="w-3 ml-auto" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
                           <path fill="currentColor" d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z" />
                         </svg>
+                        {recruitModel.city ? <span className={recruitModel.city.length ? `visible absolute top-1/4 border-1 right-8` : `visible`}>
+                          <FcCheckmark />
+                        </span>
+                          : null}
+
                       </button>
                       <ul className=" dropdown-menu   absolute w-full  max-h-52 overflow-y-scroll overflow-x-hidden bg-white text-base z-50 float-left py-2 list-none text-left shadow-lg mt-1 hidden m-0 bg-clip-padding border-none " aria-labelledby="citydropdown">
                         {all_Cities.map((city) => {
@@ -422,23 +504,34 @@ function App() {
               </div>
               <div className='col-lg-3 col-md-10 postion_show '>
                 <input name='position' value={recruitModel.position} onChange={handleChange} type="text" placeholder='Position of Interest?' className="w-full outline-blue-400 border-2 px-2 py-2 border-gray-400 " />
+                <span className={recruitModel.position.length ? `visible absolute top-1/4 right-3` : `invisible`}>
+                  <FcCheckmark />
+                </span>
               </div>
 
             </div>
 
             <div className='row justify-center gap-2 mb-4 g-0  '>
-              <div className='col-lg-3 col-md-10 position_hide'>
+              <div className='col-lg-3 col-md-10 position_hide relative'>
                 <input name='position' value={recruitModel.position} onChange={handleChange} type="text" placeholder='Position of Interest?' className="w-full outline-blue-400 border-2 px-2 py-2 border-gray-400 " />
+                <span className={recruitModel.position.length ? `visible absolute top-1/4 right-3` : `invisible`}>
+                  <FcCheckmark />
+                </span>
               </div>
               <div className='col-lg-3 col-md-10 city_group_show '>
                 <div className='row g-1'>
                   <div className='col-6'>
                     <div className="dropdown relative">
                       <button className=" w-full bg-white border-2 border-gray-400 text-gray-400 dropdown-toggle p-2   focus:outline-blue-400 focus:ring-0 active:border-blue-400   transition duration-150 ease-in-out flex items-center whitespace-nowrap " type="button" id="statedropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                        
+                        
                         {all_States.find((state) => state.isoCode === recruitModel.state)?.name}
                         <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="caret-down" className="w-3 ml-auto" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
                           <path fill="currentColor" d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z" />
                         </svg>
+                        <span className={recruitModel.state.length ? `visible absolute top-1/4 border-1 right-0` : `invisible`}>
+                          <FcCheckmark />
+                        </span>
                       </button>
                       <ul className=" dropdown-menu   absolute w-full  max-h-52 overflow-y-scroll overflow-x-hidden bg-white text-base z-50 float-left py-2 list-none text-left shadow-lg mt-1 hidden m-0 bg-clip-padding border-none " aria-labelledby="statedropdown">
                         {all_States.map((state) => {
@@ -458,6 +551,12 @@ function App() {
                         <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="caret-down" className="w-3 ml-auto" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
                           <path fill="currentColor" d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z" />
                         </svg>
+                        <span className={recruitModel.city.length ? `visible absolute top-1/4 border-1 right-8` : `invisible`}>
+                          <FcCheckmark />
+                        </span>
+                        {/* <span className={recruitModel.city.length ? `visible absolute top-1/4 border-1 right-0` : `invisible`}>
+                          <FcCheckmark />
+                        </span> */}
                       </button>
                       <ul className=" dropdown-menu   absolute w-full  max-h-52 overflow-y-scroll overflow-x-hidden bg-white text-base z-50 float-left py-2 list-none text-left shadow-lg mt-1 hidden m-0 bg-clip-padding border-none " aria-labelledby="citydropdown">
                         {all_Cities.map((city) => {
@@ -478,6 +577,9 @@ function App() {
                     <div className='relative'>
                       <input name='age' value={recruitModel.age} onChange={handleChange} type="text" placeholder='Age ' className={`w-full outline-blue-400 border-2 px-2 py-2 ${validationModel.ageError ? "border-red-400" : "border-gray-400"}`} />
                       <span hidden={recruitModel.age.length} className='absolute text-red-400 font-medium text-lg top-2 left-11'>*</span>
+                      <span className={recruitModel.age.length ? `visible absolute top-1/4 right-3` : `invisible`}>
+                        <FcCheckmark />
+                      </span>
                     </div>
                     {validationModel.ageError}
                   </div>
@@ -489,28 +591,7 @@ function App() {
                       renderInput={renderCustomInput} // render a custom input
                       shouldHighlightWeekends
                     />
-                    {/* />
-                    {/* <DatePicker selected={dob} onChange={handleDobChange} className="w-full outline-blue-400 border-2 px-2 py-2 border-gray-400" /> */}
-                    {/* <DatePicker
-                      className={`w-full outline-blue-400 border-2 px-2 py-2 ${validationModel.dateob ? "border-red-400" : "border-gray-400"}`}
-                      selected={dob}
-                      onChange={handleDobChange}
-                      withPortal
-                      showYearDropdown
-                      fixedHeight
-                      customInput={<ExampleCustomInput />}
-                    /> */}
 
-                    {/* <LocalizationProvider dateAdapter={AdapterMoment}>
-                      <MobileDatePicker
-                        label="Date mobile"
-                        inputFormat="MM/dd/yyyy"
-                        value={dateob}
-                        onChange={(dd) => setdateob(dd)}
-                        className="bg-white"
-                        renderInput={(params) => <TextField {...params} />}
-                      />
-                    </LocalizationProvider> */}
 
                   </div>
                 </div>
