@@ -131,7 +131,6 @@ function App() {
   }
 
   const setValidation = () => {
-    debugger
     let myvalidation_Obj = {
       ...validationModel,
       fullnameError: Validator(recruitModel.fullname, [V_Type.required], ['Please fill out this required field']),
@@ -259,7 +258,7 @@ function App() {
     <>
       <section ref={myRef} className='bscontainer-fluid'>
         <section className='row' >
-          <div style={{ maxWidth: '400px', margin: 'auto' }} className='col-12 bg-hero-pattern bg-center bg-no-repeat     bg-cover bg-blend-lighten ' style={{ backgroundColor: "#ffffffad" }}>
+          <div style={{ backgroundColor: "#ffffffad" }} className='col-12 bg-hero-pattern bg-center bg-no-repeat     bg-cover bg-blend-lighten '  >
             <div className='lg:my-10 my-5 lg:px-28 md:px-5 px-6'>
               <div className='row  justify-center items-center'>
                 <div className='col-4'>
@@ -300,11 +299,9 @@ function App() {
               </div>
             </div>
 
-            <div className='row justify-center gap-2 mb-4 g-0 '>
+            <div className='row justify-center md:gap-2 gap-4 mb-4 g-0 '>
               <div className='col-lg-3 col-md-10'>
-
-                <div className=' text-gray-500 text-base font-medium bg-light-gray flex h-11'>
-
+                <div className='text-gray-500 text-base font-medium bg-light-gray flex h-11'>
                   <div className="dropdown relative w-1/5">
                     <button className=" w-full bg-white border-2 border-r-0 h-full  border-gray-400 text-gray-400 dropdown-toggle p-2   focus:outline-blue-400 focus:ring-0 active:border-blue-400   transition duration-150 ease-in-out flex items-center whitespace-nowrap " type="button" id="surdropdown" data-bs-toggle="dropdown" aria-expanded="false">
                       {surnames.find((s_name) => s_name === recruitModel.surname)}
@@ -329,10 +326,8 @@ function App() {
                       <FcCheckmark />
                     </span>
                   </div>
-
                 </div>
                 {validationModel.fullnameError}
-
               </div>
               <div className='col-lg-3 col-md-10'>
                 <div className='relative'>
@@ -343,14 +338,12 @@ function App() {
                     </p>
                     :
                     <span hidden={recruitModel.firstFname.length} className='absolute text-red-400 font-medium text-lg top-1/4 left-36'>*</span>
-
                   }
                 </div>
-
                 {validationModel.firstFnameError}
               </div>
             </div>
-            <div className='row justify-center  gap-2 mb-4 g-0 w-full flex-col-reverse lg:flex-row md:items-center  md:flex-col-reverse sm:flex-col-reverse '>
+            <div className='row justify-center  md:gap-2 gap-4 mb-4 g-0 w-full flex-col-reverse lg:flex-row md:items-center  md:flex-col-reverse sm:flex-col-reverse '>
               <div className='col-lg-3 col-md-10 email_hide'>
                 <div className='relative'>
                   <input name='email' value={recruitModel.email} onChange={handleChange} type="email" placeholder='Email Address' className={`w-full outline-blue-400 border-2 p-2 ${validationModel.emailError ? "border-red-400" : "border-gray-400"}`} />
@@ -360,7 +353,6 @@ function App() {
                     </p>
                     :
                     <span hidden={recruitModel.email.length} className='absolute text-red-400 font-medium text-lg top-1/4 left-32'>*</span>
-
                   }
                 </div>
                 {validationModel.emailError}
@@ -374,7 +366,6 @@ function App() {
                     </p>
                     :
                     <span hidden={recruitModel.thirdFname.length} className='absolute text-red-400 font-medium text-lg top-1/4 left-32'>*</span>
-
                   }
                 </div>
               </div>
@@ -387,7 +378,6 @@ function App() {
                     </p>
                     :
                     <span hidden={recruitModel.secondFname.length} className='absolute text-red-400 font-medium text-lg top-1/4 left-40'>*</span>
-
                   }
                 </div>
               </div>
@@ -395,8 +385,7 @@ function App() {
 
             </div>
 
-            <div className='row justify-center gap-2 mb-4 g-0 flex-col-reverse lg:flex-row md:items-center  md:flex-col-reverse sm:flex-col-reverse   '>
-
+            <div className='row justify-center md:gap-2 gap-4 mb-4 g-0 flex-col-reverse lg:flex-row md:items-center  md:flex-col-reverse sm:flex-col-reverse   '>
               <div className='col-lg-3 col-md-10 relative '>
                 <div className='relative'>
                   <input name='reEmail' value={recruitModel.reEmail} onChange={handleChange} type="email" placeholder='Re Enter Email Address' className={`w-full outline-blue-400 border-2 p-2 ${validationModel.reEmailError ? "border-red-400" : "border-gray-400"}`} />
@@ -406,7 +395,6 @@ function App() {
                     </p>
                     :
                     <span hidden={recruitModel.reEmail.length} className='absolute text-red-400 font-medium text-lg top-1/4 left-48'>*</span>
-
                   }
                 </div>
                 {validationModel.reEmailError}
@@ -420,7 +408,6 @@ function App() {
                     </p>
                     :
                     <span hidden={recruitModel.thirdFname.length} className='absolute text-red-400 font-medium text-lg top-1/4 left-40'>*</span>
-
                   }
                 </div>
               </div>
@@ -433,26 +420,23 @@ function App() {
                     </p>
                     :
                     <span hidden={recruitModel.email.length} className='absolute text-red-400 font-medium text-lg top-1/4 left-32'>*</span>
-
                   }
                 </div>
                 {validationModel.emailError}
               </div>
-
             </div>
-            <div className='row justify-center gap-2 mb-4 g-0  '>
+            <div className='row justify-center md:gap-2 gap-4 mb-4 g-0  '>
               <div className={`col-lg-3 col-md-10 relative`} >
                 {/* <div className='h-full relative'> */}
-
                 <PhoneInput country={'es'}
                   dropdownClass={"custom-dropdown"}
                   enableSearch disableSearchIcon
                   countryCodeEditable={false}
                   value={mobile}
-                  containerStyle={{borderRadius:20,backgroundColor: '#463859',}}
-                  textInputStyle={{color:"#00000"}}
-                  codeTextStyle={{color:"#00000"}}
-                  flagButtonStyle={{backgroundColor:"red"}}
+                  containerStyle={{ borderRadius: 20, backgroundColor: '#463859', }}
+                  textInputStyle={{ color: "#00000" }}
+                  codeTextStyle={{ color: "#00000" }}
+                  flagButtonStyle={{ backgroundColor: "red" }}
                   onChange={handleMobileChange} />
 
                 {validationModel.mobileError}
@@ -460,7 +444,6 @@ function App() {
 
               </div>
               <div className='col-lg-3 col-md-10'>
-
                 <div className="dropdown relative">
                   <button className=" w-full bg-white border-2 border-gray-400 text-gray-400 dropdown-toggle p-2   focus:outline-blue-400 focus:ring-0 active:border-blue-400   transition duration-150 ease-in-out flex items-center whitespace-nowrap " type="button" id="citydropdown" data-bs-toggle="dropdown" aria-expanded="false">
                     {all_Countries.find((city) => city.isoCode === recruitModel.country)?.name}
@@ -491,7 +474,7 @@ function App() {
               </div>
             </div>
 
-            <div className='row justify-center gap-2 mb-4 g-0   '>
+            <div className='row justify-center md:gap-2 gap-4 mb-4 g-0   '>
               <div className='col-lg-3 col-md-10 relative  '>
                 <input name='industry' value={recruitModel.industry} onChange={handleChange} type="text" placeholder='Current Industry' className="w-full outline-blue-400 border-2 px-2 py-2 border-gray-400" />
                 {recruitModel.industry.length ?
@@ -568,7 +551,7 @@ function App() {
 
             </div>
 
-            <div className='row justify-center gap-2 mb-4 g-0  '>
+            <div className='row justify-center md:gap-2 gap-4 mb-4 g-0  '>
               <div className='col-lg-3 col-md-10 position_hide relative'>
                 <input name='position' value={recruitModel.position} onChange={handleChange} type="text" placeholder='Position of Interest?' className="w-full outline-blue-400 border-2 px-2 py-2 border-gray-400 " />
                 {recruitModel.position.length ?
