@@ -252,8 +252,8 @@ function App() {
   return (
     <>
       <section ref={myRef} className='bscontainer-fluid'>
-        <section className='row'>
-          <div className='col-12 bg-hero-pattern bg-center bg-no-repeat    bg-cover bg-blend-lighten ' style={{ backgroundColor: "#ffffffad" }}>
+        <section className='row' >
+          <div style={{maxWidth:'400px' , margin:'auto'}} className='col-12 bg-hero-pattern bg-center bg-no-repeat     bg-cover bg-blend-lighten ' style={{ backgroundColor: "#ffffffad" }}>
             <div className='lg:my-10 my-5 lg:px-28 md:px-5 px-6'>
               <div className='row  justify-center items-center'>
                 <div className='col-4'>
@@ -271,14 +271,21 @@ function App() {
                 <div className='col-4 '>
                   <figure className='flex flex-col justify-center  '>
                     <img src={usFlaglogo} className=" ml-auto  md:w-16 w-11 " alt="leafLogo" />
-                    <figcaption className='text-center md:mr-1 relative mt-1 text-xs text-red-600 font-semibold  '>
-                      {/* Language */}
-                      <select className='float-right bg-transparent  outline-none absolute right-0 select_lang'>
-                        <option className='text-xs text-red-600 font-semibold' disabled>Language</option>
-                        <option className='text-xs text-red-600 font-semibold'>English</option>
-                        <option className='text-xs text-red-600 font-semibold'>Spanish</option>
+                    <figcaption className='caption justify-center md:mr-1 mx-5 relative mt-1 text-xs text-red-600 font-semibold  '>
+                      <div className="flex justify-center">
+                        Language
+                        <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="caret-down" className="w-3 ml-auto" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+                          <path fill="currentColor" d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z" />
+                        </svg>
+                      </div>
 
-                      </select>
+
+                      {/* <select className='float-right bg-transparent  outline-none absolute right-0 select_lang'>
+                        <option className='text-xs text-red-600 font-semibold' >Language</option> */}
+                      {/* <option className='text-xs text-red-600 font-semibold'>English</option>
+                        <option className='text-xs text-red-600 font-semibold'>Spanish</option> */}
+
+                      {/* </select> */}
 
 
                     </figcaption>
@@ -505,7 +512,7 @@ function App() {
                         {all_States.map((state) => {
                           return (
                             <li key={state.isoCode}>
-                              <span onClick={() => handlePlaces(state.isoCode, "state")} className=" cursor-pointer dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100 "  >{state.name}</span>
+                              <span onClick={() => handlePlaces(state.isoCode, "state")} className=" cursor-pointer dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100 "  >{state.name.substring(0, 25)}</span>
                             </li>
                           )
                         })}
@@ -529,7 +536,7 @@ function App() {
                         {all_Cities.map((city) => {
                           return (
                             <li key={city.name}>
-                              <span onClick={() => handlePlaces(city.name, "city")} className=" cursor-pointer dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100 "  >{city.name}</span>
+                              <span onClick={() => handlePlaces(city.name, "city")} className=" cursor-pointer dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100 "  >{city.name.substring(0, 25)}</span>
                             </li>
                           )
                         })}
@@ -583,7 +590,7 @@ function App() {
                         {all_States.map((state) => {
                           return (
                             <li key={state.isoCode}>
-                              <span onClick={() => handlePlaces(state.isoCode, "state")} className=" cursor-pointer dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100 "  >{state.name}</span>
+                              <span onClick={() => handlePlaces(state.isoCode, "state")} className=" cursor-pointer dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100 "  >{state.name.substring(0, 33)}</span>
                             </li>
                           )
                         })}
@@ -611,7 +618,7 @@ function App() {
                         {all_Cities.map((city) => {
                           return (
                             <li key={city.name}>
-                              <span onClick={() => handlePlaces(city.name, "city")} className=" cursor-pointer dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100 "  >{city.name}</span>
+                              <span onClick={() => handlePlaces(city.name, "city")} className=" cursor-pointer dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100 "  >{city.name.substring(0, 10)}</span>
                             </li>
                           )
                         })}
