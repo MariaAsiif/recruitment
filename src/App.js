@@ -321,10 +321,14 @@ function App() {
               <div className='col-lg-3 col-md-10'>
                 <div className='relative'>
                   <input name='firstFname' value={recruitModel.firstFname} onChange={handleChange} type="text" placeholder='1st Family Name' className={`w-full outline-blue-400 border-2 p-2 ${validationModel.firstFnameError ? "border-red-400" : "border-gray-400"}`} />
-                  <span hidden={recruitModel.firstFname.length} className='absolute text-red-400 font-medium text-lg top-1/4 left-36'>*</span>
-                  <span className={recruitModel.firstFname.length ? `visible absolute top-1/4 right-3 md:right-2` : `invisible`}>
-                    <FcCheckmark />
-                  </span>
+                  {recruitModel.firstFname.length ?
+                    <p className={recruitModel.firstFname.length ? `visible absolute bottom-1/3 right-3` : `invisible`}>
+                      <FcCheckmark />
+                    </p>
+                    :
+                    <span hidden={recruitModel.firstFname.length} className='absolute text-red-400 font-medium text-lg top-1/4 left-36'>*</span>
+
+                  }
                 </div>
 
                 {validationModel.firstFnameError}
@@ -334,29 +338,41 @@ function App() {
               <div className='col-lg-3 col-md-10 email_hide'>
                 <div className='relative'>
                   <input name='email' value={recruitModel.email} onChange={handleChange} type="email" placeholder='Email Address' className={`w-full outline-blue-400 border-2 p-2 ${validationModel.emailError ? "border-red-400" : "border-gray-400"}`} />
-                  <span hidden={recruitModel.email.length} className='absolute text-red-400 font-medium text-lg top-1/4 left-32'>*</span>
-                  <span className={recruitModel.email.length ? `visible absolute bottom-1/3 right-3` : `invisible`}>
-                    <FcCheckmark />
-                  </span>
+                  {recruitModel.email.length ?
+                    <p className={recruitModel.email.length ? `visible absolute bottom-1/3 right-3` : `invisible`}>
+                      <FcCheckmark />
+                    </p>
+                    :
+                    <span hidden={recruitModel.email.length} className='absolute text-red-400 font-medium text-lg top-1/4 left-32'>*</span>
+
+                  }
                 </div>
                 {validationModel.emailError}
               </div>
               <div className='col-lg-3 col-md-10 relative thirdname_show'>
                 <div className='relative'>
                   <input name='thirdFname' value={recruitModel.thirdFname} onChange={handleChange} type="email" placeholder='3rd Family Name ' className={`w-full outline-blue-400 border-2 p-2 border-gray-400`} />
-                  <span hidden={recruitModel.thirdFname.length} className='absolute text-red-400 font-medium text-xs top-1/7 left-40'>(optional)</span>
-                  <span className={recruitModel.thirdFname.length ? `visible absolute top-1/4 right-3 md:right-2` : `invisible`}>
-                    <FcCheckmark />
-                  </span>
+                  {recruitModel.thirdFname.length ?
+                    <p className={recruitModel.thirdFname.length ? `visible absolute bottom-1/3 right-3` : `invisible`}>
+                      <FcCheckmark />
+                    </p>
+                    :
+                    <span hidden={recruitModel.thirdFname.length} className='absolute text-red-400 font-medium text-lg top-1/4 left-32'>*</span>
+
+                  }
                 </div>
               </div>
               <div className='col-lg-3 col-md-10 '>
                 <div className='relative'>
                   <input name='secondFname' value={recruitModel.secondFname} onChange={handleChange} type="text" placeholder='2nd Family Name ' className={`w-full outline-blue-400 border-2 p-2 border-gray-400`} />
-                  <span hidden={recruitModel.secondFname.length} className='absolute text-red-400 font-medium  text-xs top-1/4 left-40'>(optional)</span>
-                  <span className={recruitModel.secondFname.length ? `visible absolute top-1/4 right-3 md:right-2` : `invisible`}>
-                    <FcCheckmark />
-                  </span>
+                  {recruitModel.secondFname.length ?
+                    <p className={recruitModel.secondFname.length ? `visible absolute bottom-1/3 right-3` : `invisible`}>
+                      <FcCheckmark />
+                    </p>
+                    :
+                    <span hidden={recruitModel.secondFname.length} className='absolute text-red-400 font-medium text-lg top-1/4 left-40'>*</span>
+
+                  }
                 </div>
               </div>
 
@@ -368,29 +384,41 @@ function App() {
               <div className='col-lg-3 col-md-10 relative '>
                 <div className='relative'>
                   <input name='reEmail' value={recruitModel.reEmail} onChange={handleChange} type="email" placeholder='Re Enter Email Address' className={`w-full outline-blue-400 border-2 p-2 ${validationModel.reEmailError ? "border-red-400" : "border-gray-400"}`} />
-                  <span hidden={recruitModel.reEmail.length} className='absolute text-red-400 font-medium text-lg top-1/4 left-48'>*</span>
-                  <span className={recruitModel.reEmail.length ? `visible absolute top-1/4 right-3` : `invisible`}>
-                    <FcCheckmark />
-                  </span>
+                  {recruitModel.reEmail.length ?
+                    <p className={recruitModel.reEmail.length ? `visible absolute bottom-1/3 right-3` : `invisible`}>
+                      <FcCheckmark />
+                    </p>
+                    :
+                    <span hidden={recruitModel.reEmail.length} className='absolute text-red-400 font-medium text-lg top-1/4 left-48'>*</span>
+
+                  }
                 </div>
                 {validationModel.reEmailError}
               </div>
               <div className='col-lg-3 col-md-10 relative thirdname_hide'>
                 <div className='relative'>
                   <input name='thirdFname' value={recruitModel.thirdFname} onChange={handleChange} type="email" placeholder='3rd Family Name ' className={`w-full outline-blue-400 border-2 p-2 border-gray-400`} />
-                  <span hidden={recruitModel.thirdFname.length} className='absolute text-red-400 font-medium text-xs top-1/3 left-40'>(optional)</span>
-                  <span className={recruitModel.thirdFname.length ? `visible absolute top-1/4 right-3` : `invisible`}>
-                    <FcCheckmark />
-                  </span>
+                  {recruitModel.thirdFname.length ?
+                    <p className={recruitModel.thirdFname.length ? `visible absolute bottom-1/3 right-3` : `invisible`}>
+                      <FcCheckmark />
+                    </p>
+                    :
+                    <span hidden={recruitModel.thirdFname.length} className='absolute text-red-400 font-medium text-lg top-1/4 left-40'>*</span>
+
+                  }
                 </div>
               </div>
               <div className='col-lg-3 col-md-10 email_show'>
                 <div className='relative'>
                   <input name='email' value={recruitModel.email} onChange={handleChange} type="email" placeholder='Email Address' className={`w-full outline-blue-400 border-2 p-2 ${validationModel.emailError ? "border-red-400" : "border-gray-400"}`} />
-                  <span hidden={recruitModel.email.length} className='absolute text-red-400 font-medium text-lg top-1/4 left-32'>*</span>
-                  <span className={recruitModel.email.length ? `visible absolute top-1/4 right-3` : `invisible`}>
-                    <FcCheckmark />
-                  </span>
+                  {recruitModel.email.length ?
+                    <p className={recruitModel.email.length ? `visible absolute bottom-1/3 right-3` : `invisible`}>
+                      <FcCheckmark />
+                    </p>
+                    :
+                    <span hidden={recruitModel.email.length} className='absolute text-red-400 font-medium text-lg top-1/4 left-32'>*</span>
+
+                  }
                 </div>
                 {validationModel.emailError}
               </div>
@@ -419,12 +447,12 @@ function App() {
                     <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="caret-down" className="w-3 ml-auto" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
                       <path fill="currentColor" d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z" />
                     </svg>
-                    {recruitModel.country ? <span className={recruitModel.reEmail.length ? `visible absolute top-1/4 border-1 right-` : `visible`}>
+                    {recruitModel.country ? <span className={recruitModel.reEmail.length ? `visible absolute top-1/4 border-1 right-8` : `visible`}>
                       <FcCheckmark />
                     </span>
                       : null}
                   </button>
-                  <ul className=" dropdown-menu   absolute w-full  max-h-52 overflow-y-scroll overflow-x-hidden bg-white text-base z-50 float-left py-2 list-none text-left shadow-lg mt-1 hidden m-0 bg-clip-padding border-none " aria-labelledby="citydropdown">
+                  <ul className=" dropdown-menu   absolute w-full  max-h-52 overflow-y-scroll overflow-x-hidden bg-white text-base z-100 float-left py-2 list-none text-left shadow-lg mt-1 hidden m-0 bg-clip-padding border-none " aria-labelledby="citydropdown">
                     {all_Countries.map((city) => {
                       return (
                         <li key={city.name}>
@@ -446,9 +474,14 @@ function App() {
             <div className='row justify-center gap-2 mb-4 g-0   '>
               <div className='col-lg-3 col-md-10 relative  '>
                 <input name='industry' value={recruitModel.industry} onChange={handleChange} type="text" placeholder='Current Industry' className="w-full outline-blue-400 border-2 px-2 py-2 border-gray-400" />
-                <span className={recruitModel.industry.length ? `visible absolute top-1/4 right-3` : `invisible`}>
-                  <FcCheckmark />
-                </span>
+                {recruitModel.industry.length ?
+                    <p className={recruitModel.industry.length ? `visible absolute bottom-1/3 right-3` : `invisible`}>
+                      <FcCheckmark />
+                    </p>
+                    :
+                    null
+
+                  }
               </div>
               <div className='col-lg-3 col-md-10 city_group_hide '>
                 <div className='row g-1'>
@@ -483,7 +516,7 @@ function App() {
                         <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="caret-down" className="w-3 ml-auto" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
                           <path fill="currentColor" d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z" />
                         </svg>
-                        {recruitModel.city ? <span className={recruitModel.city.length ? `visible absolute top-1/4 border-1 right-8` : `visible`}>
+                        {recruitModel.city ? <span className={recruitModel.city.length ? `visible absolute top-1/4 border-1 right-8 md:right-9` : `visible`}>
                           <FcCheckmark />
                         </span>
                           : null}
@@ -504,9 +537,13 @@ function App() {
               </div>
               <div className='col-lg-3 col-md-10 postion_show '>
                 <input name='position' value={recruitModel.position} onChange={handleChange} type="text" placeholder='Position of Interest?' className="w-full outline-blue-400 border-2 px-2 py-2 border-gray-400 " />
-                <span className={recruitModel.position.length ? `visible absolute top-1/4 right-3` : `invisible`}>
-                  <FcCheckmark />
-                </span>
+                {recruitModel.position.length ?
+                  <p className={recruitModel.position.length ? `visible absolute bottom-1/3 right-3` : `invisible`}>
+                    <FcCheckmark />
+                  </p>
+                  :
+                  null
+                }
               </div>
 
             </div>
@@ -514,17 +551,23 @@ function App() {
             <div className='row justify-center gap-2 mb-4 g-0  '>
               <div className='col-lg-3 col-md-10 position_hide relative'>
                 <input name='position' value={recruitModel.position} onChange={handleChange} type="text" placeholder='Position of Interest?' className="w-full outline-blue-400 border-2 px-2 py-2 border-gray-400 " />
-                <span className={recruitModel.position.length ? `visible absolute top-1/4 right-3` : `invisible`}>
-                  <FcCheckmark />
-                </span>
+                {recruitModel.position.length ?
+                    <p className={recruitModel.position.length ? `visible absolute bottom-1/3 right-3` : `invisible`}>
+                      <FcCheckmark />
+                    </p>
+                    :
+                    null
+                    // <span hidden={recruitModel.position.length} className='absolute text-red-400 font-medium text-lg top-1/4 left-32'>*</span>
+
+                  }
               </div>
               <div className='col-lg-3 col-md-10 city_group_show '>
                 <div className='row g-1'>
                   <div className='col-6'>
                     <div className="dropdown relative">
                       <button className=" w-full bg-white border-2 border-gray-400 text-gray-400 dropdown-toggle p-2   focus:outline-blue-400 focus:ring-0 active:border-blue-400   transition duration-150 ease-in-out flex items-center whitespace-nowrap " type="button" id="statedropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                        
-                        
+
+
                         {all_States.find((state) => state.isoCode === recruitModel.state)?.name}
                         <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="caret-down" className="w-3 ml-auto" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
                           <path fill="currentColor" d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z" />
@@ -576,10 +619,13 @@ function App() {
                   <div className='col-6'>
                     <div className='relative'>
                       <input name='age' value={recruitModel.age} onChange={handleChange} type="text" placeholder='Age ' className={`w-full outline-blue-400 border-2 px-2 py-2 ${validationModel.ageError ? "border-red-400" : "border-gray-400"}`} />
-                      <span hidden={recruitModel.age.length} className='absolute text-red-400 font-medium text-lg top-2 left-11'>*</span>
-                      <span className={recruitModel.age.length ? `visible absolute top-1/4 right-3` : `invisible`}>
-                        <FcCheckmark />
-                      </span>
+                      {recruitModel.position.length ?
+                        <p className={recruitModel.position.length ? `visible absolute bottom-1/3 right-3` : `invisible`}>
+                          <FcCheckmark />
+                        </p>
+                        :
+                        null
+                      }
                     </div>
                     {validationModel.ageError}
                   </div>
