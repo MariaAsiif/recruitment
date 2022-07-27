@@ -353,7 +353,7 @@ function App() {
               <div className='col-lg-3 col-md-10 '>
                 <div className='relative'>
                   <input name='secondFname' value={recruitModel.secondFname} onChange={handleChange} type="text" placeholder='2nd Family Name ' className={`w-full outline-blue-400 border-2 p-2 border-gray-400`} />
-                  <span hidden={recruitModel.secondFname.length} className='absolute text-red-400 font-medium  text-xs top-1/3 left-40'>(optional)</span>
+                  <span hidden={recruitModel.secondFname.length} className='absolute text-red-400 font-medium  text-xs top-1/4 left-40'>(optional)</span>
                   <span className={recruitModel.secondFname.length ? `visible absolute top-1/4 right-3 md:right-2` : `invisible`}>
                     <FcCheckmark />
                   </span>
@@ -533,7 +533,7 @@ function App() {
                           <FcCheckmark />
                         </span>
                       </button>
-                      <ul className=" dropdown-menu   absolute w-full  max-h-52 overflow-y-scroll overflow-x-hidden bg-white text-base z-50 float-left py-2 list-none text-left shadow-lg mt-1 hidden m-0 bg-clip-padding border-none " aria-labelledby="statedropdown">
+                      <ul className=" dropdown-menu   absolute w-full  max-h-52 overflow-y-scroll overflow-x-hidden bg-white text-base z-100 float-left py-2 list-none text-left shadow-lg mt-1 hidden m-0 bg-clip-padding border-none " aria-labelledby="statedropdown">
                         {all_States.map((state) => {
                           return (
                             <li key={state.isoCode}>
@@ -558,7 +558,7 @@ function App() {
                           <FcCheckmark />
                         </span> */}
                       </button>
-                      <ul className=" dropdown-menu   absolute w-full  max-h-52 overflow-y-scroll overflow-x-hidden bg-white text-base z-50 float-left py-2 list-none text-left shadow-lg mt-1 hidden m-0 bg-clip-padding border-none " aria-labelledby="citydropdown">
+                      <ul className=" dropdown-menu   absolute w-full  max-h-52 overflow-y-scroll overflow-x-hidden bg-white text-base z-100 float-left py-2 list-none text-left shadow-lg mt-1 hidden m-0 bg-clip-padding border-none " aria-labelledby="citydropdown">
                         {all_Cities.map((city) => {
                           return (
                             <li key={city.name}>
