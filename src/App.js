@@ -42,6 +42,7 @@ import { FiFacebook } from 'react-icons/fi'
 import { FaTwitter } from 'react-icons/fa'
 import { BsInstagram } from 'react-icons/bs'
 import { AiFillLinkedin } from 'react-icons/ai'
+import { MdClose } from 'react-icons/md'
 import PopUp from './components/popup/popup';
 import FollowUs from './components/socialIcons/Icons';
 import ReactCountryFlag from 'react-country-flag';
@@ -80,11 +81,13 @@ function App() {
     firstFnameError: null,
     emailError: null,
     reEmailError: null,
+    sameEmailError: null,
     mobileError: null,
     cityError: null,
     countryError: null,
     ageError: null,
   });
+
 
   const [mobile, setmobile] = useState("")
   const [dob, setdob] = useState(new Date())
@@ -102,11 +105,25 @@ function App() {
 
   const executeScroll = () => myRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' })
   const handleChange = (e) => {
+    debugger
+    const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     let { name, value } = e.target
     if (name === "firstFname") {
-      value = e.target.value.toUpperCase()
-    } else if (name === "fullname" || name === "secondFname" || name === "thirdFname") {
+      // value = e.target.value.toUpperCase()
       value = e.target.value.replace(/[^a-z]/gi, '');
+    } else if (name === "fullname" || name === "firstFname" || name === "secondFname" || name === "thirdFname") {
+      value = e.target.value.replace(/[^a-z]/gi, '');
+    }
+    else if (name === "email" || name === "reEmail") {
+      const value = e.target.value.trim().toLowerCase();
+      // Test if email is valid
+      const isValidEmail = re.test(value);
+
+      setvalidationModel((prevmodel) => ({
+        ...prevmodel,
+        [name === "email" ? "emailError" : "reEmailError"]: !isValidEmail
+      }))
+
     }
     localStorage.setItem(name, value);
     setrecruitModel((prevmodel) => ({
@@ -115,6 +132,7 @@ function App() {
     }))
   }
 
+  console.log("valide", validationModel)
 
 
 
@@ -381,10 +399,15 @@ function App() {
                       <FcCheckmark />
                     </p>
                     :
-                    <span hidden={recruitModel.email.length} className='absolute text-red-400 font-medium text-lg top-1/4 left-32'>*</span>
+                    validationModel.emailError === true && recruitModel.email !== "" ?
+                      <p className={`visible absolute bottom-1/3 right-3`}>
+                        <MdClose className='text-red-600' />
+                      </p>
+                      :
+                      <span hidden={recruitModel.email.length} className='absolute text-red-400 font-medium text-lg top-1/4 left-32'>*</span>
                   }
                 </div>
-                {validationModel.emailError}
+                {validationModel.emailError === true ? <span className="text-red-500 text-sm mb-0">{validationModel.emailError === true && recruitModel.email === "" ? "Required" :  "Invalid Email"}</span> : validationModel.emailError}
               </div>
               <div className='col-lg-3 col-md-10 relative thirdname_show'>
                 <div className='relative'>
@@ -406,7 +429,7 @@ function App() {
                       <FcCheckmark />
                     </p>
                     :
-                    <span hidden={recruitModel.secondFname.length} className='absolute text-red-400 font-medium text-lg top-1/4 left-40'>*</span>
+                    <span hidden={recruitModel.secondFname.length} className='absolute text-red-400 text-sm font-medium  top-1/4 left-40'>(optional)</span>
                   }
                 </div>
               </div>
@@ -418,15 +441,24 @@ function App() {
               <div className='col-lg-3 col-md-10 relative '>
                 <div className='relative'>
                   <input name='reEmail' value={recruitModel.reEmail} onChange={handleChange} type="email" placeholder='Re Enter Email Address' className={`w-full outline-blue-400 border-2 p-2 ${validationModel.reEmailError || validationModel.sameEmailError ? "border-red-400" : "border-gray-400"}`} />
-                  {recruitModel.reEmail.length ?
+                  {recruitModel.reEmail.length &&  !validationModel.reEmailError ?
                     <p className={recruitModel.reEmail.length ? `visible absolute bottom-1/3 right-3` : `invisible`}>
                       <FcCheckmark />
                     </p>
+
                     :
-                    <span hidden={recruitModel.reEmail.length} className='absolute text-red-400 font-medium text-lg top-1/4 left-48'>*</span>
+                    validationModel.reEmailError === true && recruitModel.reEmail !== "" ?
+                      <p className={`visible absolute bottom-1/3 right-3`}>
+                        <MdClose className='text-red-600' />
+                      </p>
+                      :
+
+                      <span hidden={recruitModel.reEmail.length} className='absolute text-red-400 font-medium text-lg top-1/4 left-48'>*</span>
                   }
                 </div>
-                {validationModel.reEmailError}
+                {/* {validationModel.reEmailError} */}
+                {validationModel.reEmailError === true ? <span className="text-red-500 text-sm mb-0">{validationModel.reEmailError === true && recruitModel.reEmail === "" ? "Required" : "Invalid Email"}</span> : validationModel.emailError}
+
                 {validationModel.sameEmailError}
               </div>
               <div className='col-lg-3 col-md-10 relative thirdname_hide'>
@@ -437,7 +469,7 @@ function App() {
                       <FcCheckmark />
                     </p>
                     :
-                    <span hidden={recruitModel.thirdFname.length} className='absolute text-red-400 font-medium text-lg top-1/4 left-40'>*</span>
+                    <span hidden={recruitModel.thirdFname.length} className='absolute text-red-400 font-medium text-sm top-1/4 left-40'>(optional)</span>
                   }
                 </div>
               </div>
@@ -452,7 +484,7 @@ function App() {
                     <span hidden={recruitModel.email.length} className='absolute text-red-400 font-medium text-lg top-1/4 left-32'>*</span>
                   }
                 </div>
-                {validationModel.emailError}
+                {validationModel.emailError ? "Invalid Email" : validationModel.emailError}
               </div>
             </div>
             <div className='row justify-center md:gap-2 gap-4 mb-4 g-0  '>
@@ -470,11 +502,6 @@ function App() {
                   countryCodeEditable={false}
                   value={mobile}
                   placeholder="*** ** ** **"
-                  // inputStyle={{ width: "100%", border: "2px solid #9ca3af", borderRadius: 0, height: "100%", fontSize: 18, padding: "0.5rem 0.5rem 0.5rem 48px" }}
-                  // containerStyle={{ height: "100%" }}
-                  // buttonStyle={{ background: "white", border: "2px solid #9ca3af" }}
-                  // searchStyle={{ width: "100%" }}
-                  // dropdownStyle={{ width: "100%" }}
                   onChange={handleMobileChange} />
 
                 {validationModel.mobileError}
@@ -660,9 +687,9 @@ function App() {
                 <div className='row g-1'>
                   <div className='col-6'>
                     <div className='relative'>
-                      <input name='age' value={recruitModel.age} onChange={handleChange} type="number" placeholder='Age ' className={`w-full outline-blue-400 border-2 px-2 py-2 ${validationModel.ageError ? "border-red-400" : "border-gray-400"}`} />
-                      {recruitModel.position.length ?
-                        <p className={recruitModel.position.length ? `visible absolute bottom-1/3 right-3` : `invisible`}>
+                      <input name='age' value={recruitModel.age} onChange={handleChange} type="text" placeholder='Age ' className={`w-full outline-blue-400 border-2 px-2 py-2 ${validationModel.ageError ? "border-red-400" : "border-gray-400"}`} />
+                      {recruitModel.age.length ?
+                        <p className={recruitModel.age.length ? `visible absolute bottom-1/3 right-3` : `invisible`}>
                           <FcCheckmark />
                         </p>
                         :

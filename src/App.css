@@ -23,17 +23,17 @@
   line-height: 25px;
   outline: none;
 } */
-.select_lang{
+.select_lang {
   margin-right: -20px;
 }
 
-.caption{
+.caption {
   display: flex;
   justify-content: right;
   margin-right: -10px;
 }
 
-.caption svg{
+.caption svg {
   padding-left: 5px;
 }
 
@@ -43,16 +43,27 @@
   color: green;
   position: absolute;
   right: 0;
- }
+}
 
- .text-red-400 {
+.text-red-400 {
   top: 13px;
 }
 
- .optional{
-  top:15px;
+.optional {
+  top: 15px;
   color: rgb(238, 59, 59);
- }
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
 
 /* .react-tel-input .selected-flag .arrow {
   position: absolute !important;
