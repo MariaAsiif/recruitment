@@ -11,6 +11,13 @@
 .firstname_wrapper:focus {
   border: 2pt solid blue;
 }
+.flags{
+  width: 20px;
+  height: 11px;
+  margin-top: 10px;
+  margin-left: 5px;
+
+}
 
 /* .react-tel-input .form-control {
   position: relative !important;

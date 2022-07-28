@@ -42,6 +42,7 @@ import { FiFacebook } from 'react-icons/fi'
 import { FaTwitter } from 'react-icons/fa'
 import { BsInstagram } from 'react-icons/bs'
 import { AiFillLinkedin } from 'react-icons/ai'
+import { BsFillTelephoneFill } from 'react-icons/bs'
 import { MdClose } from 'react-icons/md'
 import PopUp from './components/popup/popup';
 import FollowUs from './components/socialIcons/Icons';
@@ -438,7 +439,7 @@ function App() {
             </div>
 
             <div className='row justify-center lg:items-baseline md:gap-2 gap-4 mb-4 g-0 flex-col-reverse lg:flex-row md:items-center  md:flex-col-reverse sm:flex-col-reverse   '>
-              <div className= { validationModel.reEmailError ? ' col-lg-3 col-md-10 relative' :'col-lg-3 col-md-10 relative '}>
+              <div className={validationModel.reEmailError ? ' col-lg-3 col-md-10 relative' : 'col-lg-3 col-md-10 relative '}>
                 <div className='relative'>
                   <input name='reEmail' value={recruitModel.reEmail} onChange={handleChange} type="email" placeholder='Re Enter Email Address' className={`w-full outline-blue-400 border-2 p-2 ${validationModel.reEmailError || validationModel.sameEmailError ? "border-red-400" : "border-gray-400"}`} />
                   {recruitModel.reEmail.length && !validationModel.reEmailError ?
@@ -447,7 +448,7 @@ function App() {
                     </p>
 
                     :
-                    validationModel.reEmailError === true && recruitModel.reEmail !== "" ?
+                    validationModel.reEmailError === true && recruitModel.reEmail !== "" || validationModel.reEmailError ?
                       <p className={`visible absolute bottom-1/3 right-3`}>
                         <MdClose className='text-red-600' />
                       </p>
@@ -497,18 +498,24 @@ function App() {
             <div className='row justify-center md:gap-2 gap-4 mb-4 g-0  '>
               <div className={`col-lg-3 col-md-10 relative`} >
                 <div className='absolute top-0  left-[42px]   w-[2px] h-[40px] bg-gray-400 z-[1]'></div>
+                {/* {
+                   (<div className='absolute flex items-center top-[7px]  left-[48px]   w-[122px] h-[32px] bg-white z-[1]'><div>+00 00 00 00</div></div>)
+                } */}
                 {
-                  !mobile && (<div className='absolute flex items-center top-[3px]  left-[48px]   w-[122px] h-[32px] bg-white z-[1]'><div>000 00 00 00</div></div>)
+                  !mobile &&
+                  <div className='flags absolute flex items-center top-[7px]  left-[2px] z-[1]  w-[122px] h-[32px] '><div>
+                    <BsFillTelephoneFill />
+                  </div></div>
                 }
 
                 <PhoneInput
-                  country={'es'}
+                  country={''}
                   dropdownClass={"custom-dropdown"}
                   enableSearch
                   disableSearchIcon
-                  countryCodeEditable={false}
+                  placeholder="000 000 000"
+                  countryCodeEditable={true}
                   value={mobile}
-                  placeholder="*** ** ** **"
                   onChange={handleMobileChange} />
 
                 {validationModel.mobileError}
