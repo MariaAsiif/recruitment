@@ -390,8 +390,8 @@ function App() {
                 {validationModel.firstFnameError}
               </div>
             </div>
-            <div className='row justify-center  md:gap-2 gap-4 mb-4 g-0 w-full flex-col-reverse lg:flex-row md:items-center  md:flex-col-reverse sm:flex-col-reverse '>
-              <div className='col-lg-3 col-md-10 email_hide'>
+            <div className='row justify-center lg:items-baseline  md:gap-2 gap-4 mb-4 g-0 w-full flex-col-reverse lg:flex-row md:items-center  md:flex-col-reverse sm:flex-col-reverse '>
+              <div className={validationModel.emailError ? ' col-lg-3 col-md-10 email_hide' : 'col-lg-3 col-md-10 email_hide'}>
                 <div className='relative'>
                   <input name='email' value={recruitModel.email} onChange={handleChange} type="email" placeholder='Email Address' className={`w-full outline-blue-400 border-2 p-2 ${validationModel.emailError ? "border-red-400" : "border-gray-400"}`} />
                   {recruitModel.email.length && !validationModel.emailError ?
@@ -407,7 +407,7 @@ function App() {
                       <span hidden={recruitModel.email.length} className='absolute text-red-400 font-medium text-lg top-1/4 left-32'>*</span>
                   }
                 </div>
-                {validationModel.emailError === true ? <span className="text-red-500 text-sm mb-0">{validationModel.emailError === true && recruitModel.email === "" ? "Required" :  "Invalid Email"}</span> : validationModel.emailError}
+                {validationModel.emailError === true ? <span className="text-red-500 text-sm mb-0">{validationModel.emailError === true && recruitModel.email === "" ? "Required" : "Invalid Email"}</span> : validationModel.emailError}
               </div>
               <div className='col-lg-3 col-md-10 relative thirdname_show'>
                 <div className='relative'>
@@ -437,11 +437,11 @@ function App() {
 
             </div>
 
-            <div className='row justify-center md:gap-2 gap-4 mb-4 g-0 flex-col-reverse lg:flex-row md:items-center  md:flex-col-reverse sm:flex-col-reverse   '>
-              <div className='col-lg-3 col-md-10 relative '>
+            <div className='row justify-center lg:items-baseline md:gap-2 gap-4 mb-4 g-0 flex-col-reverse lg:flex-row md:items-center  md:flex-col-reverse sm:flex-col-reverse   '>
+              <div className= { validationModel.reEmailError ? ' col-lg-3 col-md-10 relative' :'col-lg-3 col-md-10 relative '}>
                 <div className='relative'>
                   <input name='reEmail' value={recruitModel.reEmail} onChange={handleChange} type="email" placeholder='Re Enter Email Address' className={`w-full outline-blue-400 border-2 p-2 ${validationModel.reEmailError || validationModel.sameEmailError ? "border-red-400" : "border-gray-400"}`} />
-                  {recruitModel.reEmail.length &&  !validationModel.reEmailError ?
+                  {recruitModel.reEmail.length && !validationModel.reEmailError ?
                     <p className={recruitModel.reEmail.length ? `visible absolute bottom-1/3 right-3` : `invisible`}>
                       <FcCheckmark />
                     </p>
@@ -457,7 +457,7 @@ function App() {
                   }
                 </div>
                 {/* {validationModel.reEmailError} */}
-                {validationModel.reEmailError === true ? <span className="text-red-500 text-sm mb-0">{validationModel.reEmailError === true && recruitModel.reEmail === "" ? "Required" : "Invalid Email"}</span> : validationModel.emailError}
+                {validationModel.reEmailError === true ? <span className="text-red-500 text-sm mb-0">{validationModel.reEmailError === true && recruitModel.reEmail === "" ? "Required" : "Invalid Email"}</span> : validationModel.reEmailError}
 
                 {validationModel.sameEmailError}
               </div>
@@ -473,7 +473,7 @@ function App() {
                   }
                 </div>
               </div>
-              <div className='col-lg-3 col-md-10 email_show'>
+              <div className={'col-lg-3 col-md-10 email_show'}>
                 <div className='relative'>
                   <input name='email' value={recruitModel.email} onChange={handleChange} type="email" placeholder='Email Address' className={`w-full outline-blue-400 border-2 p-2 ${validationModel.emailError ? "border-red-400" : "border-gray-400"}`} />
                   {recruitModel.email.length ?
@@ -481,10 +481,17 @@ function App() {
                       <FcCheckmark />
                     </p>
                     :
-                    <span hidden={recruitModel.email.length} className='absolute text-red-400 font-medium text-lg top-1/4 left-32'>*</span>
+                    validationModel.emailError === true && recruitModel.email !== "" ?
+                      <p className={`visible absolute bottom-1/3 right-3`}>
+                        <MdClose className='text-red-600' />
+                      </p>
+                      :
+                      <span hidden={recruitModel.email.length} className='absolute text-red-400 font-medium text-lg top-1/4 left-32'>*</span>
                   }
                 </div>
-                {validationModel.emailError ? "Invalid Email" : validationModel.emailError}
+                {validationModel.emailError === true ? <span className="text-red-500 text-sm mb-0">{validationModel.emailError === true && recruitModel.email === "" ? "Required" : "Invalid Email"}</span> : validationModel.emailError}
+
+                {/* {validationModel.emailError ? "Invalid Email" : validationModel.emailError} */}
               </div>
             </div>
             <div className='row justify-center md:gap-2 gap-4 mb-4 g-0  '>
@@ -687,7 +694,7 @@ function App() {
                 <div className='row g-1'>
                   <div className='col-6'>
                     <div className='relative'>
-                      <input name='age' value={recruitModel.age} onChange={handleChange} type="text" placeholder='Age ' className={`w-full outline-blue-400 border-2 px-2 py-2 ${validationModel.ageError ? "border-red-400" : "border-gray-400"}`} />
+                      <input name='age' value={recruitModel.age} onChange={handleChange} type="number" placeholder='Age ' className={`w-full outline-blue-400 border-2 px-2 py-2 ${validationModel.ageError ? "border-red-400" : "border-gray-400"}`} />
                       {recruitModel.age.length ?
                         <p className={recruitModel.age.length ? `visible absolute bottom-1/3 right-3` : `invisible`}>
                           <FcCheckmark />
