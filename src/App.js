@@ -514,7 +514,7 @@ function App() {
                   enableSearch
                   disableSearchIcon
                   placeholder="000 000 000"
-                  countryCodeEditable={true}
+                  countryCodeEditable={false}
                   value={mobile}
                   onChange={handleMobileChange} />
 
