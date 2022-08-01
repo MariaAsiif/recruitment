@@ -492,9 +492,12 @@ function App() {
                     <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="caret-down" className="w-3 ml-auto" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
                       <path fill="currentColor" d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z" />
                     </svg>
-                    {recruitModel.country ? <span className={recruitModel.reEmail.length ? `visible absolute top-1/4 border-1 right-8` : `visible`}>
-                      <FcCheckmark />
-                    </span>
+                    {recruitModel.country ?
+                      (
+                        <span className={recruitModel.country.length ? `visible absolute top-1/4 border-1 right-8` : `visible`}>
+                          <FcCheckmark />
+                        </span>
+                      )
                       : null}
                   </button>
                   <ul className=" dropdown-menu   absolute w-full  max-h-52 overflow-y-scroll overflow-x-hidden bg-white text-base z-100 float-left py-2 list-none text-left shadow-lg mt-1 hidden m-0 bg-clip-padding border-none " aria-labelledby="citydropdown">
@@ -507,12 +510,6 @@ function App() {
                     })}
                   </ul>
                 </div>
-                {/* <select name="country" value={recruitModel.country} onChange={handleChange} className=' select w-full h-10 relative outline-blue-400 border-2 px-2 py-2 border-gray-400' >
-                  {all_Countries.map((all_country) => <option value={all_country.isoCode} key={all_country.isoCode}>{all_country.name.substring(0, 33)}</option>)}
-                  <span className={recruitModel.reEmail.length ? `visible absolute top-1/4 border-1 right-` : `visible`}>
-                    <FcCheckmark />
-                  </span>
-                </select> */}
               </div>
             </div>
 
@@ -520,9 +517,9 @@ function App() {
               <div className='col-lg-3 col-md-10 relative  '>
                 <input name='industry' value={recruitModel.industry} onChange={handleChange} type="text" placeholder='Current Industry' className="w-full outline-blue-400 border-2 px-2 py-2 border-gray-400" />
                 {recruitModel.industry.length ?
-                  <p className={recruitModel.industry.length ? `visible absolute bottom-1/3 right-3` : `invisible`}>
+                  (<p className={recruitModel.industry.length ? `visible absolute bottom-1/3 right-3` : `invisible`}>
                     <FcCheckmark />
-                  </p>
+                  </p>)
                   :
                   null
                 }
@@ -536,9 +533,12 @@ function App() {
                         <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="caret-down" className="w-3 ml-auto" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
                           <path fill="currentColor" d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z" />
                         </svg>
-                        {recruitModel.state !== "" ? <span className={recruitModel.state.length ? `visible absolute top-1/4 border-1 right-8` : `invisible`}>
-                          <FcCheckmark />
-                        </span>
+                        {recruitModel.state !== "" ?
+                          (
+                            <span className={recruitModel.state.length ? `visible absolute top-1/4 border-1 right-8` : `invisible`}>
+                              <FcCheckmark />
+                            </span>
+                          )
                           : null}
 
                       </button>
@@ -615,7 +615,7 @@ function App() {
                         <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="caret-down" className="w-3 ml-auto" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
                           <path fill="currentColor" d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z" />
                         </svg>
-                        <span className={recruitModel.state.length ? `visible absolute top-1/4 border-1 right-0` : `invisible`}>
+                        <span className={recruitModel.state.length ? `visible absolute top-1/4   border-1 right-5` : `invisible`}>
                           <FcCheckmark />
                         </span>
                       </button>
