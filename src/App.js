@@ -3,20 +3,6 @@ import React, { useState, useRef, useEffect } from 'react'
 import './App.css';
 import { surnames } from './utils/enum';
 
-import Validator, { ValidationTypes as V_Type, } from 'react-form-supervalidator';
-import PopUp from './components/popup/popup';
-import FollowUs from './components/socialIcons/Icons';
-import ReactCountryFlag from 'react-country-flag';
-import Jobs from './components/Jobs/Jobs';
-import AboutUs from './components/AboutUs/AboutUs';
-import Footer from './components/Footer/Footer';
-// import Calendar from "react-"
-// import { MobileDatePicker } from '@mui/x-date-pickers/MobileDatePicker';
-// import TextField from '@mui/material/TextField';
-// import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment';
-// import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-
-
 // *************************** 3rd parthpackages *********************
 import PhoneInput from 'react-phone-input-2'
 import 'react-phone-input-2/lib/style.css'
@@ -26,18 +12,26 @@ import '@hassanmojab/react-modern-calendar-datepicker/lib/DatePicker.css';
 
 import { Country, State, City } from 'country-state-city';
 
+import Validator, { ValidationTypes as V_Type, } from 'react-form-supervalidator';
+
 import { BsFillTelephoneFill } from 'react-icons/bs'
 import { MdClose } from 'react-icons/md'
 import { AiFillCalendar } from 'react-icons/ai'
 import { FcCheckmark } from 'react-icons/fc'
 import { GoFileMedia } from "react-icons/go";
 
+import axios from "axios"
+
 // ************************** IMAGES **************************
-import leafLogo2 from "./assets/images/Logo-leaf-Top-red-V2.png"
-import usFlaglogo from "./assets/images/usflag_logo_v2.png"
 import bigPic from "./assets/images/creche.jpg"
 import cloudImage from "./assets/images/cloud.png"
 
+// ************************** COMPONENTS **************************
+import TopBar from './components/TopBar/TopBar';
+import Jobs from './components/Jobs/Jobs';
+import AboutUs from './components/AboutUs/AboutUs';
+import Footer from './components/Footer/Footer';
+import PopUp from './components/popup/popup';
 
 function App() {
   const myRef = useRef(null)
@@ -94,9 +88,10 @@ function App() {
     const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     let { name, value } = e.target
 
-    if (name === "firstFname") {
+    if (name === "firstFname" || name === "secondFname" || name === "thirdFname") {
       value = e.target.value.toUpperCase().replace(/[^a-z]/gi, '');
-    } else if (name === "fullname" || name === "secondFname" || name === "thirdFname") {
+    }
+    else if (name === "fullname") {
       value = e.target.value.replace(/[^a-z]/gi, '');
     }
     else if (name === "email" || name === "reEmail") {
@@ -270,6 +265,13 @@ function App() {
     const updatedCities = City.getCitiesOfState(recruitModel.country, updatedstateCode)
     setall_Cities(updatedCities)
   }, [recruitModel.state, recruitModel.country])
+  useEffect(() => {
+    (async () => {
+      // const response = await axios('https://api.ipregistry.co/?key=m7irmmf8ey12rx7o')
+      // console.log("response", response.location.country.code);
+    })();
+
+  }, [])
 
 
   return (
@@ -277,45 +279,7 @@ function App() {
       <section ref={myRef} className='bscontainer-fluid'>
         <section className='row' >
           <div style={{ backgroundColor: "#ffffffad" }} className='col-12 bg-hero-pattern bg-center bg-no-repeat     bg-cover bg-blend-lighten '  >
-            <div className='lg:my-10 my-5 lg:px-28 md:px-5 px-6'>
-              <div className='row  justify-center items-center'>
-                <div className='col-4'>
-                  <figure>
-                    <img src={leafLogo2} className="md:w-16 w-11 " alt="leafLogo" />
-                    <figcaption className='text-left md:-ml-6 -ml-3 mt-1 text-xs text-red-600 font-semibold '>
-                      {/* CULTIVATED WELLNESS */}
-                      Cultivated Wellness
-                    </figcaption>
-                  </figure>
-                </div>
-                <div className='col-4 text-center lg:text-6xl md:text-6xl text-3xl font-medium flex items-center justify-center'>
-                  <p>RECRUIT</p>
-                </div>
-                <div className='col-4 '>
-                  <figure className='flex flex-col justify-center  '>
-                    <img src={usFlaglogo} className=" ml-auto  md:w-16 w-11 " alt="leafLogo" />
-                    <figcaption className='caption justify-center md:mr-1 mx-5 relative mt-1 text-xs text-red-600 font-semibold  '>
-                      <div className="flex justify-center">
-                        Language
-                        <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="caret-down" className="w-3 ml-auto" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
-                          <path fill="currentColor" d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z" />
-                        </svg>
-                      </div>
-
-
-                      {/* <select className='float-right bg-transparent  outline-none absolute right-0 select_lang'>
-                        <option className='text-xs text-red-600 font-semibold' >Language</option> */}
-                      {/* <option className='text-xs text-red-600 font-semibold'>English</option>
-                        <option className='text-xs text-red-600 font-semibold'>Spanish</option> */}
-
-                      {/* </select> */}
-
-
-                    </figcaption>
-                  </figure>
-                </div>
-              </div>
-            </div>
+            <TopBar />
 
             <div className='row justify-center md:gap-2 gap-4 mb-4 g-0 '>
               <div className='col-lg-3 col-md-10'>
