@@ -1,45 +1,43 @@
-import React, { useState, useRef, useEffect, forwardRef } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 
 import './App.css';
-
-import { BsCalendarEvent } from "react-icons/bs";
-import { FcCheckmark } from 'react-icons/fc'
-import { GoFileMedia } from "react-icons/go";
-
-
-import leafLogo2 from "./assets/images/Logo-leaf-Top-red-V2.png"
-import usFlaglogo from "./assets/images/usflag_logo_v2.png"
-import bigPic from "./assets/images/creche.jpg"
-import cloudImage from "./assets/images/cloud.png"
-
-import { MdCloudUpload } from "react-icons/md";
 import { surnames } from './utils/enum';
 
-import Validator, { ValidationTypes as V_Type, } from './components/shared/formValidator';
-
-import PhoneInput from 'react-phone-input-2'
-import 'react-phone-input-2/lib/style.css'
-import { AiFillCalendar } from 'react-icons/ai'
-import { Country, State, City } from 'country-state-city';
-
-import '@hassanmojab/react-modern-calendar-datepicker/lib/DatePicker.css';
-import DatePicker from '@hassanmojab/react-modern-calendar-datepicker';
-import { FiFacebook } from 'react-icons/fi'
-import { FaTwitter } from 'react-icons/fa'
-import { BsInstagram } from 'react-icons/bs'
-import { AiFillLinkedin } from 'react-icons/ai'
-import { BsFillTelephoneFill } from 'react-icons/bs'
-import { MdClose } from 'react-icons/md'
+import Validator, { ValidationTypes as V_Type, } from 'react-form-supervalidator';
 import PopUp from './components/popup/popup';
 import FollowUs from './components/socialIcons/Icons';
 import ReactCountryFlag from 'react-country-flag';
 import Jobs from './components/Jobs/Jobs';
 import AboutUs from './components/AboutUs/AboutUs';
+import Footer from './components/Footer/Footer';
 // import Calendar from "react-"
 // import { MobileDatePicker } from '@mui/x-date-pickers/MobileDatePicker';
 // import TextField from '@mui/material/TextField';
 // import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment';
 // import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+
+
+// *************************** 3rd parthpackages *********************
+import PhoneInput from 'react-phone-input-2'
+import 'react-phone-input-2/lib/style.css'
+
+import DatePicker from '@hassanmojab/react-modern-calendar-datepicker';
+import '@hassanmojab/react-modern-calendar-datepicker/lib/DatePicker.css';
+
+import { Country, State, City } from 'country-state-city';
+
+import { BsFillTelephoneFill } from 'react-icons/bs'
+import { MdClose } from 'react-icons/md'
+import { AiFillCalendar } from 'react-icons/ai'
+import { FcCheckmark } from 'react-icons/fc'
+import { GoFileMedia } from "react-icons/go";
+
+// ************************** IMAGES **************************
+import leafLogo2 from "./assets/images/Logo-leaf-Top-red-V2.png"
+import usFlaglogo from "./assets/images/usflag_logo_v2.png"
+import bigPic from "./assets/images/creche.jpg"
+import cloudImage from "./assets/images/cloud.png"
+
 
 function App() {
   const myRef = useRef(null)
@@ -90,17 +88,15 @@ function App() {
   const [file, setFile] = useState('');
   const [isShow, setIsShow] = useState(false);
 
-  const dropItem = ["ABOUT RECRUIT", "HOW TO APPLY", " WHAT'S NEXT"]
-
   const executeScroll = () => myRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' })
   const handleChange = (e) => {
-    debugger
+
     const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     let { name, value } = e.target
+
     if (name === "firstFname") {
-      // value = e.target.value.toUpperCase()
-      value = e.target.value.replace(/[^a-z]/gi, '');
-    } else if (name === "fullname" || name === "firstFname" || name === "secondFname" || name === "thirdFname") {
+      value = e.target.value.toUpperCase().replace(/[^a-z]/gi, '');
+    } else if (name === "fullname" || name === "secondFname" || name === "thirdFname") {
       value = e.target.value.replace(/[^a-z]/gi, '');
     }
     else if (name === "email" || name === "reEmail") {
@@ -123,17 +119,11 @@ function App() {
 
   console.log("valide", validationModel)
 
-
-
   const handleMobileChange = (value) => {
     localStorage.setItem("mobile", value);
     console.log(value);
     setmobile(value)
   }
-
-
-
-
 
   const customHandler = (data) => {
     console.log(data)
@@ -764,20 +754,8 @@ function App() {
       </div>
       {isShow && <PopUp permition={isShow} Toggle={(value) => setIsShow(value)} />}
 
-      <footer className='bscontainer-fluid bg-light-red d-flex text-white text-xs text-center font-normal py-3 footer '>
-        COPYRIGHTS © 2022 HPORX LTD, IRELAND. ALL RIGHTS RESERVED.
-        <span className='footer_text'>
-          |  <span className='hover:underline cursor-pointer'>PRIVACY POLICY </span>
-          | <span className='hover:underline cursor-pointer' >+44 1223 298541 </span>
-          | <span className='hover:underline cursor-pointer' > TERMS OF USE </span>
-          | <span className='hover:underline cursor-pointer' > DIGITAL AGENCY SERVICES </span>
-          | <span className='hover:underline cursor-pointer' >SITE DIRECTORY </span>
-        </span>
-        <div className='footer_social '>
-          <FollowUs />
-        </div>
-      </footer>
 
+      <Footer />
 
     </>
 
