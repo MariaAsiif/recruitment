@@ -158,11 +158,37 @@ function App() {
     return Validator(myvalidation_Obj, V_Type.NullCheck);
   };
 
-  const handlePlaces = (isoCode, name) => {
-    localStorage.setItem(name, isoCode);
+  const handlePlaces = (iso_Code, name) => {
+    localStorage.setItem(name, iso_Code);
+    let updatedCities = []
+    let cityName = ""
+    if (name === "country") {
+      console.log(iso_Code);
+      const updatedStates = State.getStatesOfCountry(iso_Code)
+      const stateCode = updatedStates.length > 0 ? updatedStates[0].isoCode : ""
+      updatedCities = City.getCitiesOfState(iso_Code, stateCode)
+      cityName = updatedCities.length > 0 ? updatedCities[0].name : ""
+      setall_States(updatedStates)
+      setall_Cities(updatedCities)
+      setrecruitModel((prevmodel) => ({
+        ...prevmodel,
+        state: stateCode,
+        city: cityName
+      }))
+    }
+    else if (name === "state") {
+      console.log("state", iso_Code);
+      updatedCities = City.getCitiesOfState(recruitModel.country, iso_Code)
+      cityName = updatedCities.length > 0 ? updatedCities[0].name : ""
+      setall_Cities(updatedCities)
+      setrecruitModel((prevmodel) => ({
+        ...prevmodel,
+        city: cityName
+      }))
+    }
     setrecruitModel((prevmodel) => ({
       ...prevmodel,
-      [name]: isoCode
+      [name]: iso_Code
     }))
   }
 
@@ -234,14 +260,12 @@ function App() {
   // ========================= Use Effect ==========================
 
   useEffect(() => {
-    const dropZone = document.querySelector('#dropzone')
     dropzoneRef.current.addEventListener('dragover', (e) => {
       e.preventDefault()
       dropzoneRef.current.classList.add("border-l-red-500", "border-r-red-500", "border-t-red-500")
     })
     dropzoneRef.current.addEventListener('drop', (e) => {
       e.preventDefault()
-      console.log(e.dataTransfer.files);
       setuploadFiles((prevfiles) => ([
         ...prevfiles,
         ...e.dataTransfer.files
@@ -255,23 +279,28 @@ function App() {
   }, [])
   useEffect(() => {
     console.log("useEffect 1 run");
-    const updatedCountryCode = recruitModel.country
-    const updatedStates = State.getStatesOfCountry(updatedCountryCode)
-    setall_States(updatedStates)
-  }, [recruitModel.country,])
-  useEffect(() => {
-    console.log("useEffect 2 run");
-    const updatedstateCode = recruitModel.state
-    const updatedCities = City.getCitiesOfState(recruitModel.country, updatedstateCode)
-    setall_Cities(updatedCities)
-  }, [recruitModel.state, recruitModel.country])
-  useEffect(() => {
-    (async () => {
-      // const response = await axios('https://api.ipregistry.co/?key=m7irmmf8ey12rx7o')
-      // console.log("response", response.location.country.code);
-    })();
+    try {
+      (async () => {
+        const response = await axios('https://api.ipregistry.co/?key=m7irmmf8ey12rx7o')
+        const currentCountryCode = response.data.location.country.code
+        const CurrentStates = State.getStatesOfCountry(currentCountryCode)
+        const CurrentCities = City.getCitiesOfState(currentCountryCode, CurrentStates[0].isoCode)
+        setrecruitModel((prevmodel) => ({
+          ...prevmodel,
+          country: currentCountryCode,
+          state: CurrentStates.length > 0 ? CurrentStates[0].isoCode : "",
+          city: CurrentCities.length > 0 ? CurrentCities[0].name : ""
+        }))
+        setall_States(CurrentStates)
+        setall_Cities(CurrentCities)
+      })();
+    } catch (error) {
+      console.log(error);
+    }
 
   }, [])
+
+
 
 
   return (
@@ -459,7 +488,7 @@ function App() {
               <div className='col-lg-3 col-md-10'>
                 <div className="dropdown relative">
                   <button className=" w-full bg-white border-2 border-gray-400 text-gray-400 dropdown-toggle p-2   focus:outline-blue-400 focus:ring-0 active:border-blue-400   transition duration-150 ease-in-out flex items-center whitespace-nowrap " type="button" id="citydropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                    {all_Countries.find((city) => city.isoCode === recruitModel.country)?.name}
+                    {all_Countries.find((contry) => contry.isoCode === recruitModel.country)?.name}
                     <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="caret-down" className="w-3 ml-auto" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
                       <path fill="currentColor" d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z" />
                     </svg>
@@ -469,10 +498,10 @@ function App() {
                       : null}
                   </button>
                   <ul className=" dropdown-menu   absolute w-full  max-h-52 overflow-y-scroll overflow-x-hidden bg-white text-base z-100 float-left py-2 list-none text-left shadow-lg mt-1 hidden m-0 bg-clip-padding border-none " aria-labelledby="citydropdown">
-                    {all_Countries.map((city) => {
+                    {all_Countries.map((contry) => {
                       return (
-                        <li key={city.name}>
-                          <span onClick={() => handlePlaces(city.isoCode, "country")} className=" cursor-pointer dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100 "  >{city.name}</span>
+                        <li key={contry.name}>
+                          <span onClick={() => handlePlaces(contry.isoCode, "country")} className=" cursor-pointer dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100 "  >{contry.name}</span>
                         </li>
                       )
                     })}
