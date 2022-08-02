@@ -307,6 +307,20 @@ input[type=number] {
     margin-left: 5px;
   }
 
+  .desk_show{
+    display: none
+  }
+  .desk_hide{
+    display: block
+  }
+  .mob_show{
+    display: block;
+  }
+
+  .desk_ind_show{
+    display: none;
+  }
+
 
   /* .date_picker{
     width: 21.1vh;

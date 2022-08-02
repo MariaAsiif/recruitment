@@ -17,7 +17,7 @@ import Validator, { ValidationTypes as V_Type, } from 'react-form-supervalidator
 import { MdClose } from 'react-icons/md'
 import { AiFillCalendar } from 'react-icons/ai'
 import { FcCheckmark } from 'react-icons/fc'
-import { GoFileMedia , GoDeviceMobile } from "react-icons/go";
+import { GoFileMedia, GoDeviceMobile } from "react-icons/go";
 
 import axios from "axios"
 
@@ -316,12 +316,12 @@ function App() {
                     </button>
                     <ul className=" dropdown-menu absolute w-full  max-h-52 overflow-y-auto overflow-x-hidden bg-white text-base z-100 float-left py-2 list-none text-left shadow-lg mt-1 hidden m-0 bg-clip-padding border-none " aria-labelledby="surdropdown">
                       {surnames.map((sur, i) => {
-                        if(recruitModel.surname !== sur)
-                        return (
-                          <li key={i} >
-                            <span onClick={() => handlePlaces(sur, "surname")} className=" cursor-pointer dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100 "  >{sur}</span>
-                          </li>
-                        )
+                        if (recruitModel.surname !== sur)
+                          return (
+                            <li key={i} >
+                              <span onClick={() => handlePlaces(sur, "surname")} className=" cursor-pointer dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100 "  >{sur}</span>
+                            </li>
+                          )
                       })}
                     </ul>
                   </div>
@@ -376,7 +376,7 @@ function App() {
                       <FcCheckmark />
                     </p>
                     :
-                    <span hidden={recruitModel.thirdFname.length} className='absolute text-red-400 font-medium text-lg top-1/4 left-32'>*</span>
+                    <span hidden={recruitModel.thirdFname.length} className='absolute text-red-400 text-sm font-medium  top-1/4 left-40'>(optional)</span>
                   }
                 </div>
               </div>
@@ -530,7 +530,7 @@ function App() {
                         </svg>
                         {recruitModel.state !== "" ?
                           (
-                            <span className={recruitModel.state.length ? `visible absolute top-1/4 border-1 right-8` : `invisible`}>
+                            <span className={recruitModel.state.length ? `visible absolute md:top-1/3 top-1/4 border-1 right-8` : `invisible`}>
                               <FcCheckmark />
                             </span>
                           )
@@ -550,12 +550,13 @@ function App() {
                   </div>
                   <div className='col-6'>
                     <div className="dropdown relative">
-                      <button className=" w-full bg-white border-2 border-gray-400 text-gray-400 dropdown-toggle p-2   focus:outline-blue-400 focus:ring-0 active:border-blue-400   transition duration-150 ease-in-out flex items-center whitespace-nowrap " type="button" id="citydropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                      <button className=" w-full md:border-5 bg-white border-2 border-gray-400 text-gray-400 dropdown-toggle p-2   focus:outline-blue-400 focus:ring-0 active:border-blue-400   transition duration-150 ease-in-out flex items-center whitespace-nowrap " type="button" id="citydropdown" data-bs-toggle="dropdown" aria-expanded="false">
                         {add3Dots(cityName, 10)}
+
                         <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="caret-down" className="w-3 ml-auto" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
                           <path fill="currentColor" d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z" />
                         </svg>
-                        {recruitModel.city !== "" ? <span className={recruitModel.city.length ? `visible absolute top-1/4 border-1 right-8 md:right-9` : `visible`}>
+                        {recruitModel.city !== "" ? <span className={recruitModel.city.length ? `visible absolute  md:top-1/3 top-1/4 border-1 right-8` : `invisible`}>
                           <FcCheckmark />
                         </span>
                           : null}
@@ -574,7 +575,7 @@ function App() {
                   </div>
                 </div>
               </div>
-              
+
               <div className='col-lg-3 col-md-10 postion_show '>
                 <input name='position' value={recruitModel.position} onChange={handleChange} type="text" placeholder='Position of Interest?' className="w-full outline-blue-400 border-2 px-2 py-2 border-gray-400 " />
                 {recruitModel.position.length ?
@@ -641,7 +642,7 @@ function App() {
                         <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="caret-down" className="w-3 ml-auto" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
                           <path fill="currentColor" d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z" />
                         </svg>
-                        <span className={recruitModel.state.length ? `visible absolute top-1/4   border-1 right-5` : `invisible`}>
+                        <span className={recruitModel.state.length ? `visible absolute sm:top-[14px] sm:right-[30px] md:top-[14px] md:right-[30px] top-1/4   border-1 right-5` : `invisible`}>
                           <FcCheckmark />
                         </span>
                       </button>
@@ -660,18 +661,13 @@ function App() {
                     <div className="dropdown relative ">
                       <button className=" w-full bg-white border-2 border-gray-400 text-gray-400 dropdown-toggle p-2   focus:outline-blue-400 focus:ring-0 active:border-blue-400   transition duration-150 ease-in-out flex items-center whitespace-nowrap " type="button" id="citydropdown" data-bs-toggle="dropdown" aria-expanded="false">
                         {add3Dots(cityName, 10)}
-                        {recruitModel.city !== "" ?
-                          <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="caret-down" className="w-3 ml-auto" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
-                            <path fill="currentColor" d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z" />
-                          </svg>
-                          :
-                          <span className={recruitModel.city.length ? `visible absolute top-1/4 border-1 right-8` : `invisible`}>
-                            <FcCheckmark />
-                          </span>
-                        }
-                        {/* <span className={recruitModel.city.length ? `visible absolute top-1/4 border-1 right-0` : `invisible`}>
+                        <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="caret-down" className="w-3 ml-auto" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+                          <path fill="currentColor" d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z" />
+                        </svg>
+                        <span className={recruitModel.city.length ? `visible absolute sm:top-[14px] sm:right-[30px] md:top-1/5  top-1/4 border-1 right-8` : `invisible`}>
                           <FcCheckmark />
-                        </span> */}
+                        </span>
+
                       </button>
                       <ul className=" dropdown-menu   absolute w-full  max-h-52 overflow-y-scroll overflow-x-hidden bg-white text-base z-100 float-left py-2 list-none text-left shadow-lg mt-1 hidden m-0 bg-clip-padding border-none " aria-labelledby="citydropdown">
                         {all_Cities.map((city) => {
