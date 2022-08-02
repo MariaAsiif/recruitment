@@ -1,57 +1,36 @@
-import React, { useState, useRef, useEffect, forwardRef } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 
 import './App.css';
-import { IoChevronDownOutline, IoChevronUpOutline } from "react-icons/io5";
-import { BsCalendarEvent } from "react-icons/bs";
-import { FcCheckmark } from 'react-icons/fc'
-import { GoFileMedia } from "react-icons/go";
-import Business_pic from "./assets/images/sales (2).jpg"
-import Sales_pic from "./assets/images/sales representatives.jpg"
-import Administrator_pic from "./assets/images/adminstrator.jpg"
-import Agriculture_pic from "./assets/images/agriculture scientist.jpg"
-import Botanist_pic from "./assets/images/Botanist.jpg"
-import Customer_pic from "./assets/images/Customer service.jpg"
-import Doctor_pic from "./assets/images/Doctors.jpg"
-import Lawyer1_pic from "./assets/images/Lawyers 1.1.jpg"
-import lawyer2_pic from "./assets/images/Lawyers.jpg"
-import Manufacture_pic from "./assets/images/manufacturers.jpg"
-import Pharamcist_pic from "./assets/images/Pharmacist.jpg"
+import { surnames } from './utils/enum';
 
-import Sales2_pic from "./assets/images/sales (2).jpg"
-import Perscriptive_pic from "./assets/images/SALES -Prescriptive Care.jpg"
-import Vendor_pic from "./assets/images/vendor 1.jpg"
-import Whole_pic from "./assets/images/whole seller.jpg"
-import leafLogo2 from "./assets/images/Logo-leaf-Top-red-V2.png"
-import usFlaglogo from "./assets/images/usflag_logo_v2.png"
+// *************************** 3rd parthpackages *********************
+import PhoneInput from 'react-phone-input-2'
+import 'react-phone-input-2/lib/style.css'
+
+import DatePicker from '@hassanmojab/react-modern-calendar-datepicker';
+import '@hassanmojab/react-modern-calendar-datepicker/lib/DatePicker.css';
+
+import { Country, State, City } from 'country-state-city';
+
+import Validator, { ValidationTypes as V_Type, } from 'react-form-supervalidator';
+
+import { MdClose } from 'react-icons/md'
+import { AiFillCalendar } from 'react-icons/ai'
+import { FcCheckmark } from 'react-icons/fc'
+import { GoFileMedia , GoDeviceMobile } from "react-icons/go";
+
+import axios from "axios"
+
+// ************************** IMAGES **************************
 import bigPic from "./assets/images/creche.jpg"
 import cloudImage from "./assets/images/cloud.png"
 
-import { MdCloudUpload } from "react-icons/md";
-import { surnames } from './utils/enum';
-
-import Validator, { ValidationTypes as V_Type, } from './components/shared/formValidator';
-
-import PhoneInput from 'react-phone-input-2'
-import 'react-phone-input-2/lib/style.css'
-import { AiFillCalendar } from 'react-icons/ai'
-import { Country, State, City } from 'country-state-city';
-
-import '@hassanmojab/react-modern-calendar-datepicker/lib/DatePicker.css';
-import DatePicker from '@hassanmojab/react-modern-calendar-datepicker';
-import { FiFacebook } from 'react-icons/fi'
-import { FaTwitter } from 'react-icons/fa'
-import { BsInstagram } from 'react-icons/bs'
-import { AiFillLinkedin } from 'react-icons/ai'
-import { GoDeviceMobile } from 'react-icons/go'
-import { MdClose } from 'react-icons/md'
+// ************************** COMPONENTS **************************
+import TopBar from './components/TopBar/TopBar';
+import Jobs from './components/Jobs/Jobs';
+import AboutUs from './components/AboutUs/AboutUs';
+import Footer from './components/Footer/Footer';
 import PopUp from './components/popup/popup';
-import FollowUs from './components/socialIcons/Icons';
-import ReactCountryFlag from 'react-country-flag';
-// import Calendar from "react-"
-// import { MobileDatePicker } from '@mui/x-date-pickers/MobileDatePicker';
-// import TextField from '@mui/material/TextField';
-// import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment';
-// import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 
 function App() {
   const myRef = useRef(null)
@@ -74,8 +53,7 @@ function App() {
     age: localStorage.getItem('age') ? localStorage.getItem('age') : "",
   })
 
-  const language = ['Language', 'Spanish']
-  const [lang, setLang] = useState("Language")
+
 
   const [validationModel, setvalidationModel] = useState({
     fullnameError: null,
@@ -91,28 +69,24 @@ function App() {
 
 
   const [mobile, setmobile] = useState("")
-  const [dob, setdob] = useState(new Date())
   const [all_Countries] = useState(() => Country.getAllCountries())
   const [all_States, setall_States] = useState(() => State.getStatesOfCountry("AF"))
   const [all_Cities, setall_Cities] = useState(() => City.getCitiesOfState("AF", "BDS"))
   const [dateob, setdateob] = useState(null)
-  const [activeIndex, setActiveIndex] = useState(null)
   const [uploadFiles, setuploadFiles] = useState([])
-  const [selectedDay, setSelectedDay] = useState(null);
   const [file, setFile] = useState('');
   const [isShow, setIsShow] = useState(false);
 
-  const dropItem = ["ABOUT RECRUIT", "HOW TO APPLY", " WHAT'S NEXT"]
-
   const executeScroll = () => myRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' })
   const handleChange = (e) => {
-    debugger
+
     const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     let { name, value } = e.target
-    if (name === "firstFname") {
-      // value = e.target.value.toUpperCase()
-      value = e.target.value.replace(/[^a-z]/gi, '');
-    } else if (name === "fullname" || name === "firstFname" || name === "secondFname" || name === "thirdFname") {
+
+    if (name === "firstFname" || name === "secondFname" || name === "thirdFname") {
+      value = e.target.value.toUpperCase().replace(/[^a-z]/gi, '');
+    }
+    else if (name === "fullname") {
       value = e.target.value.replace(/[^a-z]/gi, '');
     }
     else if (name === "email" || name === "reEmail") {
@@ -133,9 +107,6 @@ function App() {
     }))
   }
 
-  console.log("valide", validationModel)
-
-
 
   const handleMobileChange = (value) => {
     localStorage.setItem("mobile", value);
@@ -143,18 +114,6 @@ function App() {
     setmobile(value)
   }
 
-
-
-
-  const handleDropdown = (index) => {
-    if (index === activeIndex) {
-      setActiveIndex(null)
-    }
-    else {
-      setActiveIndex(index)
-
-    }
-  }
   const customHandler = (data) => {
     console.log(data)
     if (data[0].match(
@@ -193,11 +152,37 @@ function App() {
     return Validator(myvalidation_Obj, V_Type.NullCheck);
   };
 
-  const handlePlaces = (isoCode, name) => {
-    localStorage.setItem(name, isoCode);
+  const handlePlaces = (iso_Code, name) => {
+    localStorage.setItem(name, iso_Code);
+    let updatedCities = []
+    let cityName = ""
+    if (name === "country") {
+      console.log(iso_Code);
+      const updatedStates = State.getStatesOfCountry(iso_Code)
+      const stateCode = updatedStates.length > 0 ? updatedStates[0].isoCode : ""
+      updatedCities = City.getCitiesOfState(iso_Code, stateCode)
+      cityName = updatedCities.length > 0 ? updatedCities[0].name : ""
+      setall_States(updatedStates)
+      setall_Cities(updatedCities)
+      setrecruitModel((prevmodel) => ({
+        ...prevmodel,
+        state: stateCode,
+        city: cityName
+      }))
+    }
+    else if (name === "state") {
+      console.log("state", iso_Code);
+      updatedCities = City.getCitiesOfState(recruitModel.country, iso_Code)
+      cityName = updatedCities.length > 0 ? updatedCities[0].name : ""
+      setall_Cities(updatedCities)
+      setrecruitModel((prevmodel) => ({
+        ...prevmodel,
+        city: cityName
+      }))
+    }
     setrecruitModel((prevmodel) => ({
       ...prevmodel,
-      [name]: isoCode
+      [name]: iso_Code
     }))
   }
 
@@ -269,14 +254,12 @@ function App() {
   // ========================= Use Effect ==========================
 
   useEffect(() => {
-    const dropZone = document.querySelector('#dropzone')
     dropzoneRef.current.addEventListener('dragover', (e) => {
       e.preventDefault()
       dropzoneRef.current.classList.add("border-l-red-500", "border-r-red-500", "border-t-red-500")
     })
     dropzoneRef.current.addEventListener('drop', (e) => {
       e.preventDefault()
-      console.log(e.dataTransfer.files);
       setuploadFiles((prevfiles) => ([
         ...prevfiles,
         ...e.dataTransfer.files
@@ -290,16 +273,28 @@ function App() {
   }, [])
   useEffect(() => {
     console.log("useEffect 1 run");
-    const updatedCountryCode = recruitModel.country
-    const updatedStates = State.getStatesOfCountry(updatedCountryCode)
-    setall_States(updatedStates)
-  }, [recruitModel.country,])
-  useEffect(() => {
-    console.log("useEffect 2 run");
-    const updatedstateCode = recruitModel.state
-    const updatedCities = City.getCitiesOfState(recruitModel.country, updatedstateCode)
-    setall_Cities(updatedCities)
-  }, [recruitModel.state, recruitModel.country])
+    try {
+      (async () => {
+        const response = await axios('https://api.ipregistry.co/?key=m7irmmf8ey12rx7o')
+        const currentCountryCode = response.data.location.country.code
+        const CurrentStates = State.getStatesOfCountry(currentCountryCode)
+        const CurrentCities = City.getCitiesOfState(currentCountryCode, CurrentStates[0].isoCode)
+        setrecruitModel((prevmodel) => ({
+          ...prevmodel,
+          country: currentCountryCode,
+          state: CurrentStates.length > 0 ? CurrentStates[0].isoCode : "",
+          city: CurrentCities.length > 0 ? CurrentCities[0].name : ""
+        }))
+        setall_States(CurrentStates)
+        setall_Cities(CurrentCities)
+      })();
+    } catch (error) {
+      console.log(error);
+    }
+
+  }, [])
+
+
 
 
   return (
@@ -307,45 +302,7 @@ function App() {
       <section ref={myRef} className='bscontainer-fluid'>
         <section className='row' >
           <div style={{ backgroundColor: "#ffffffad" }} className='col-12 bg-hero-pattern bg-center bg-no-repeat     bg-cover bg-blend-lighten '  >
-            <div className='lg:my-10 my-5 lg:px-28 md:px-5 px-6'>
-              <div className='row  justify-center items-center'>
-                <div className='col-4'>
-                  <figure>
-                    <img src={leafLogo2} className="md:w-16 w-11 " alt="leafLogo" />
-                    <figcaption className='text-left md:-ml-6 -ml-3 mt-1 text-xs text-red-600 font-semibold '>
-                      {/* CULTIVATED WELLNESS */}
-                      Cultivated Wellness
-                    </figcaption>
-                  </figure>
-                </div>
-                <div className='col-4 text-center lg:text-6xl md:text-6xl text-3xl font-medium flex items-center justify-center'>
-                  <p>RECRUIT</p>
-                </div>
-                <div className='col-4 '>
-                  <figure className='flex flex-col justify-center  '>
-                    <img src={usFlaglogo} className=" ml-auto drop-shadow-lg md:w-16 w-11 " alt="leafLogo" />
-                    <figcaption className='caption justify-center md:mr-1 mx-5 relative mt-1 text-xs text-red-600 font-semibold  '>
-                      <div className="flex justify-center">
-                        Language
-                        <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="caret-down" className="w-3 ml-auto" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
-                          <path fill="currentColor" d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z" />
-                        </svg>
-                      </div>
-
-
-                      {/* <select className='float-right bg-transparent  outline-none absolute right-0 select_lang'>
-                        <option className='text-xs text-red-600 font-semibold' >Language</option> */}
-                      {/* <option className='text-xs text-red-600 font-semibold'>English</option>
-                        <option className='text-xs text-red-600 font-semibold'>Spanish</option> */}
-
-                      {/* </select> */}
-
-
-                    </figcaption>
-                  </figure>
-                </div>
-              </div>
-            </div>
+            <TopBar />
 
             <div className='row justify-center md:gap-2 gap-4 mb-4 g-0 '>
               <div className='col-lg-3 col-md-10'>
@@ -526,31 +483,28 @@ function App() {
               <div className='col-lg-3 col-md-10 desk_show'>
                 <div className="dropdown relative ">
                   <button className=" w-full bg-white border-2 border-gray-400 text-gray-400 dropdown-toggle p-2   focus:outline-blue-400 focus:ring-0 active:border-blue-400   transition duration-150 ease-in-out flex items-center whitespace-nowrap " type="button" id="citydropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                    {all_Countries.find((city) => city.isoCode === recruitModel.country)?.name}
+                    {all_Countries.find((contry) => contry.isoCode === recruitModel.country)?.name}
                     <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="caret-down" className="w-3 ml-auto" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
                       <path fill="currentColor" d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z" />
                     </svg>
-                    {recruitModel.country ? <span className={recruitModel.reEmail.length ? `visible absolute top-1/4 border-1 right-8` : `visible`}>
-                      <FcCheckmark />
-                    </span>
+                    {recruitModel.country ?
+                      (
+                        <span className={recruitModel.country.length ? `visible absolute top-1/4 border-1 right-8` : `visible`}>
+                          <FcCheckmark />
+                        </span>
+                      )
                       : null}
                   </button>
                   <ul className=" dropdown-menu   absolute w-full  max-h-52 overflow-y-scroll overflow-x-hidden bg-white text-base z-100 float-left py-2 list-none text-left shadow-lg mt-1 hidden m-0 bg-clip-padding border-none " aria-labelledby="citydropdown">
-                    {all_Countries.map((city) => {
+                    {all_Countries.map((contry) => {
                       return (
-                        <li key={city.name}>
-                          <span onClick={() => handlePlaces(city.isoCode, "country")} className=" cursor-pointer dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100 "  >{city.name}</span>
+                        <li key={contry.name}>
+                          <span onClick={() => handlePlaces(contry.isoCode, "country")} className=" cursor-pointer dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100 "  >{contry.name}</span>
                         </li>
                       )
                     })}
                   </ul>
                 </div>
-                {/* <select name="country" value={recruitModel.country} onChange={handleChange} className=' select w-full h-10 relative outline-blue-400 border-2 px-2 py-2 border-gray-400' >
-                  {all_Countries.map((all_country) => <option value={all_country.isoCode} key={all_country.isoCode}>{all_country.name.substring(0, 33)}</option>)}
-                  <span className={recruitModel.reEmail.length ? `visible absolute top-1/4 border-1 right-` : `visible`}>
-                    <FcCheckmark />
-                  </span>
-                </select> */}
               </div>
             </div>
 
@@ -558,9 +512,9 @@ function App() {
               <div className='col-lg-3 col-md-10 relative  '>
                 <input name='industry' value={recruitModel.industry} onChange={handleChange} type="text" placeholder='Current Industry' className="w-full outline-blue-400 border-2 px-2 py-2 border-gray-400" />
                 {recruitModel.industry.length ?
-                  <p className={recruitModel.industry.length ? `visible absolute bottom-1/3 right-3` : `invisible`}>
+                  (<p className={recruitModel.industry.length ? `visible absolute bottom-1/3 right-3` : `invisible`}>
                     <FcCheckmark />
-                  </p>
+                  </p>)
                   :
                   null
                 }
@@ -574,9 +528,12 @@ function App() {
                         <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="caret-down" className="w-3 ml-auto" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
                           <path fill="currentColor" d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z" />
                         </svg>
-                        {recruitModel.state !== "" ? <span className={recruitModel.state.length ? `visible absolute top-1/4 border-1 right-8` : `invisible`}>
-                          <FcCheckmark />
-                        </span>
+                        {recruitModel.state !== "" ?
+                          (
+                            <span className={recruitModel.state.length ? `visible absolute top-1/4 border-1 right-8` : `invisible`}>
+                              <FcCheckmark />
+                            </span>
+                          )
                           : null}
 
                       </button>
@@ -684,7 +641,7 @@ function App() {
                         <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="caret-down" className="w-3 ml-auto" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
                           <path fill="currentColor" d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z" />
                         </svg>
-                        <span className={recruitModel.state.length ? `visible absolute top-1/4 border-1 right-0` : `invisible`}>
+                        <span className={recruitModel.state.length ? `visible absolute top-1/4   border-1 right-5` : `invisible`}>
                           <FcCheckmark />
                         </span>
                       </button>
@@ -770,56 +727,12 @@ function App() {
 
         </section>
 
-
-        <section className='row mb-8'>
-          <div className='col-12 bg-light-red'  >
-            <div className='row justify-center text-white lg:text-lg text-xs font-semibold gap-0'>
-              {dropItem.map((item, index) => (
-                <div key={index} className=' dropdowns col-lg-2 col-4 cursor-pointer flex py-1 text-center md:text-center md:d-flex md-justify-center  hover:bg-red-600 transition-all' onClick={() => handleDropdown(index)} >
-                  <p className=' links   py-1  '>{item} </p>  {index === activeIndex ?
-                    <IoChevronUpOutline className=' arrow_icon inline lg:text-4xl text-sm ' />
-                    :
-                    <IoChevronDownOutline className=' arrow_icon inline lg:text-4xl text-sm' />}
-
-                </div>
-
-              ))}
-
-            </div>
-          </div>
-        </section>
-
-
-
-
-
-
+        <AboutUs />
 
       </section>
       <div className='bscontainer'>
         <section>
           <div>
-            {activeIndex === 2 ?
-              <div className=" mb-8" >
-                <div className="block p-6 rounded-lg shadow-lg bg-white">
-                  Whats Next content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
-                </div>
-              </div>
-              : activeIndex === 0 ?
-                <div className=" mb-8" >
-                  <div className="block p-6 rounded-lg shadow-lg bg-white">
-                    About Recurit content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
-                  </div>
-                </div>
-                : activeIndex === 1 ?
-                  <div className=" mb-8" id="HowToApply">
-                    <div className="block p-6 rounded-lg shadow-lg bg-white">
-                      How To Apply content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
-                    </div>
-                  </div>
-                  : null
-
-            }
             <div id="dropzone" ref={dropzoneRef} className="mt-1 flex justify-center px-6 pt-5 pb-6 border-4 border-gray-300 border-dashed border-b-red-500  bg-gray-100">
               <div className="space-y-1 text-center items-center flex justify-center flex-col">
                 {/* <MdCloudUpload size={99} className='inline  text-blue-300' /> */}
@@ -850,471 +763,8 @@ function App() {
           </div>
 
         </section>
-        <section className='my-14' >
-          <div className='row'>
-            <div className='col-lg-6 col-md-12 lg:order-first order-last'>
-              <h1 className='text-4xl font-medium mb-4'>BUSINESS DEVELOPMENT</h1>
-              <p className='font-semibold text-xs leading-6 text-justify mb-4'>The significant global impact of the Coronavirus Disease SARS-CoV-2 which impact off the world in 2019. We understand
-                that you would prefer to work at a distance, from home preferably all the protective bubble that home represents for the
-                safety of your family, colleagues, neighbors, and friends. Our company offers you a rare example to work in the open at
-                your pace and not your schedule with unlimited earning potential for more information on this opportunity, please
-                contact our human resources department by filling out the form above adding your recent work experience in a resume
-                summary of experience (CV) and we will respond after reviewing your submission. We thank you for considering our
-                company as an opportunity for employment.</p>
-              <div>
-                <button onClick={executeScroll} className='mb-2 mr-4 text-white text-lg font-medium py-1 px-10  bg-light-red hover:bg-green-600 transition-all'>APPLY</button>
-                <span className='block md:inline'>
-                  <ReactCountryFlag className='mr-1' countryCode="ES" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-1' countryCode="DE" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-1' countryCode="GB" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-1' countryCode="US" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-1' countryCode="IE" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-1' countryCode="CA" svg style={{ width: '1.5em', height: '1.5em', }} />
-                </span>
-              </div>
 
-
-            </div>
-            <div className='col-lg-6 col-md-12 lg:order-last order-first lg:mb-0 mb-4 '>
-              <img src={Business_pic} alt="Business_pic" />
-            </div>
-          </div>
-        </section>
-
-        <section className='my-14' >
-          <div className='row'>
-            <div className='col-lg-6 col-md-12 lg:order-last order-first  lg:mb-0 mb-4'>
-              <img src={Sales_pic} className="w-full" alt="Sales_pic" />
-            </div>
-            <div className='col-lg-6 col-md-12 lg:order-last order-first lg:mb-0 mb-4'>
-              <h1 className='text-4xl font-medium mb-4'>SALES REPRESENTATIVES</h1>
-              <p className='font-semibold text-xs leading-6 text-justify mb-4'>The significant global impact of the Coronavirus Disease SARS-CoV-2 which impact off the world in 2019. We understand
-                that you would prefer to work at a distance, from home preferably all the protective bubble that home represents for the
-                safety of your family, colleagues, neighbors, and friends. Our company offers you a rare example to work in the open at
-                your pace and not your schedule with unlimited earning potential for more information on this opportunity, please
-                contact our human resources department by filling out the form above adding your recent work experience in a resume
-                summary of experience (CV) and we will respond after reviewing your submission. We thank you for considering our
-                company as an opportunity for employment.</p>
-              <div>
-                <button onClick={executeScroll} className='mb-2 mr-4 text-white text-lg font-medium py-1 px-10  bg-light-red hover:bg-green-600 transition-all'>APPLY</button>
-                <span className='block md:inline'>
-                  <ReactCountryFlag className='mr-1' countryCode="ES" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-1' countryCode="DE" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-1' countryCode="GB" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-1' countryCode="US" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-1' countryCode="IE" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-1' countryCode="CA" svg style={{ width: '1.5em', height: '1.5em', }} />
-                </span>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section className='my-14' >
-          <div className='row'>
-            <div className='col-lg-6 col-md-12 lg:order-first order-last'>
-              <h1 className='text-4xl font-medium mb-4'>SALES -PRESCRIPTIVE CARE</h1>
-              <p className='font-semibold text-xs leading-6 text-justify mb-4'>The significant global impact of the Coronavirus Disease SARS-CoV-2 which impact off the world in 2019. We understand
-                that you would prefer to work at a distance, from home preferably all the protective bubble that home represents for the
-                safety of your family, colleagues, neighbors, and friends. Our company offers you a rare example to work in the open at
-                your pace and not your schedule with unlimited earning potential for more information on this opportunity, please
-                contact our human resources department by filling out the form above adding your recent work experience in a resume
-                summary of experience (CV) and we will respond after reviewing your submission. We thank you for considering our
-                company as an opportunity for employment.</p>
-              <div>
-                <button onClick={executeScroll} className='mb-2 mr-4 text-white text-lg font-medium py-1 px-10  bg-light-red hover:bg-green-600 transition-all'>APPLY</button>
-                <span className='block md:inline'>
-                  <ReactCountryFlag className='mr-1' countryCode="ES" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-1' countryCode="DE" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-1' countryCode="GB" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-1' countryCode="US" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-1' countryCode="IE" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-1' countryCode="CA" svg style={{ width: '1.5em', height: '1.5em', }} />
-                </span>
-              </div>
-            </div>
-            <div className='col-lg-6 col-md-12 lg:order-last order-first lg:mb-0 mb-4'>
-              <img src={Perscriptive_pic} alt="Perscriptive_pic" />
-            </div>
-          </div>
-        </section>
-        <section className='my-14' >
-          <div className='row'>
-            <div className='col-lg-6 col-md-12 lg:order-last order-first  lg:mb-0 mb-4'>
-              <img src={Doctor_pic} className="h-full object-none" alt="Doctor_pic" />
-            </div>
-            <div className='col-lg-6 col-md-12  lg:order-last order-first lg:mb-0 mb-4'>
-              <h1 className='text-4xl font-medium mb-4'>DOCTORS</h1>
-              <p className='font-semibold text-xs leading-6 text-justify mb-4'>The significant global impact of the Coronavirus Disease SARS-CoV-2 which impact off the world in 2019. We understand
-                that you would prefer to work at a distance, from home preferably all the protective bubble that home represents for the
-                safety of your family, colleagues, neighbors, and friends. Our company offers you a rare example to work in the open at
-                your pace and not your schedule with unlimited earning potential for more information on this opportunity, please
-                contact our human resources department by filling out the form above adding your recent work experience in a resume
-                summary of experience (CV) and we will respond after reviewing your submission. We thank you for considering our
-                company as an opportunity for employment.</p>
-              <div>
-                <button onClick={executeScroll} className='mb-2 mr-4 text-white text-lg font-medium py-1 px-10  bg-light-red hover:bg-green-600 transition-all'>APPLY</button>
-                <span className='block md:inline'>
-                  <ReactCountryFlag className='mr-1' countryCode="ES" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-1' countryCode="DE" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-1' countryCode="GB" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-1' countryCode="US" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-1' countryCode="IE" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-1' countryCode="CA" svg style={{ width: '1.5em', height: '1.5em', }} />
-                </span>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section className='my-14' >
-          <div className='row'>
-            <div className='col-lg-6 col-md-12 lg:order-first order-last'>
-              <h1 className='text-4xl font-medium mb-4 '>LAWYERS</h1>
-              <p className='font-semibold text-xs leading-6 text-justify mb-4'>The significant global impact of the Coronavirus Disease SARS-CoV-2 which impact off the world in 2019. We understand
-                that you would prefer to work at a distance, from home preferably all the protective bubble that home represents for the
-                safety of your family, colleagues, neighbors, and friends. Our company offers you a rare example to work in the open at
-                your pace and not your schedule with unlimited earning potential for more information on this opportunity, please
-                contact our human resources department by filling out the form above adding your recent work experience in a resume
-                summary of experience (CV) and we will respond after reviewing your submission. We thank you for considering our
-                company as an opportunity for employment.</p>
-              <div>
-                <button onClick={executeScroll} className='mb-2 mr-4 text-white text-lg font-medium py-1 px-10  bg-light-red hover:bg-green-600 transition-all'>APPLY</button>
-                <span className='block md:inline'>
-                  <ReactCountryFlag className='mr-1' countryCode="ES" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-1' countryCode="DE" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-1' countryCode="GB" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-1' countryCode="US" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-1' countryCode="IE" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-1' countryCode="CA" svg style={{ width: '1.5em', height: '1.5em', }} />
-                </span>
-              </div>
-            </div>
-            <div className='col-lg-6 col-md-12 lg:order-last order-first lg:mb-0 mb-4'>
-              <img src={lawyer2_pic} alt="lawyer2_pic" />
-            </div>
-          </div>
-        </section>
-
-        <section className='my-14' >
-          <div className='row'>
-            <div className='col-lg-6 col-md-12 lg:order-last order-first  lg:mb-0 mb-4'>
-              <img src={Pharamcist_pic} alt="Pharamcist_pic" />
-            </div>
-            <div className='col-lg-6 col-md-12 lg:order-last order-first lg:mb-0 mb-4'>
-              <h1 className='text-4xl font-medium mb-4'>CHEMIST / PHARMACIST</h1>
-              <p className='font-semibold text-xs leading-6 text-justify mb-4'>The significant global impact of the Coronavirus Disease SARS-CoV-2 which impact off the world in 2019. We understand
-                that you would prefer to work at a distance, from home preferably all the protective bubble that home represents for the
-                safety of your family, colleagues, neighbors, and friends. Our company offers you a rare example to work in the open at
-                your pace and not your schedule with unlimited earning potential for more information on this opportunity, please
-                contact our human resources department by filling out the form above adding your recent work experience in a resume
-                summary of experience (CV) and we will respond after reviewing your submission. We thank you for considering our
-                company as an opportunity for employment.</p>
-              <div>
-                <button onClick={executeScroll} className='mb-2 mr-4 text-white text-lg font-medium py-1 px-10  bg-light-red hover:bg-green-600 transition-all'>APPLY</button>
-                <span className='block md:inline'>
-                  <ReactCountryFlag className='mr-1' countryCode="ES" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-1' countryCode="DE" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-1' countryCode="GB" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-1' countryCode="US" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-1' countryCode="IE" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-1' countryCode="CA" svg style={{ width: '1.5em', height: '1.5em', }} />
-                </span>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section className='my-14' >
-          <div className='row'>
-            <div className='col-lg-6 col-md-12 lg:order-first order-last'>
-              <h1 className='text-4xl font-medium mb-4'>BOTANY SCIENTIST</h1>
-              <p className='font-semibold text-xs leading-6 text-justify mb-4'>The significant global impact of the Coronavirus Disease SARS-CoV-2 which impact off the world in 2019. We understand
-                that you would prefer to work at a distance, from home preferably all the protective bubble that home represents for the
-                safety of your family, colleagues, neighbors, and friends. Our company offers you a rare example to work in the open at
-                your pace and not your schedule with unlimited earning potential for more information on this opportunity, please
-                contact our human resources department by filling out the form above adding your recent work experience in a resume
-                summary of experience (CV) and we will respond after reviewing your submission. We thank you for considering our
-                company as an opportunity for employment.</p>
-              <div>
-                <button onClick={executeScroll} className='mb-2 mr-4 text-white text-lg font-medium py-1 px-10  bg-light-red hover:bg-green-600 transition-all'>APPLY</button>
-                <span className='block md:inline'>
-                  <ReactCountryFlag className='mr-1' countryCode="ES" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-1' countryCode="DE" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-1' countryCode="GB" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-1' countryCode="US" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-1' countryCode="IE" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-1' countryCode="CA" svg style={{ width: '1.5em', height: '1.5em', }} />
-                </span>
-              </div>
-            </div>
-            <div className='col-lg-6 col-md-12 lg:order-last order-first lg:mb-0 mb-4'>
-              <img src={Botanist_pic} alt="Botanist_pic" />
-            </div>
-          </div>
-        </section>
-
-        <section className='my-14' >
-          <div className='row'>
-            <div className='col-lg-6 col-md-12 lg:order-last order-first lg:mb-0 mb-4'>
-              <img src={Agriculture_pic} alt="Agriculture_pic" />
-            </div>
-            <div className='col-lg-6 col-md-12 lg:order-last order-first lg:mb-0 mb-4'>
-              <h1 className='text-4xl font-medium mb-4'>AGRICULTURE SCIENTIST</h1>
-              <p className='font-semibold text-xs leading-6 text-justify mb-4'>The significant global impact of the Coronavirus Disease SARS-CoV-2 which impact off the world in 2019. We understand
-                that you would prefer to work at a distance, from home preferably all the protective bubble that home represents for the
-                safety of your family, colleagues, neighbors, and friends. Our company offers you a rare example to work in the open at
-                your pace and not your schedule with unlimited earning potential for more information on this opportunity, please
-                contact our human resources department by filling out the form above adding your recent work experience in a resume
-                summary of experience (CV) and we will respond after reviewing your submission. We thank you for considering our
-                company as an opportunity for employment.</p>
-              <div>
-                <button onClick={executeScroll} className='mb-2 mr-4 text-white text-lg font-medium py-1 px-10  bg-light-red hover:bg-green-600 transition-all'>APPLY</button>
-                <span className='block md:inline'>
-                  <ReactCountryFlag className='mr-1' countryCode="ES" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-1' countryCode="DE" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-1' countryCode="GB" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-1' countryCode="US" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-1' countryCode="IE" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-1' countryCode="CA" svg style={{ width: '1.5em', height: '1.5em', }} />
-                </span>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section className='my-14' >
-          <div className='row'>
-            <div className='col-lg-6 col-md-12 lg:order-first order-last'>
-              <h1 className='text-4xl font-medium mb-4'>ADMINISTRATOR</h1>
-              <p className='font-semibold text-xs leading-6 text-justify mb-4'>The significant global impact of the Coronavirus Disease SARS-CoV-2 which impact off the world in 2019. We understand
-                that you would prefer to work at a distance, from home preferably all the protective bubble that home represents for the
-                safety of your family, colleagues, neighbors, and friends. Our company offers you a rare example to work in the open at
-                your pace and not your schedule with unlimited earning potential for more information on this opportunity, please
-                contact our human resources department by filling out the form above adding your recent work experience in a resume
-                summary of experience (CV) and we will respond after reviewing your submission. We thank you for considering our
-                company as an opportunity for employment.</p>
-              <div>
-                <button onClick={executeScroll} className='mb-2 mr-4 text-white text-lg font-medium py-1 px-10  bg-light-red hover:bg-green-600 transition-all'>APPLY</button>
-                <span className='block md:inline'>
-                  <ReactCountryFlag className='mr-1' countryCode="ES" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-1' countryCode="DE" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-1' countryCode="GB" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-1' countryCode="US" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-1' countryCode="IE" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-1' countryCode="CA" svg style={{ width: '1.5em', height: '1.5em', }} />
-                </span>
-              </div>
-            </div>
-            <div className='col-lg-6 col-md-12 lg:order-last order-first lg:mb-0 mb-4'>
-              <img src={Administrator_pic} alt="Administrator_pic" />
-            </div>
-          </div>
-        </section>
-
-        <section className='my-14' >
-          <div className='row'>
-            <div className='col-lg-6 col-md-12 lg:order-last order-first  lg:mb-0 mb-4'>
-              <img src={Vendor_pic} alt="Vendor_pic" />
-            </div>
-            <div className='col-lg-6 col-md-12 lg:order-last order-first lg:mb-0 mb-4'>
-              <h1 className='text-4xl font-medium mb-4'>VENDOR</h1>
-              <p className='font-semibold text-xs leading-6 text-justify mb-4'>The significant global impact of the Coronavirus Disease SARS-CoV-2 which impact off the world in 2019. We understand
-                that you would prefer to work at a distance, from home preferably all the protective bubble that home represents for the
-                safety of your family, colleagues, neighbors, and friends. Our company offers you a rare example to work in the open at
-                your pace and not your schedule with unlimited earning potential for more information on this opportunity, please
-                contact our human resources department by filling out the form above adding your recent work experience in a resume
-                summary of experience (CV) and we will respond after reviewing your submission. We thank you for considering our
-                company as an opportunity for employment.</p>
-              <div>
-                <button onClick={executeScroll} className='mb-2 mr-4 text-white text-lg font-medium py-1 px-10  bg-light-red hover:bg-green-600 transition-all'>APPLY</button>
-                <span className='block md:inline'>
-                  <ReactCountryFlag className='mr-1' countryCode="ES" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-1' countryCode="DE" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-1' countryCode="GB" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-1' countryCode="US" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-1' countryCode="IE" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-1' countryCode="CA" svg style={{ width: '1.5em', height: '1.5em', }} />
-                </span>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section className='my-14' >
-          <div className='row'>
-            <div className='col-lg-6 col-md-12 lg:order-first order-last'>
-              <h1 className='text-4xl font-medium mb-4'>MANUFACTURER</h1>
-              <p className='font-semibold text-xs leading-6 text-justify mb-4'>The significant global impact of the Coronavirus Disease SARS-CoV-2 which impact off the world in 2019. We understand
-                that you would prefer to work at a distance, from home preferably all the protective bubble that home represents for the
-                safety of your family, colleagues, neighbors, and friends. Our company offers you a rare example to work in the open at
-                your pace and not your schedule with unlimited earning potential for more information on this opportunity, please
-                contact our human resources department by filling out the form above adding your recent work experience in a resume
-                summary of experience (CV) and we will respond after reviewing your submission. We thank you for considering our
-                company as an opportunity for employment.</p>
-              <div>
-                <button onClick={executeScroll} className='mb-2 mr-4 text-white text-lg font-medium py-1 px-10  bg-light-red hover:bg-green-600 transition-all'>APPLY</button>
-                <span className='block md:inline'>
-                  <ReactCountryFlag className='mr-1' countryCode="ES" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-1' countryCode="DE" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-1' countryCode="GB" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-1' countryCode="US" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-1' countryCode="IE" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-1' countryCode="CA" svg style={{ width: '1.5em', height: '1.5em', }} />
-                </span>
-              </div>
-            </div>
-            <div className='col-lg-6 col-md-12 lg:order-last order-first lg:mb-0 mb-4'>
-              <img src={Manufacture_pic} alt="Manufacture_pic" />
-            </div>
-          </div>
-        </section>
-
-        <section className='my-14' >
-          <div className='row'>
-            <div className='col-lg-6 col-md-12 lg:order-last order-first  lg:mb-0 mb-4'>
-              <img src={Whole_pic} alt="Whole_pic" />
-            </div>
-            <div className='col-lg-6 col-md-12 lg:order-last order-first lg:mb-0 mb-4'>
-              <h1 className='text-4xl font-medium mb-4'>WHOLESALER</h1>
-              <p className='font-semibold text-xs leading-6 text-justify mb-4'>The significant global impact of the Coronavirus Disease SARS-CoV-2 which impact off the world in 2019. We understand
-                that you would prefer to work at a distance, from home preferably all the protective bubble that home represents for the
-                safety of your family, colleagues, neighbors, and friends. Our company offers you a rare example to work in the open at
-                your pace and not your schedule with unlimited earning potential for more information on this opportunity, please
-                contact our human resources department by filling out the form above adding your recent work experience in a resume
-                summary of experience (CV) and we will respond after reviewing your submission. We thank you for considering our
-                company as an opportunity for employment.</p>
-              <div>
-                <button onClick={executeScroll} className='mb-2 mr-4 text-white text-lg font-medium py-1 px-10  bg-light-red hover:bg-green-600 transition-all'>APPLY</button>
-                <span className='block md:inline'>
-                  <ReactCountryFlag className='mr-1' countryCode="ES" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-1' countryCode="DE" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-1' countryCode="GB" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-1' countryCode="US" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-1' countryCode="IE" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-1' countryCode="CA" svg style={{ width: '1.5em', height: '1.5em', }} />
-                </span>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section className='my-14' >
-          <div className='row'>
-            <div className='col-lg-6 col-md-12 lg:order-first order-last'>
-              <h1 className='text-4xl font-medium mb-4'>CUSTOMER SUPPORT</h1>
-              <p className='font-semibold text-xs leading-6 text-justify mb-4'>The significant global impact of the Coronavirus Disease SARS-CoV-2 which impact off the world in 2019. We understand
-                that you would prefer to work at a distance, from home preferably all the protective bubble that home represents for the
-                safety of your family, colleagues, neighbors, and friends. Our company offers you a rare example to work in the open at
-                your pace and not your schedule with unlimited earning potential for more information on this opportunity, please
-                contact our human resources department by filling out the form above adding your recent work experience in a resume
-                summary of experience (CV) and we will respond after reviewing your submission. We thank you for considering our
-                company as an opportunity for employment.</p>
-              <div>
-                <button onClick={executeScroll} className='mb-2 mr-4 text-white text-lg font-medium py-1 px-10  bg-light-red hover:bg-green-600 transition-all'>APPLY</button>
-                <span className='block md:inline'>
-                  <ReactCountryFlag className='mr-1' countryCode="ES" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-1' countryCode="DE" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-1' countryCode="GB" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-1' countryCode="US" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-1' countryCode="IE" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-1' countryCode="CA" svg style={{ width: '1.5em', height: '1.5em', }} />
-                </span>
-              </div>
-            </div>
-            <div className='col-lg-6 col-md-12 lg:order-last order-first lg:mb-0 mb-4'>
-              <img src={Customer_pic} className="h-full  " alt="Customer_pic" />
-            </div>
-          </div>
-        </section>
-
-        <section className='my-14' >
-          <div className='row'>
-            <div className='col-lg-6 col-md-12 lg:order-last order-first  lg:mb-0 mb-4'>
-              <img src={Sales2_pic} alt="Business_pic" />
-            </div>
-            <div className='col-lg-6 col-md-12 lg:order-last order-first lg:mb-0 mb-4'>
-              <h1 className='text-4xl font-medium mb-4'>CATEGORY NAME HERE</h1>
-              <p className='font-semibold text-xs leading-6 text-justify mb-4'>The significant global impact of the Coronavirus Disease SARS-CoV-2 which impact off the world in 2019. We understand
-                that you would prefer to work at a distance, from home preferably all the protective bubble that home represents for the
-                safety of your family, colleagues, neighbors, and friends. Our company offers you a rare example to work in the open at
-                your pace and not your schedule with unlimited earning potential for more information on this opportunity, please
-                contact our human resources department by filling out the form above adding your recent work experience in a resume
-                summary of experience (CV) and we will respond after reviewing your submission. We thank you for considering our
-                company as an opportunity for employment.</p>
-              <div>
-                <button onClick={executeScroll} className='mb-2 mr-4 text-white text-lg font-medium py-1 px-10  bg-light-red hover:bg-green-600 transition-all'>APPLY</button>
-                <span className='block md:inline'>
-                  <ReactCountryFlag className='mr-1' countryCode="ES" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-1' countryCode="DE" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-1' countryCode="GB" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-1' countryCode="US" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-1' countryCode="IE" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-1' countryCode="CA" svg style={{ width: '1.5em', height: '1.5em', }} />
-                </span>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section className='my-14' >
-          <div className='row'>
-            <div className='col-lg-6 col-md-12 lg:order-first order-last'>
-              <h1 className='text-4xl font-medium mb-4'>CATEGORY NAME HERE</h1>
-              <p className='font-semibold text-xs leading-6 text-justify mb-4'>The significant global impact of the Coronavirus Disease SARS-CoV-2 which impact off the world in 2019. We understand
-                that you would prefer to work at a distance, from home preferably all the protective bubble that home represents for the
-                safety of your family, colleagues, neighbors, and friends. Our company offers you a rare example to work in the open at
-                your pace and not your schedule with unlimited earning potential for more information on this opportunity, please
-                contact our human resources department by filling out the form above adding your recent work experience in a resume
-                summary of experience (CV) and we will respond after reviewing your submission. We thank you for considering our
-                company as an opportunity for employment.</p>
-              <div>
-                <button onClick={executeScroll} className='mb-2 mr-4 text-white text-lg font-medium py-1 px-10  bg-light-red hover:bg-green-600 transition-all'>APPLY</button>
-                <span className='block md:inline'>
-                  <ReactCountryFlag className='mr-1' countryCode="ES" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-1' countryCode="DE" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-1' countryCode="GB" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-1' countryCode="US" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-1' countryCode="IE" svg style={{ width: '1.5em', height: '1.5em', }} />
-                  <ReactCountryFlag className='mx-1' countryCode="CA" svg style={{ width: '1.5em', height: '1.5em', }} />
-                </span>
-              </div>
-            </div>
-            <div className='col-lg-6 col-md-12 lg:order-last order-first lg:mb-0 mb-4'>
-              <img src={Lawyer1_pic} alt="Lawyer1_pic" />
-            </div>
-          </div>
-        </section>
-
-        <section className='mb-4'>
-          <div className="accordion" id="accordionExample">
-            <div className=" bg-white   border rounded-none border-gray-900 mb-3   ">
-              <h2 className="accordion-header mb-0" id="headingTwo">
-                <button className=" text-black font-medium px-2 py-1  text-sm    accordion-button collapsed relative flex items-center w-full    text-left bg-white     transition focus:outline-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                  <p> HOW WE SUPPORT WORKING  <span className='sami_filed'>MOTHERS</span> AND THEIR FAMILIES</p>
-                </button>
-              </h2>
-              <div id="collapseTwo" className="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-                <div className="accordion-body py-4 px-5">
-                  <strong>This is the second item's accordion body.</strong> It is hidden by default,
-                </div>
-              </div>
-            </div>
-
-            <div className=" bg-white   border rounded-none border-gray-900  ">
-              <h2 className="accordion-header mb-0" id="headthree">
-                <button className=" text-black font-medium px-2 py-1  text-sm   accordion-button collapsed relative flex items-center w-full    text-left bg-white     transition focus:outline-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                  <p> HOW WE SUPPORT WORKING  <span className='sami_filed'>FATHERS</span> AND THEIR FAMILIES</p>
-                </button>
-              </h2>
-              <div id="collapseThree" className="accordion-collapse collapse" aria-labelledby="headthree" data-bs-parent="#accordionExample">
-                <div className="accordion-body py-4 px-5">
-                  <strong>This is the second item's accordion body.</strong> It is hidden by default,
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+        <Jobs handleScroll={executeScroll} />
         <section className='mb-16'>
           <img src={bigPic} className="w-full" alt='bigPic' />
         </section>
@@ -1323,20 +773,8 @@ function App() {
       </div>
       {isShow && <PopUp permition={isShow} Toggle={(value) => setIsShow(value)} />}
 
-      <footer className='bscontainer-fluid bg-light-red d-flex text-white text-xs text-center font-normal py-3 footer '>
-        COPYRIGHTS © 2022 HPORX LTD, IRELAND. ALL RIGHTS RESERVED.
-        <span className='footer_text'>
-          |  <span className='hover:underline cursor-pointer'>PRIVACY POLICY </span>
-          | <span className='hover:underline cursor-pointer' >+44 1223 298541 </span>
-          | <span className='hover:underline cursor-pointer' > TERMS OF USE </span>
-          | <span className='hover:underline cursor-pointer' > DIGITAL AGENCY SERVICES </span>
-          | <span className='hover:underline cursor-pointer' >SITE DIRECTORY </span>
-        </span>
-        <div className='footer_social '>
-          <FollowUs />
-        </div>
-      </footer>
 
+      <Footer />
 
     </>
 
