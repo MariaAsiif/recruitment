@@ -9,7 +9,6 @@ export const surnames = [
     "Esq",
     "Prof.",
     "Don.",
-    "Miss",
     "Dona",
     "Chica",
     "Chico",

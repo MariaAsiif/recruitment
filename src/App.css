@@ -11,12 +11,43 @@
 .firstname_wrapper:focus {
   border: 2pt solid blue;
 }
-.flags{
+
+.flags {
   width: 20px;
   height: 11px;
   margin-top: 10px;
   margin-left: 5px;
 
+}
+
+.react-tel-input .form-control {
+  position: relative;
+  font-size: 14px;
+  letter-spacing: .01rem;
+  padding-left: 65px !important;
+  background: #FFFFFF;
+  text-align: left !important;
+  border-radius: 5px;
+  line-height: 25px;
+  outline: none;
+}
+
+.react-tel-input .selected-flag .arrow {
+  position: relative;
+  top: 50%;
+  margin-top: -2px;
+  left: 40px;
+  width: 8px !important;
+  height: 20px !important;
+  border-left: 3px solid transparent;
+  border-right: 3px solid transparent;
+  border-top: 4px solid #555;
+}
+
+
+.react-tel-input .flag {
+  margin-left: 5px !important;
+  height: 10px !important;
 }
 
 /* .react-tel-input .form-control {
@@ -341,10 +372,43 @@ input[type=number] {
     margin-left: 5px;
   }
 
+  .desk_show{
+    display: none
+  }
+  .desk_hide{
+    display: block
+  }
+  .mob_show{
+    display: block;
+  }
+
+  .desk_ind_show{
+    display: none;
+  }
+
 
 }
 
 @media only screen and (width : 820px) {
+
+
+  .desk_show{
+    display: none
+  }
+  .desk_hide{
+    display: block
+  }
+  .mob_show{
+    display: block;
+  }
+
+  .desk_ind_show{
+    display: none;
+  }
+
+  .desk_ind_hide{
+    display: block;
+  }
 
   .droplang {
     margin-left: -10px;
@@ -414,6 +478,21 @@ input[type=number] {
 }
 
 @media only screen and (width : 768px) {
+
+  .desk_show{
+    display: none
+  }
+  .desk_hide{
+    display: block
+  }
+  .mob_show{
+    display: block;
+  }
+
+  .desk_ind_show{
+    display: none;
+  }
+
   .droplang {
     margin-left: -10px;
   }
@@ -494,6 +573,20 @@ input[type=number] {
 }
 
 @media only screen and (width : 912px) {
+  .desk_show{
+    display: none
+  }
+  .desk_hide{
+    display: block
+  }
+  .mob_show{
+    display: block;
+  }
+
+  .desk_ind_show{
+    display: none;
+  }
+
   .droplang {
     margin-left: -10px;
   }
@@ -594,6 +687,25 @@ input[type=number] {
     display: block;
   }
 
+  .show_country {
+    display: none;
+  }
+
+  .desk_show{
+    display: block
+  }
+  .mob_show{
+    display: none;
+  }
+
+  .desk_ind_show{
+    display: block;
+  }
+
+  .desk_ind_hide{
+    display: none;
+  }
+
 
 }
 
@@ -601,6 +713,14 @@ input[type=number] {
 
 
 @media (min-width: 1200px) {
+
+  .desk_show{
+    display: block
+  }
+  .desk_hide{
+    display: none
+  }
+
   .city_group_hide {
     display: block;
   }
@@ -633,6 +753,24 @@ input[type=number] {
     display: block;
   }
 
+  .show_country {
+    display: none;
+  }
+
+  .desk_show{
+    display: block
+  }
+  .mob_show{
+    display: none;
+  }
+
+  .desk_ind_show{
+    display: block;
+  }
+
+  .desk_ind_hide{
+    display: none;
+  }
 
 }
 

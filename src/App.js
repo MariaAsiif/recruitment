@@ -42,7 +42,7 @@ import { FiFacebook } from 'react-icons/fi'
 import { FaTwitter } from 'react-icons/fa'
 import { BsInstagram } from 'react-icons/bs'
 import { AiFillLinkedin } from 'react-icons/ai'
-import { BsFillTelephoneFill } from 'react-icons/bs'
+import { GoDeviceMobile } from 'react-icons/go'
 import { MdClose } from 'react-icons/md'
 import PopUp from './components/popup/popup';
 import FollowUs from './components/socialIcons/Icons';
@@ -323,7 +323,7 @@ function App() {
                 </div>
                 <div className='col-4 '>
                   <figure className='flex flex-col justify-center  '>
-                    <img src={usFlaglogo} className=" ml-auto  md:w-16 w-11 " alt="leafLogo" />
+                    <img src={usFlaglogo} className=" ml-auto drop-shadow-lg md:w-16 w-11 " alt="leafLogo" />
                     <figcaption className='caption justify-center md:mr-1 mx-5 relative mt-1 text-xs text-red-600 font-semibold  '>
                       <div className="flex justify-center">
                         Language
@@ -359,6 +359,7 @@ function App() {
                     </button>
                     <ul className=" dropdown-menu absolute w-full  max-h-52 overflow-y-auto overflow-x-hidden bg-white text-base z-100 float-left py-2 list-none text-left shadow-lg mt-1 hidden m-0 bg-clip-padding border-none " aria-labelledby="surdropdown">
                       {surnames.map((sur, i) => {
+                        if(recruitModel.surname !== sur)
                         return (
                           <li key={i} >
                             <span onClick={() => handlePlaces(sur, "surname")} className=" cursor-pointer dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100 "  >{sur}</span>
@@ -379,7 +380,7 @@ function App() {
               </div>
               <div className='col-lg-3 col-md-10'>
                 <div className='relative'>
-                  <input name='firstFname' value={recruitModel.firstFname} onChange={handleChange} type="text" placeholder='1st Family Name' className={`w-full outline-blue-400 border-2 p-2 ${validationModel.firstFnameError ? "border-red-400" : "border-gray-400"}`} />
+                  <input name='firstFname' value={recruitModel.firstFname} onChange={handleChange} type="text" placeholder='1st Family Name' className={`w-full outline-blue-400 uppercase border-2 p-2 ${validationModel.firstFnameError ? "border-red-400" : "border-gray-400"}`} />
                   {recruitModel.firstFname.length ?
                     <p className={recruitModel.firstFname.length ? `visible absolute bottom-1/3 right-3` : `invisible`}>
                       <FcCheckmark />
@@ -497,14 +498,14 @@ function App() {
             </div>
             <div className='row justify-center md:gap-2 gap-4 mb-4 g-0  '>
               <div className={`col-lg-3 col-md-10 relative`} >
-                <div className='absolute top-0  left-[42px]   w-[2px] h-[40px] bg-gray-400 z-[1]'></div>
+                <div className='absolute top-0  left-[60px]   w-[2px] h-[40px] bg-gray-400 z-[1]'></div>
                 {/* {
                    (<div className='absolute flex items-center top-[7px]  left-[48px]   w-[122px] h-[32px] bg-white z-[1]'><div>+00 00 00 00</div></div>)
                 } */}
                 {
                   !mobile &&
-                  <div className='flags absolute flex items-center top-[7px]  left-[2px] z-[1]  w-[122px] h-[32px] '><div>
-                    <BsFillTelephoneFill />
+                  <div className='flags absolute flex items-center top-[6px]  left-[8px] z-[1]  w-[122px] h-[32px] '><div>
+                    <GoDeviceMobile />
                   </div></div>
                 }
 
@@ -522,8 +523,8 @@ function App() {
 
 
               </div>
-              <div className='col-lg-3 col-md-10'>
-                <div className="dropdown relative">
+              <div className='col-lg-3 col-md-10 desk_show'>
+                <div className="dropdown relative ">
                   <button className=" w-full bg-white border-2 border-gray-400 text-gray-400 dropdown-toggle p-2   focus:outline-blue-400 focus:ring-0 active:border-blue-400   transition duration-150 ease-in-out flex items-center whitespace-nowrap " type="button" id="citydropdown" data-bs-toggle="dropdown" aria-expanded="false">
                     {all_Countries.find((city) => city.isoCode === recruitModel.country)?.name}
                     <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="caret-down" className="w-3 ml-auto" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
@@ -616,6 +617,7 @@ function App() {
                   </div>
                 </div>
               </div>
+              
               <div className='col-lg-3 col-md-10 postion_show '>
                 <input name='position' value={recruitModel.position} onChange={handleChange} type="text" placeholder='Position of Interest?' className="w-full outline-blue-400 border-2 px-2 py-2 border-gray-400 " />
                 {recruitModel.position.length ?
@@ -625,6 +627,36 @@ function App() {
                   :
                   null
                 }
+              </div>
+
+              <div className='col-lg-3 col-md-10 desk_hide'>
+                <div className="dropdown relative ">
+                  <button className=" w-full bg-white border-2 border-gray-400 text-gray-400 dropdown-toggle p-2   focus:outline-blue-400 focus:ring-0 active:border-blue-400   transition duration-150 ease-in-out flex items-center whitespace-nowrap " type="button" id="citydropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                    {all_Countries.find((city) => city.isoCode === recruitModel.country)?.name}
+                    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="caret-down" className="w-3 ml-auto" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+                      <path fill="currentColor" d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z" />
+                    </svg>
+                    {recruitModel.country ? <span className={recruitModel.reEmail.length ? `visible absolute top-1/4 border-1 right-8` : `visible`}>
+                      <FcCheckmark />
+                    </span>
+                      : null}
+                  </button>
+                  <ul className=" dropdown-menu   absolute w-full  max-h-52 overflow-y-scroll overflow-x-hidden bg-white text-base z-100 float-left py-2 list-none text-left shadow-lg mt-1 hidden m-0 bg-clip-padding border-none " aria-labelledby="citydropdown">
+                    {all_Countries.map((city) => {
+                      return (
+                        <li key={city.name}>
+                          <span onClick={() => handlePlaces(city.isoCode, "country")} className=" cursor-pointer dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100 "  >{city.name}</span>
+                        </li>
+                      )
+                    })}
+                  </ul>
+                </div>
+                {/* <select name="country" value={recruitModel.country} onChange={handleChange} className=' select w-full h-10 relative outline-blue-400 border-2 px-2 py-2 border-gray-400' >
+                  {all_Countries.map((all_country) => <option value={all_country.isoCode} key={all_country.isoCode}>{all_country.name.substring(0, 33)}</option>)}
+                  <span className={recruitModel.reEmail.length ? `visible absolute top-1/4 border-1 right-` : `visible`}>
+                    <FcCheckmark />
+                  </span>
+                </select> */}
               </div>
 
             </div>
