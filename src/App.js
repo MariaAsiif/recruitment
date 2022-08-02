@@ -76,7 +76,7 @@ function App() {
   const [uploadFiles, setuploadFiles] = useState([])
   const [file, setFile] = useState('');
   const [isShow, setIsShow] = useState(false);
-
+  const [countryCode , setCountryCode] = useState("")
   const executeScroll = () => myRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' })
   const handleChange = (e) => {
 
@@ -277,6 +277,9 @@ function App() {
       (async () => {
         const response = await axios('https://api.ipregistry.co/?key=m7irmmf8ey12rx7o')
         const currentCountryCode = response.data.location.country.code
+        let id = response.data.location.country.tld
+        let removeDot = id.replace('.', "")
+        setCountryCode(removeDot)       
         const CurrentStates = State.getStatesOfCountry(currentCountryCode)
         const CurrentCities = City.getCitiesOfState(currentCountryCode, CurrentStates[0].isoCode)
         setrecruitModel((prevmodel) => ({
@@ -287,6 +290,7 @@ function App() {
         }))
         setall_States(CurrentStates)
         setall_Cities(CurrentCities)
+
       })();
     } catch (error) {
       console.log(error);
@@ -460,14 +464,14 @@ function App() {
                    (<div className='absolute flex items-center top-[7px]  left-[48px]   w-[122px] h-[32px] bg-white z-[1]'><div>+00 00 00 00</div></div>)
                 } */}
                 {
-                  !mobile &&
+                  !mobile || countryCode && 
                   <div className='flags absolute flex items-center top-[6px]  left-[8px] z-[1]  w-[122px] h-[32px] '><div>
                     <GoDeviceMobile />
                   </div></div>
                 }
 
                 <PhoneInput
-                  country={''}
+                  country={countryCode}
                   dropdownClass={"custom-dropdown"}
                   enableSearch
                   disableSearchIcon

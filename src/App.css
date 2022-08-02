@@ -47,7 +47,7 @@
 
 .react-tel-input .flag {
   margin-left: 5px !important;
-  height: 10px !important;
+  height: 11px !important;
 }
 
 /* .react-tel-input .form-control {
@@ -491,6 +491,8 @@ input[type=number] {
 
 }
 
+
+
 @media only screen and (width : 768px) {
 
   .desk_show{
@@ -720,6 +722,69 @@ input[type=number] {
     display: none;
   }
 
+
+}
+
+
+@media screen and (width: 1022px) {
+
+  .desk_show{
+    display: block
+  }
+  .desk_hide{
+    display: none
+  }
+
+  .city_group_hide {
+    display: block;
+  }
+
+  .postion_show {
+    display: none;
+  }
+
+  .position_hide {
+    display: block;
+  }
+
+  .city_group_show {
+    display: none;
+  }
+
+  .email_hide {
+    display: block;
+  }
+
+  .thirdname_show {
+    display: none;
+  }
+
+  .email_show {
+    display: none;
+  }
+
+  .thirdname_hide {
+    display: block;
+  }
+
+  .show_country {
+    display: none;
+  }
+
+  .desk_show{
+    display: block
+  }
+  .mob_show{
+    display: none;
+  }
+
+  .desk_ind_show{
+    display: block;
+  }
+
+  .desk_ind_hide{
+    display: none;
+  }
 
 }
 
